@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/Demon-Slayer/static/js/main.4eace2f2.chunk.js",
+    "main.js.map": "/Demon-Slayer/static/js/main.4eace2f2.chunk.js.map",
+    "runtime-main.js": "/Demon-Slayer/static/js/runtime-main.a11c15cb.js",
+    "runtime-main.js.map": "/Demon-Slayer/static/js/runtime-main.a11c15cb.js.map",
+    "static/js/2.059dd4d1.chunk.js": "/Demon-Slayer/static/js/2.059dd4d1.chunk.js",
+    "static/js/2.059dd4d1.chunk.js.map": "/Demon-Slayer/static/js/2.059dd4d1.chunk.js.map",
+    "static/js/3.2a7d347f.chunk.js": "/Demon-Slayer/static/js/3.2a7d347f.chunk.js",
+    "static/js/3.2a7d347f.chunk.js.map": "/Demon-Slayer/static/js/3.2a7d347f.chunk.js.map",
+    "index.html": "/Demon-Slayer/index.html",
+    "static/js/2.059dd4d1.chunk.js.LICENSE.txt": "/Demon-Slayer/static/js/2.059dd4d1.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a11c15cb.js",
+    "static/js/2.059dd4d1.chunk.js",
+    "static/js/main.4eace2f2.chunk.js"
+  ]
+}
