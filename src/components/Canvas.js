@@ -1,6 +1,7 @@
 import React from 'react';
 import { Stage } from '@inlet/react-pixi/animated';
 import { CreateCheckerboard } from '../components/Checkerboard';
+
 export const Canvas = ()=> {
   return <Stage
     width={800}
