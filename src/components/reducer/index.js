@@ -1,7 +1,8 @@
-import { combineReducers } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import chess from './chess';
 import map from './map';
-export default combineReducers({
+const rootReducer = combineReducers({
   chess,
   map
 });
+export const store = createStore(rootReducer);

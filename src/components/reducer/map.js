@@ -5,7 +5,6 @@ const createTraverseLine = (traverse=0,color='')=>{
       x:i,
       y:traverse,
       color:color,
-      name:'none'
     });
   };
   return list;
@@ -13,17 +12,17 @@ const createTraverseLine = (traverse=0,color='')=>{
 const createStraightLine = ( method=()=>{} )=>{
   const list = [];
   for(let i=0;i<15;i++){
-    list.push(method(i,'0x00bcd4'));
+    list.push(method(i,'0x383838'));
   };
   return list;
 };
 const initialState = createStraightLine(createTraverseLine);
 export default function updateMap(state=initialState ,action) {
   switch (action.type) {
-    case 'IsChess': {
-      const xkey = action.Xkey ? action.Xkey : 0;
-      const ykey = action.Ykey ? action.Ykey : 0;
-      state[ykey][xkey].name = action.name;
+    case 'MoveSelect': {
+      const px = action.position.x;
+      const py = action.position.y;
+      state[py][px+1].color = '0xffff';
       return state
     }
     default:

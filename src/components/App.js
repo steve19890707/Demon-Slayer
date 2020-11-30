@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import { Canvas } from './Canvas';
 import { loader } from './DataLoader';
-
 const GlobalStyle = createGlobalStyle`
   body { background:#1d2430; }
 `;

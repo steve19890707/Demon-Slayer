@@ -1,27 +1,23 @@
-const initialState = {
-  Tanjirou:{
-    x:10,
+const initialState = [
+  {
+    name:'Tanjirou',
+    x:3,
     y:10,
-  },
-  Nezuko:{
-    x:12,
+    move:3
+  },{
+    name:'Nezuko',
+    x:3,
     y:12,
-  },
-  Inosuke:{
-    x:20,
-    y:15
+    move:2
+  },{
+    name:'Inosuke',
+    x:4,
+    y:11,
+    move:4
   }
-}
+];
 export default function chessMove(state=initialState ,action) {
   switch (action.type) {
-    case action.type: {
-      const type = action.type;
-      if(state[type]&&state[type]){
-        state[type].x=action.x;
-        state[type].y=action.y;
-      };
-      return state
-    }
     default:
       return state
   }
