@@ -1,8 +1,8 @@
 import { createStore, combineReducers } from 'redux';
 import chess from './chess';
-import map from './map';
+import chessMap from './map';
 const rootReducer = combineReducers({
   chess,
-  map
+  chessMap
 });
 export const store = createStore(rootReducer);

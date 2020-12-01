@@ -5,11 +5,13 @@ const texture = PIXI.Texture.WHITE;
 export const CreateCheckerboard = ({
   reduxProps
 })=>{
-  const { map } = reduxProps;
+  const { chessMap } = reduxProps;
   return <Container>
-    {map.map((value,key)=> {
+    {chessMap.map((value,key)=> {
       return value.map((v,k)=>{
         return <Sprite
+          interactive={v.isInteractive}
+          buttonMode={v.isInteractive}
           key={k}
           width={40}
           height={40}
