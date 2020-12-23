@@ -1,14 +1,21 @@
-import React,{ useState } from 'react';
-import { Stage, Sprite, Container } from '@inlet/react-pixi/animated';
-import { CreateCheckerboard } from '../components/Checkerboard';
+import React,{ useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { MoveSelect } from '../components/reducer/map';
-import { chessSelected } from "../components/reducer/chess";
+import { Stage, Sprite, Container } from '@inlet/react-pixi/animated';
 import { loader } from './DataLoader';
+// reducers
+import { MoveSelect } from '../components/reducer/map';
+import { stageDebut, chessSelected } from "../components/reducer/chess";
+import { enemyStageDebut, enemyChessSelected } from "../components/reducer/enemyChess";
 // other part
+import { CreateCheckerboard } from '../components/Checkerboard';
 import { ChessUIBoard } from "../components/ChessUIBoard";
+import { EnemyChessUIBoard } from "../components/EnemyChessUIBoard";
 import { ConfirmTip } from "../components/ConfirmTips";
+import { ChessStatus } from "../components/ChessStatus";
+// rule
+import { stageRule } from "../components/constants/stageRule";
 export const Canvas = ()=> {
+  const [ stageStatus, setStageStatus ] = useState('stageOne');
   const [ currentChess, setCurrentChess ] = useState({
     key:0,
     type:"MOVE"
@@ -23,7 +30,17 @@ export const Canvas = ()=> {
   const [ moveStep, setMoveStep ] = useState(true);
   const chessMap = useSelector(state=>state.chessMap);
   const chess = useSelector(state=>state.chess);
+  const enemyChess = useSelector(state=>state.enemyChess);
   const dispatch = useDispatch();
+  // debut
+  useEffect(()=>{
+    dispatch(stageDebut({ 
+      isDebutChess:stageRule.getIn([stageStatus,'debutChess'])
+    }));
+    dispatch(enemyStageDebut({ 
+      isDebutChess:stageRule.getIn([stageStatus,'debutEnemyChess'])
+    }));
+  },[ dispatch, stageStatus ])
   return <Stage
     width={800}
     height={600}
@@ -42,7 +59,7 @@ export const Canvas = ()=> {
     <Container sortableChildren={true}>
       {chess.map((value,key)=>{
         return <React.Fragment key={key}>
-          <Sprite
+          {value.debut&&<Sprite
             interactive={moveStep}
             buttonMode={true}
             width={40}
@@ -85,14 +102,48 @@ export const Canvas = ()=> {
               }));
             }}
             image={loader.resources[`${value.name}-head-default`].data}
-          />
+          />}
           {value.boardStatus&&<ChessUIBoard
             ChessData={chess}
             ChessVal={value}
             ChessKey={key}
+            EnemyChessData={enemyChess}
             positionX={(value.x*40)+40}
             positionY={(value.y*40)}
             setCurrentChess={setCurrentChess}
+            setMoveStep={setMoveStep}
+            dispatch={dispatch}
+          />}
+          {value.checkStatus&&<ChessStatus
+            ChessData={value}
+            ChessKey={key}
+            setMoveStep={setMoveStep}
+            dispatch={dispatch}
+          />}
+        </React.Fragment>
+      })}
+      {enemyChess.map((value,key)=>{
+        return <React.Fragment key={key}>
+          {value.debut&&<Sprite
+            interactive={moveStep}
+            buttonMode={true}
+            width={40}
+            height={40}
+            x={value.x*40}
+            y={value.y*40}
+            zIndex={1}
+            pointertap={()=>{
+              setMoveStep(false);
+              dispatch(enemyChessSelected({
+                key:key
+              }));
+            }}
+            image={loader.resources[`${value.name}-head-default`].data}
+          />}
+          {value.boardStatus&&<EnemyChessUIBoard
+            ChessKey={key}
+            positionX={(value.x*40)+40}
+            positionY={(value.y*40)}
             setMoveStep={setMoveStep}
             dispatch={dispatch}
           />}

@@ -1,49 +1,29 @@
 import React,{ useState } from 'react';
 import { fromJS } from 'immutable';
 import { Graphics, Text } from '@inlet/react-pixi/animated';
-import { GetMove } from '../components/reducer/map';
-import { chessSelected, chessCheckStatus } from "../components/reducer/chess";
+import { enemyChessSelected } from "../components/reducer/enemyChess";
 import * as PIXI from "pixi.js";
 
-export const ChessUIBoard = ({
-  ChessData,
-  ChessVal,
+export const EnemyChessUIBoard = ({
   ChessKey,
-  EnemyChessData,
   positionX,
   positionY,
-  setCurrentChess,
   setMoveStep,
   dispatch
 })=> {
   const specialPosition = {
     x: 720,
-    y: 490
+    y: 535
   };
-  const currentChessPositions = [];
   const [textInforArray, setTextInforArray] = useState(fromJS([{
-      id:1, 
-      title:"移動",
-      textColor:['#ffffff', '#ffffff']
-    },{ 
-      id:2,
-      title:"攻擊",
-      textColor:['#ffffff', '#ffffff']
-    },{ 
-      id:3,
+      id:1,
       title:"狀態",
       textColor:['#ffffff', '#ffffff']
     },{ 
-      id:4,
+      id:2,
       title:"返回",
       textColor:['#ffffff', '#ffffff']
   }]));
-  ChessData.map((v)=>{
-    return currentChessPositions.push({ x:v.x, y:v.y });
-  });
-  EnemyChessData.map((v)=>{
-    return currentChessPositions.push({ x:v.x, y:v.y });
-  });
   const CreateText = ({ noop })=>{
     return textInforArray.map((val,key)=>{
       return <Text
@@ -60,7 +40,7 @@ export const ChessUIBoard = ({
         })}
         pointerover={()=>{
           setTextInforArray(prev=>
-            prev.setIn([key,'textColor',1],'#00ff99')
+            prev.setIn([key,'textColor',1],'#9d4edd')
           );
         }}
         pointerout={()=>{
@@ -70,39 +50,9 @@ export const ChessUIBoard = ({
         }}
         pointertap={(e)=>{
           switch (val.get('id')) {
-            case 1:
-              setCurrentChess({ 
-                key:ChessKey,
-                type:"MOVE"
-              });
-              dispatch(GetMove({
-                position:{ 
-                  x:ChessVal.x, 
-                  y:ChessVal.y,
-                },
-                step:ChessVal.step,
-                changeColor:'0x4361ee',
-                currentChessPositions: currentChessPositions
-              }));
-              dispatch(chessSelected({
-                key:ChessKey
-              }));
-              break;
-            case 3:
-              setCurrentChess({ 
-                key:ChessKey,
-                type:"STATUS"
-              });
-              dispatch(chessCheckStatus({
-                key:ChessKey
-              }));
-              dispatch(chessSelected({
-                key:ChessKey
-              }));
-              break;
-            case 4 :
+            case 2 :
               setMoveStep(true);
-              dispatch(chessSelected({
+              dispatch(enemyChessSelected({
                 key:ChessKey
               }));
               break;
@@ -120,8 +70,8 @@ export const ChessUIBoard = ({
     draw={g=> {
       g.lineStyle(1,`0xffffff`,1);
       g.beginFill(`0x22223b`);
-      g.drawRoundedRect(0,0,60,110,8);
+      g.drawRoundedRect(0,0,60,62,8);
       g.endFill();
     }}
   ><CreateText/></Graphics>
-};
+}
