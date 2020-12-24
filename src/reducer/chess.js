@@ -14,37 +14,83 @@ const chess = createSlice({
       name:'Tanjirou',
       cn:'竃門 碳治郎',
       step:3,
-      hp:1000,
+      attack:2,
+      hp:1500,
       sp:100,
       fullValue:{
-        hp:1000,
+        hp:1500,
         sp:100
       },
       skill:[{ 
         name:'斬擊',
-        atk:20,
+        atk:50,
         sp:0
       },{ 
         name:'叄之型―流流舞',
-        atk:120,
+        atk:200,
         sp:5
       },{ 
         name:'捌之型―滝壺',
-        atk:120,
+        atk:200,
         sp:5
       },{
         name:'拾之型―生生流轉',
-        atk:250,
+        atk:500,
         sp:10
       }],
       ...basicCommon
     },{
       name:'Nezuko',
       step:2,
+      attack:1,
+      hp:2200,
+      sp:200,
+      fullValue:{
+        hp:2200,
+        sp:200
+      },
+      skill:[{ 
+        name:'爪擊',
+        atk:50,
+        sp:0
+      },{ 
+        name:'踢擊',
+        atk:120,
+        sp:5
+      },{ 
+        name:'血鬼術',
+        atk:800,
+        sp:150
+      }],
       ...basicCommon
     },{
       name:'Inosuke',
+      cn:'嘴平 伊之助',
       step:4,
+      attack:3,
+      hp:1800,
+      sp:80,
+      fullValue:{
+        hp:1800,
+        sp:80
+      },
+      skill:[{ 
+        name:'斬擊',
+        atk:50,
+        sp:0
+      },{ 
+        name:'壹之牙―穿透刺射',
+        atk:120,
+        sp:2
+      },{ 
+        name:'貳之牙―利刃對劈',
+        atk:200,
+        sp:5
+      },{
+        name:'叄之牙―獠牙撕扯',
+        atk:400,
+        sp:8
+      }],
       ...basicCommon
     }
   ],

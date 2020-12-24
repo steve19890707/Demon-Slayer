@@ -1,8 +1,8 @@
 import React from 'react';
 // import { fromJS } from 'immutable';
 import { Graphics, Text } from '@inlet/react-pixi/animated';
-import { chessMove } from "../components/reducer/chess";
-import { MoveSelect } from '../components/reducer/map';
+import { chessMove } from "../../reducer/chess";
+import { MoveSelect } from '../../reducer/map';
 import * as PIXI from "pixi.js";
 
 export const ConfirmTip = ({

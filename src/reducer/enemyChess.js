@@ -2,17 +2,51 @@ import { createSlice } from '@reduxjs/toolkit';
 const basicCommon = {
   x:0,
   y:0,
+  checkStatus:false,
   boardStatus:false,
   debut:false,
+  roundAttack:false,
 };
 const enemyChess = createSlice({
   name:'enemyChess',
   initialState:[
     {
       name:'Teoni',
+      cn:'手鬼',
+      hp:2000,
+      sp:100,
+      fullValue:{
+        hp:2000,
+        sp:100
+      },
+      skill:[{ 
+        name:'胡亂毆打',
+        atk:50,
+        sp:0
+      },{ 
+        name:'你是第十四個',
+        atk:300,
+        sp:10
+      }],
       ...basicCommon
     },{
       name:'Nomanooni',
+      cn:'沼鬼',
+      hp:1500,
+      sp:200,
+      fullValue:{
+        hp:1500,
+        sp:200
+      },
+      skill:[{ 
+        name:'爪擊',
+        atk:70,
+        sp:0
+      },{ 
+        name:'分身攻擊',
+        atk:600,
+        sp:15
+      }],
       ...basicCommon
     }
   ],
@@ -34,8 +68,12 @@ const enemyChess = createSlice({
     enemyChessSelected: (state, actions)=>{
       const { key } = actions.payload;
       state[key].boardStatus = !state[key].boardStatus;
+    },
+    enemyChessCheckStatus: (state, actions)=> {
+      const { key } = actions.payload;
+      state[key].checkStatus = !state[key].checkStatus;
     }
   }
 });
 export default enemyChess.reducer;
-export const { enemyStageDebut, enemyChessSelected } = enemyChess.actions;
+export const { enemyStageDebut, enemyChessSelected, enemyChessCheckStatus } = enemyChess.actions;

@@ -1,12 +1,12 @@
 import React from 'react';
 import { Sprite, Graphics, Text } from '@inlet/react-pixi/animated';
-import { loader } from './DataLoader';
-import { chessCheckStatus } from "../components/reducer/chess";
+import { loader } from '../DataLoader';
 import * as PIXI from "pixi.js";
 
 export const ChessStatus = ({
   ChessData,
   ChessKey,
+  CheckStatus,
   setMoveStep,
   dispatch
 })=> {
@@ -54,7 +54,7 @@ export const ChessStatus = ({
       buttonMode={true}
       pointertap={(e)=>{
         setMoveStep(true);
-        dispatch(chessCheckStatus({
+        dispatch(CheckStatus({
           key:ChessKey
         }));
       }}
