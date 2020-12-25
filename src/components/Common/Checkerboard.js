@@ -7,7 +7,8 @@ export const CreateCheckerboard = ({
   reduxProps
 })=>{
   const { 
-    chess, enemyChess, chessMap, currentChess, dispatch, setTipStatus, setMoveStep
+    chess, enemyChess, chessMap, currentChess, dispatch, 
+    setTipStatus, setMoveStep, setBattleInfo
   } = reduxProps;
   const checkMatchAttackPosition = (x,y)=>{
     let isMatch = false;
@@ -16,8 +17,18 @@ export const CreateCheckerboard = ({
       if(checkMatch){
         return isMatch=true;
       }else return null;
-    })
+    });
     return isMatch;
+  };
+  const getCurrentEnemy = (x,y)=>{
+    let item = {};
+    enemyChess.map((v,k)=>{
+      const checkMatch = v.debut&&(x===v.x)&&(y===v.y);
+      if(checkMatch){
+        return item={...v,key:k}
+      }else return null;
+    });
+    return item;
   };
   return <React.Fragment>
     {chessMap.map(value=> {
@@ -55,11 +66,16 @@ export const CreateCheckerboard = ({
                 break;
               case "ATTACK":
                 if(checkMatchAttackPosition(v.x,v.y)){
-                  setTipStatus({
-                    title:'確定攻擊?',
+                  const targetData = getCurrentEnemy(v.x,v.y);
+                  setBattleInfo({
                     status:true,
-                    position:{
-                      x:v.x, y:v.y
+                    attaker:{ 
+                      key: currentChess.key,
+                      ...chess[currentChess.key]
+                    },
+                    target:{
+                      key: targetData.key,
+                      ...targetData
                     }
                   });
                   dispatch(MoveSelect({
@@ -81,6 +97,7 @@ export const CreateCheckerboard = ({
                     changeColor:'0x383838'
                   }));
                 };
+                break;
               default:
                 return;
             }; 

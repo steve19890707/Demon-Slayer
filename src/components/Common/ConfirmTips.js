@@ -19,7 +19,6 @@ export const ConfirmTip = ({
   return <Graphics
     x={400}
     y={300}
-    zIndex={99}
     draw={g=> {
       g.lineStyle(1,`0xffffff`,1);
       g.beginFill(`0x22223b`);

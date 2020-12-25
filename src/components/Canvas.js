@@ -7,6 +7,7 @@ import { enemyStageDebut } from "../reducer/enemyChess";
 // other part
 import { CreateCheckerboard } from './Common/Checkerboard';
 import { ConfirmTip } from "./Common/ConfirmTips";
+import { BattleBoard } from "./Common/BattleBoard";
 import { Chess } from "../components/Chess/Chess";
 import { EnemyChess } from "../components/EnemyChess/EnemyChess";
 // rule
@@ -23,6 +24,11 @@ export const Canvas = ()=> {
     position:{
       x:0,y:0
     },
+  });
+  const [ battleInfo, setBattleInfo ] = useState({
+    status:false,
+    attaker:{ key:'' },
+    target:{ key:'' }
   });
   const [ moveStep, setMoveStep ] = useState(true);
   const chessMap = useSelector(state=>state.chessMap);
@@ -54,7 +60,8 @@ export const Canvas = ()=> {
         currentChess,
         dispatch,
         setTipStatus,
-        setMoveStep
+        setMoveStep,
+        setBattleInfo
       }}/>
       <Chess chessProps={{
         chess,
@@ -81,5 +88,13 @@ export const Canvas = ()=> {
         setTipStatus
       }}
     />}
+    {battleInfo.status&&
+      <BattleBoard
+        props={{
+          battleInfo,
+          setMoveStep,
+          setBattleInfo
+        }}
+      />}
   </Stage>
 };

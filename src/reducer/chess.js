@@ -17,6 +17,7 @@ const chess = createSlice({
       attack:2,
       hp:1500,
       sp:100,
+      dodge:65,
       fullValue:{
         hp:1500,
         sp:100
@@ -24,19 +25,23 @@ const chess = createSlice({
       skill:[{ 
         name:'斬擊',
         atk:50,
-        sp:0
+        sp:0,
+        hitfix:0
       },{ 
         name:'叄之型―流流舞',
         atk:200,
-        sp:5
+        sp:5,
+        hitfix:10
       },{ 
         name:'捌之型―滝壺',
         atk:200,
-        sp:5
+        sp:5,
+        hitfix:5
       },{
         name:'拾之型―生生流轉',
         atk:500,
-        sp:10
+        sp:10,
+        hitfix:20
       }],
       ...basicCommon
     },{
@@ -45,6 +50,7 @@ const chess = createSlice({
       attack:1,
       hp:2200,
       sp:200,
+      dodge:50,
       fullValue:{
         hp:2200,
         sp:200
@@ -52,15 +58,18 @@ const chess = createSlice({
       skill:[{ 
         name:'爪擊',
         atk:50,
-        sp:0
+        sp:0,
+        hitfix:0
       },{ 
         name:'踢擊',
         atk:120,
-        sp:5
+        sp:5,
+        hitfix:0
       },{ 
         name:'血鬼術',
-        atk:800,
-        sp:150
+        atk:1000,
+        sp:100,
+        hitfix:0
       }],
       ...basicCommon
     },{
@@ -70,6 +79,7 @@ const chess = createSlice({
       attack:3,
       hp:1800,
       sp:80,
+      dodge:40,
       fullValue:{
         hp:1800,
         sp:80
@@ -77,19 +87,23 @@ const chess = createSlice({
       skill:[{ 
         name:'斬擊',
         atk:50,
-        sp:0
+        sp:0,
+        hitfix:0
       },{ 
         name:'壹之牙―穿透刺射',
         atk:120,
-        sp:2
+        sp:2,
+        hitfix:0
       },{ 
         name:'貳之牙―利刃對劈',
         atk:200,
-        sp:5
+        sp:5,
+        hitfix:0
       },{
         name:'叄之牙―獠牙撕扯',
         atk:400,
-        sp:8
+        sp:8,
+        hitfix:0
       }],
       ...basicCommon
     }

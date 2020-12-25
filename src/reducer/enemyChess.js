@@ -15,6 +15,7 @@ const enemyChess = createSlice({
       cn:'手鬼',
       hp:2000,
       sp:100,
+      dodge:20,
       fullValue:{
         hp:2000,
         sp:100
@@ -22,11 +23,13 @@ const enemyChess = createSlice({
       skill:[{ 
         name:'胡亂毆打',
         atk:50,
-        sp:0
+        sp:0,
+        hitfix:10
       },{ 
         name:'你是第十四個',
         atk:300,
-        sp:10
+        sp:10,
+        hitfix:20
       }],
       ...basicCommon
     },{
@@ -34,6 +37,7 @@ const enemyChess = createSlice({
       cn:'沼鬼',
       hp:1500,
       sp:200,
+      dodge:30,
       fullValue:{
         hp:1500,
         sp:200
@@ -41,11 +45,13 @@ const enemyChess = createSlice({
       skill:[{ 
         name:'爪擊',
         atk:70,
-        sp:0
+        sp:0,
+        hitfix:0
       },{ 
         name:'分身攻擊',
         atk:600,
-        sp:15
+        sp:15,
+        hitfix:0
       }],
       ...basicCommon
     }
