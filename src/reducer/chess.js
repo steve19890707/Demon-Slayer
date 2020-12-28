@@ -135,10 +135,14 @@ const chess = createSlice({
     chessCheckStatus: (state, actions)=> {
       const { key } = actions.payload;
       state[key].checkStatus = !state[key].checkStatus;
+    },
+    chessAttackResult: (state, actions)=> {
+      const { key, lessSp } = actions.payload;
+      state[key].sp -= lessSp;
     }
   }
 });
 export default chess.reducer;
 export const { 
-  stageDebut, chessMove, chessSelected, chessCheckStatus 
+  stageDebut, chessMove, chessSelected, chessCheckStatus, chessAttackResult 
 } = chess.actions;

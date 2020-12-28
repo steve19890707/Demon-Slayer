@@ -2,10 +2,13 @@ import React,{ useState } from 'react';
 import { Container, Sprite, Graphics, Text } from '@inlet/react-pixi/animated';
 import { loader } from '../DataLoader';
 import * as PIXI from "pixi.js";
+import { ProbabilityCount } from "../Common/ProbabilityCount";
+import { chessAttackResult } from "../../reducer/chess";
+import { enemyChessDefense } from "../../reducer/enemyChess";
 
 export const BattleBoard = ({ props })=>{
   const { 
-    battleInfo, setMoveStep, setBattleInfo
+    battleInfo, setMoveStep, setBattleInfo, setAnimeShow, dispatch
   } = props;
   const [ atkSelectd, setAtkSelectd ] = useState({
     key:0,
@@ -286,6 +289,32 @@ export const BattleBoard = ({ props })=>{
         fontSize: 20,
         fill:'#ffffff',
       })}
+      pointertap={()=>{
+        dispatch(chessAttackResult({
+          key: battleInfo.attaker.key,
+          lessSp: battleInfo.attaker.skill[atkSelectd.key].sp
+        }));
+        if(ProbabilityCount(
+          battleInfo.attaker.skill[atkSelectd.key].hitfix,
+          battleInfo.target.dodge
+        )){
+          dispatch(enemyChessDefense({
+            key: battleInfo.target.key,
+            damage: battleInfo.attaker.skill[atkSelectd.key].atk
+          }));
+        };
+        setAnimeShow({
+          status:true,
+          type:'USER',
+          attaker:{ key:battleInfo.attaker.key },
+          target:{ key:battleInfo.target.key }
+        });
+        setBattleInfo({
+          status:false,
+          attaker:{ key:'' },
+          target:{ key:'' }
+        });
+      }}
     />
     <Text
       interactive={true}

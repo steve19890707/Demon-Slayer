@@ -7,7 +7,9 @@ import { enemyStageDebut } from "../reducer/enemyChess";
 // other part
 import { CreateCheckerboard } from './Common/Checkerboard';
 import { ConfirmTip } from "./Common/ConfirmTips";
+import { UsualTip } from "./Common/UsualTip";
 import { BattleBoard } from "./Common/BattleBoard";
+import { BattleAnimeShow } from "./Common/BattleAnimeShow";
 import { Chess } from "../components/Chess/Chess";
 import { EnemyChess } from "../components/EnemyChess/EnemyChess";
 // rule
@@ -18,6 +20,10 @@ export const Canvas = ()=> {
     key:0,
     type:"MOVE"
   });
+  const [ usualTip, setUsualTip ] = useState({
+    title:``,
+    status:false,
+  })
   const [ tipStatus, setTipStatus ] = useState({
     title:``,
     status:false,
@@ -27,6 +33,12 @@ export const Canvas = ()=> {
   });
   const [ battleInfo, setBattleInfo ] = useState({
     status:false,
+    attaker:{ key:'' },
+    target:{ key:'' }
+  });
+  const [ animeShow, setAnimeShow ] = useState({
+    status:false,
+    type:'',
     attaker:{ key:'' },
     target:{ key:'' }
   });
@@ -43,7 +55,7 @@ export const Canvas = ()=> {
     dispatch(enemyStageDebut({ 
       isDebutChess:stageRule.getIn([stageStatus,'debutEnemyChess'])
     }));
-  },[ dispatch, stageStatus ])
+  },[ dispatch, stageStatus ]);
   return <Stage
     width={800}
     height={600}
@@ -88,12 +100,39 @@ export const Canvas = ()=> {
         setTipStatus
       }}
     />}
+    {usualTip.status&&
+      <UsualTip
+        props={{
+          stageStatus,
+          chess,
+          currentChess,
+          enemyChess,
+          usualTip,
+          setMoveStep,
+          setUsualTip,
+          setCurrentChess
+        }}
+      />}
     {battleInfo.status&&
       <BattleBoard
         props={{
           battleInfo,
           setMoveStep,
-          setBattleInfo
+          setBattleInfo,
+          setAnimeShow,
+          dispatch
+        }}
+      />}
+    {animeShow.status&&
+      <BattleAnimeShow 
+        props={{
+          animeShow,
+          chess,
+          enemyChess,
+          setMoveStep,
+          setAnimeShow,
+          setUsualTip,
+          dispatch
         }}
       />}
   </Stage>

@@ -15,7 +15,25 @@ export const stageRule = fromJS({
         x:16,
         y:7
       },
-    ]
+    ],
+    isWin: enemyList => {
+      let totalLife = 0;
+        enemyList.map(v => {
+          if(v.debut){
+            return totalLife += v.hp;
+          }return null;
+        });
+      return totalLife>0 ? false : true ;
+    },
+    isLose: chessList => {
+      let totalLife = 0;
+        chessList.map(v => {
+          if(v.debut){
+            return totalLife += v.hp;
+          }return null;
+        });
+      return totalLife>0 ? false : true ;
+    }
   },
   stageTwo: {
     debutChess:[

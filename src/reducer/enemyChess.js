@@ -46,12 +46,12 @@ const enemyChess = createSlice({
         name:'爪擊',
         atk:70,
         sp:0,
-        hitfix:0
+        hitfix:15
       },{ 
         name:'分身攻擊',
         atk:600,
         sp:15,
-        hitfix:0
+        hitfix:30
       }],
       ...basicCommon
     }
@@ -78,8 +78,18 @@ const enemyChess = createSlice({
     enemyChessCheckStatus: (state, actions)=> {
       const { key } = actions.payload;
       state[key].checkStatus = !state[key].checkStatus;
+    },
+    enemyChessDefense: (state, actions)=> {
+      const { key, damage } = actions.payload;
+      state[key].hp -= damage;
+    },
+    enemyChessDead: (state, actions)=> {
+      const { key } = actions.payload;
+      state[key].debut = false;
+      state[key].hp = state[key].fullValue.hp;
+      state[key].sp = state[key].fullValue.sp;
     }
   }
 });
 export default enemyChess.reducer;
-export const { enemyStageDebut, enemyChessSelected, enemyChessCheckStatus } = enemyChess.actions;
+export const { enemyStageDebut, enemyChessSelected, enemyChessCheckStatus, enemyChessDefense, enemyChessDead } = enemyChess.actions;
