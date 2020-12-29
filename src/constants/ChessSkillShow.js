@@ -90,7 +90,7 @@ const TanjirouSkill = ({
             width={200}
             height={200}
             anchor={0.5}
-            image={loader.resources[`${attackerName}-fight`].data}
+            image={loader.resources[`${attackerName}-fight-typeA`].data}
             {...props}
           />}
         </Spring>
@@ -110,7 +110,7 @@ const TanjirouSkill = ({
           width={200}
           height={200}
           anchor={0.5}
-          image={loader.resources[`${attackerName}-fight`].data}
+          image={loader.resources[`${attackerName}-fight-typeA`].data}
           {...props}
         />}
       </Spring>

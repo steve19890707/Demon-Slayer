@@ -36,7 +36,8 @@ export const Chess = ({
               y:value.y,
             },
             step:value.step,
-            changeColor:'0x06d6a0'
+            changeColor:'0x06d6a0',
+            alphaVal:0.5
           }));
         }}
         pointerout={()=>{
@@ -46,7 +47,8 @@ export const Chess = ({
               y:value.y,
             },
             step:value.step,
-            changeColor:'0x383838'
+            changeColor:'0x383838',
+            alphaVal:0
           }));
         }}
         pointertap={()=>{
@@ -60,7 +62,8 @@ export const Chess = ({
               y:value.y,
             },
             step:value.step,
-            changeColor:'0x383838'
+            changeColor:'0x383838',
+            alphaVal:0
           }));
         }}
         image={loader.resources[`${value.name}-head-default`].data}

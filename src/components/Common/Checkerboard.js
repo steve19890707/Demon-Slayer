@@ -61,7 +61,8 @@ export const CreateCheckerboard = ({
                     y:chess[currentChess.key].y,
                   },
                   step:chess[currentChess.key].step,
-                  changeColor:'0x06d6a0'
+                  changeColor:'0x06d6a0',
+                  alphaVal:0.5
                 }));
                 break;
               case "ATTACK":
@@ -85,6 +86,7 @@ export const CreateCheckerboard = ({
                     },
                     step:chess[currentChess.key].attack,
                     changeColor:'0x383838',
+                    alphaVal:0
                   }));
                 }else {
                   setMoveStep(true);
@@ -94,7 +96,8 @@ export const CreateCheckerboard = ({
                       y:chess[currentChess.key].y,
                     },
                     step:chess[currentChess.key].acttack,
-                    changeColor:'0x383838'
+                    changeColor:'0x383838',
+                    alphaVal:0
                   }));
                 };
                 break;

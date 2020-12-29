@@ -7,7 +7,7 @@ const createTraverseLine = (traverse=0,color='')=>{
       x:i,
       y:traverse,
       color:color,
-      alpha:1,
+      alpha:0,
       zIndex:1,
       isInteractive:false
     });
@@ -61,15 +61,15 @@ const chessMap = createSlice({
         if(position.x+i<=(mapLimit.x-1)){
           state[position.y][position.x+i].color=changeColor;
           state[position.y][position.x+i].isInteractive=true;
-          state[position.y][position.x+i].alpha=1;
+          state[position.y][position.x+i].alpha=0.5;
           state[position.y][position.x+i].zIndex=1;
         };
         if(position.y+i<=(mapLimit.y-1)){
           state[position.y+i][position.x].color=changeColor;
           state[position.y+i][position.x].isInteractive=true;
-          state[position.y+i][position.x].alpha=1;
+          state[position.y+i][position.x].alpha=0.5;
           state[position.y+i][position.x].zIndex=1;
-          state[position.y][position.x-i].alpha=1;
+          state[position.y][position.x-i].alpha=0.5;
           state[position.y][position.x-i].zIndex=1;
         };
         if(position.x-i>=0){
@@ -79,7 +79,7 @@ const chessMap = createSlice({
         if(position.y-i>=0){
           state[position.y-i][position.x].color=changeColor;
           state[position.y-i][position.x].isInteractive=true;
-          state[position.y-i][position.x].alpha=1;
+          state[position.y-i][position.x].alpha=0.5;
           state[position.y-i][position.x].zIndex=1;
         };
       }

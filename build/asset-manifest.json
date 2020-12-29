@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/Demon-Slayer/static/js/main.4bb0398b.chunk.js",
-    "main.js.map": "/Demon-Slayer/static/js/main.4bb0398b.chunk.js.map",
-    "runtime-main.js": "/Demon-Slayer/static/js/runtime-main.789df01d.js",
-    "runtime-main.js.map": "/Demon-Slayer/static/js/runtime-main.789df01d.js.map",
-    "static/js/2.451da4bd.chunk.js": "/Demon-Slayer/static/js/2.451da4bd.chunk.js",
-    "static/js/2.451da4bd.chunk.js.map": "/Demon-Slayer/static/js/2.451da4bd.chunk.js.map",
-    "static/js/3.fb7a4b86.chunk.js": "/Demon-Slayer/static/js/3.fb7a4b86.chunk.js",
-    "static/js/3.fb7a4b86.chunk.js.map": "/Demon-Slayer/static/js/3.fb7a4b86.chunk.js.map",
+    "main.js": "/Demon-Slayer/static/js/main.2661f35e.chunk.js",
+    "main.js.map": "/Demon-Slayer/static/js/main.2661f35e.chunk.js.map",
+    "runtime-main.js": "/Demon-Slayer/static/js/runtime-main.cb3e0cd3.js",
+    "runtime-main.js.map": "/Demon-Slayer/static/js/runtime-main.cb3e0cd3.js.map",
+    "static/js/2.f45d9dc3.chunk.js": "/Demon-Slayer/static/js/2.f45d9dc3.chunk.js",
+    "static/js/2.f45d9dc3.chunk.js.map": "/Demon-Slayer/static/js/2.f45d9dc3.chunk.js.map",
+    "static/js/3.f40dd299.chunk.js": "/Demon-Slayer/static/js/3.f40dd299.chunk.js",
+    "static/js/3.f40dd299.chunk.js.map": "/Demon-Slayer/static/js/3.f40dd299.chunk.js.map",
     "index.html": "/Demon-Slayer/index.html",
-    "static/js/2.451da4bd.chunk.js.LICENSE.txt": "/Demon-Slayer/static/js/2.451da4bd.chunk.js.LICENSE.txt"
+    "static/js/2.f45d9dc3.chunk.js.LICENSE.txt": "/Demon-Slayer/static/js/2.f45d9dc3.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.789df01d.js",
-    "static/js/2.451da4bd.chunk.js",
-    "static/js/main.4bb0398b.chunk.js"
+    "static/js/runtime-main.cb3e0cd3.js",
+    "static/js/2.f45d9dc3.chunk.js",
+    "static/js/main.2661f35e.chunk.js"
   ]
 }

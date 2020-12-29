@@ -63,7 +63,8 @@ export const ConfirmTip = ({
                 y:chess[currentChess.key].y,
               },
               step:chess[currentChess.key].step,
-              changeColor:'0x383838'
+              changeColor:'0x383838',
+              alphaVal:0
             }));
             setMoveStep(true);
             setTipStatus(prev=>{
@@ -96,7 +97,8 @@ export const ConfirmTip = ({
                 y:chess[currentChess.key].y,
               },
               step:chess[currentChess.key].step,
-              changeColor:'0x383838'
+              changeColor:'0x383838',
+              alphaVal:0
             }));
             setMoveStep(true);
             setTipStatus(prev=>{

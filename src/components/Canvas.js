@@ -1,6 +1,6 @@
 import React,{ useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Stage, Container } from '@inlet/react-pixi/animated';
+import { Stage, Container, Sprite } from '@inlet/react-pixi/animated';
 // reducers
 import { stageDebut } from "../reducer/chess";
 import { enemyStageDebut } from "../reducer/enemyChess";
@@ -14,6 +14,7 @@ import { Chess } from "../components/Chess/Chess";
 import { EnemyChess } from "../components/EnemyChess/EnemyChess";
 // rule
 import { stageRule } from "../constants/stageRule";
+import { loader } from './DataLoader';
 export const Canvas = ()=> {
   const [ stageStatus, setStageStatus ] = useState('stageOne');
   const [ currentChess, setCurrentChess ] = useState({
@@ -52,7 +53,6 @@ export const Canvas = ()=> {
   //   target:{ key:0, isHit:false, prevLife:2000 }
   // });
 
-
   const [ moveStep, setMoveStep ] = useState(true);
   const chessMap = useSelector(state=>state.chessMap);
   const chess = useSelector(state=>state.chess);
@@ -76,6 +76,12 @@ export const Canvas = ()=> {
       backgroundColor:0x01262a
     }}>
     <Container sortableChildren={true}>
+      <Sprite
+        width={800}
+        height={600}
+        zIndex={1}
+        image={loader.resources[`${stageStatus}-main-BG`].data}
+      />
       <CreateCheckerboard reduxProps={{ 
         chess,
         enemyChess,
