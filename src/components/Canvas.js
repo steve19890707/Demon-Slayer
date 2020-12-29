@@ -33,15 +33,26 @@ export const Canvas = ()=> {
   });
   const [ battleInfo, setBattleInfo ] = useState({
     status:false,
-    attaker:{ key:'' },
+    attacker:{ key:'' },
     target:{ key:'' }
   });
   const [ animeShow, setAnimeShow ] = useState({
     status:false,
     type:'',
-    attaker:{ key:'' },
-    target:{ key:'' }
+    attacker:{ key:'', skill:{}, prevSP:0 },
+    target:{ key:'', isHit:false, prevLife:0 }
   });
+
+  // const [ animeShow, setAnimeShow ] = useState({
+  //   status:true,
+  //   type:'USER',
+  //   attacker:{ key:0, skill:{
+  //     name: "斬擊", atk: 50, sp: 0, hitfix: 0
+  //   }, prevSP:100 },
+  //   target:{ key:0, isHit:false, prevLife:2000 }
+  // });
+
+
   const [ moveStep, setMoveStep ] = useState(true);
   const chessMap = useSelector(state=>state.chessMap);
   const chess = useSelector(state=>state.chess);
@@ -126,6 +137,7 @@ export const Canvas = ()=> {
     {animeShow.status&&
       <BattleAnimeShow 
         props={{
+          stageStatus,
           animeShow,
           chess,
           enemyChess,

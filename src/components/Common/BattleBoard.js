@@ -13,7 +13,7 @@ export const BattleBoard = ({ props })=>{
   const [ atkSelectd, setAtkSelectd ] = useState({
     key:0,
   });
-  const CreateAttakerInfo = ({ pX=0, pY=0, data })=>{
+  const CreateAttackerInfo = ({ pX=0, pY=0, data })=>{
     return <Container x={pX} y={pY} sortableChildren={true}>
       <Text
         text={'攻'}
@@ -176,7 +176,7 @@ export const BattleBoard = ({ props })=>{
         })}
       />
       <Text
-        text={`${data.attaker.skill[atkSelectd.key].name}`}
+        text={`${data.attacker.skill[atkSelectd.key].name}`}
         zIndex={2}
         x={80}
         y={22}
@@ -196,7 +196,7 @@ export const BattleBoard = ({ props })=>{
         })}
       />
       <Text
-        text={`${data.attaker.skill[atkSelectd.key].atk}`}
+        text={`${data.attacker.skill[atkSelectd.key].atk}`}
         zIndex={2}
         x={100}
         y={52}
@@ -218,7 +218,7 @@ export const BattleBoard = ({ props })=>{
       <Text
         text={`${
           100 +
-          data.attaker.skill[atkSelectd.key].hitfix -
+          data.attacker.skill[atkSelectd.key].hitfix -
           data.target.dodge
         }%`}
         zIndex={2}
@@ -240,7 +240,7 @@ export const BattleBoard = ({ props })=>{
         })}
       />
       <Text
-        text={`${data.attaker.skill[atkSelectd.key].sp}`}
+        text={`${data.attacker.skill[atkSelectd.key].sp}`}
         zIndex={2}
         x={80}
         y={110}
@@ -262,10 +262,10 @@ export const BattleBoard = ({ props })=>{
       g.endFill();
     }}
   >
-    <CreateAttakerInfo
+    <CreateAttackerInfo
       pX={-270}
       pY={-180}
-      data={battleInfo.attaker}
+      data={battleInfo.attacker}
     />
     <CreateTargetInfo
       pX={20}
@@ -290,28 +290,37 @@ export const BattleBoard = ({ props })=>{
         fill:'#ffffff',
       })}
       pointertap={()=>{
-        dispatch(chessAttackResult({
-          key: battleInfo.attaker.key,
-          lessSp: battleInfo.attaker.skill[atkSelectd.key].sp
-        }));
-        if(ProbabilityCount(
-          battleInfo.attaker.skill[atkSelectd.key].hitfix,
+        const isHit = ProbabilityCount(
+          battleInfo.attacker.skill[atkSelectd.key].hitfix,
           battleInfo.target.dodge
-        )){
+        );
+        dispatch(chessAttackResult({
+          key: battleInfo.attacker.key,
+          lessSp: battleInfo.attacker.skill[atkSelectd.key].sp
+        }));
+        if(isHit){
           dispatch(enemyChessDefense({
             key: battleInfo.target.key,
-            damage: battleInfo.attaker.skill[atkSelectd.key].atk
+            damage: battleInfo.attacker.skill[atkSelectd.key].atk
           }));
         };
         setAnimeShow({
           status:true,
           type:'USER',
-          attaker:{ key:battleInfo.attaker.key },
-          target:{ key:battleInfo.target.key }
+          attacker:{ 
+            key:battleInfo.attacker.key,
+            skill:battleInfo.attacker.skill[atkSelectd.key],
+            prevSP:battleInfo.attacker.sp
+          },
+          target:{ 
+            key:battleInfo.target.key,
+            isHit:isHit,
+            prevLife:battleInfo.target.hp
+          }
         });
         setBattleInfo({
           status:false,
-          attaker:{ key:'' },
+          attacker:{ key:'' },
           target:{ key:'' }
         });
       }}
@@ -332,7 +341,7 @@ export const BattleBoard = ({ props })=>{
         setMoveStep(true);
         setBattleInfo({
           status:false,
-          attaker:{ key:'' },
+          attacker:{ key:'' },
           target:{ key:'' }
         })
       }}

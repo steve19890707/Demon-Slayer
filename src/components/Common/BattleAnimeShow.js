@@ -2,13 +2,19 @@ import React,{ useState } from 'react';
 import { Container, Sprite, Graphics, Text } from '@inlet/react-pixi/animated';
 import { loader } from '../DataLoader';
 import * as PIXI from "pixi.js";
+import { Spring } from 'react-spring/renderprops';
 import { enemyChessDead } from "../../reducer/enemyChess";
+// skill
+import { ChessSkillShow } from "../../constants/ChessSkillShow";
 
 export const BattleAnimeShow = ({
   props
 }) =>{
-  const { animeShow, chess, enemyChess, setMoveStep, setAnimeShow, setUsualTip, dispatch } = props;
+  const { stageStatus, animeShow, chess, enemyChess, 
+    setMoveStep, setAnimeShow, setUsualTip, dispatch } = props;
   const { target } = animeShow;
+  const [ targetHp, setTargetHp ] = useState(animeShow.target.prevLife);
+  // TopBar
   const TopBar = ({
     attacker={},
     target={},
@@ -69,7 +75,7 @@ export const BattleAnimeShow = ({
           image={loader.resources[`${target.name}-head-default`].data}
         />
         <Text 
-          text={`${target.hp} / ${target.fullValue.hp}`}
+          text={`${targetHp} / ${target.fullValue.hp}`}
           anchor={{x:1,y:0}} 
           x={320} y={10}
           style={new PIXI.TextStyle({ fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
@@ -131,6 +137,7 @@ export const BattleAnimeShow = ({
       </Container>
     </Graphics>
   };
+  // Bottombar
   const Bottombar = ()=> {
     return <Graphics 
       x={-400}
@@ -143,18 +150,83 @@ export const BattleAnimeShow = ({
       }}
     ></Graphics>
   };
+  // CreateContent
   const CreateContent = ()=>{
+    const [ BGstatus, setBGstatus ] = useState({ type:'STANDBY' });
+    const [ BGprop, setBGpops ] = useState({ toX:400, duration: 20000 });
+    const [ SkBGprop, setSkBGpops ] = useState({ toX:400, duration: 500 });
     return <Container sortableChildren={true}>
+      {BGstatus.type==='STANDBY'&&<Spring
+        from={{ x:-400, y:-100 }}
+        to={{ x: BGprop.toX, y:-100 }}
+        config={{ duration: BGprop.duration }}
+        onRest={()=>{
+          if(BGprop.toX===-400){
+            setBGpops({
+              toX:400,
+              duration: 20000
+            });
+          }else {
+            setBGpops({
+              toX:-400,
+              duration:-1000
+            });
+          };
+        }}
+      >
+        {props => 
+          <Sprite
+            zIndex={1}
+            width={1600}
+            height={500}
+            anchor={0.5}
+            image={loader.resources[`${stageStatus}-BG`].data}
+            {...props}
+        />}
+      </Spring>}
+      {BGstatus.type==='SKILL'&&<Spring
+        from={{ x:-400, y:-100 }}
+        to={{ x: SkBGprop.toX, y:-100 }}
+        config={{ duration: SkBGprop.duration }}
+        onRest={()=>{
+          if(SkBGprop.toX===-400){
+            setSkBGpops({
+              toX:400,
+              duration: 500
+            });
+          }else {
+            setSkBGpops({
+              toX:-400,
+              duration:-1000
+            });
+          };
+        }}
+      >
+        {props => 
+          <Sprite
+            zIndex={1}
+            width={1600}
+            height={500}
+            anchor={0.5}
+            image={loader.resources[`${stageStatus}-BG`].data}
+            {...props}
+        />}
+      </Spring>}
       {animeShow.type==="USER"?
         <TopBar
-          attacker={chess[typeof(animeShow.attaker.key)!=='number'?0:animeShow.attaker.key]}
+          attacker={chess[typeof(animeShow.attacker.key)!=='number'?0:animeShow.attacker.key]}
           target={enemyChess[typeof(animeShow.target.key)!=='number'?0:animeShow.target.key]}
         />:
         <TopBar
           attacker={enemyChess[typeof(animeShow.target.key)!=='number'?0:animeShow.target.key]}
-          target={chess[typeof(animeShow.attaker.key)!=='number'?0:animeShow.attaker.key]}
+          target={chess[typeof(animeShow.attacker.key)!=='number'?0:animeShow.attacker.key]}
         />
       }
+      <ChessSkillShow
+        attacker={chess[typeof(animeShow.attacker.key)!=='number'?0:animeShow.attacker.key]}
+        skill={animeShow.attacker.skill}
+        setBGstatus={setBGstatus}
+      />
       <Bottombar/>
       <Graphics
         zIndex={99}
@@ -171,8 +243,8 @@ export const BattleAnimeShow = ({
           setAnimeShow({
             status:false,
             type:'',
-            attaker:{ key:'' },
-            target:{ key:'' }
+            attacker:{ key:'', skill:{}, prevSP:0 },
+            target:{ key:'', isHit:false, prevLife:0 }
           });
           // result check line
           if(animeShow.type==="USER" &&

@@ -1,6 +1,6 @@
 import React, {} from 'react';
 import * as PIXI from "pixi.js";
-import { Sprite } from '@inlet/react-pixi';
+import { Sprite } from '@inlet/react-pixi/animated';
 import { MoveSelect } from '../../reducer/map';
 const texture = PIXI.Texture.WHITE;
 export const CreateCheckerboard = ({
@@ -69,7 +69,7 @@ export const CreateCheckerboard = ({
                   const targetData = getCurrentEnemy(v.x,v.y);
                   setBattleInfo({
                     status:true,
-                    attaker:{ 
+                    attacker:{ 
                       key: currentChess.key,
                       ...chess[currentChess.key]
                     },

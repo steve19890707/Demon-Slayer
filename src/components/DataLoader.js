@@ -13,4 +13,5 @@ loader
   .add('Teoni-fight',`${hostname}imgs/Teoni/fight.png`)
   .add('Nomanooni-head-default',`${hostname}imgs/Nomanooni/head-default.jpg`)
   .add('Nomanooni-fight',`${hostname}imgs/Nomanooni/fight.png`)
+  .add('stageOne-BG',`${hostname}imgs/background/stage1-background.png`)
   .load();
