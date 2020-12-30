@@ -37,23 +37,26 @@ export const Canvas = ()=> {
     attacker:{ key:'' },
     target:{ key:'' }
   });
+
   const [ animeShow, setAnimeShow ] = useState({
     status:false,
     type:'',
     attacker:{ key:'', skill:{}, prevSP:0 },
     target:{ key:'', isHit:false, prevLife:0 }
   });
+  const [ moveStep, setMoveStep ] = useState(true);
 
   // const [ animeShow, setAnimeShow ] = useState({
   //   status:true,
   //   type:'USER',
+  //   isHit:true,
   //   attacker:{ key:0, skill:{
   //     name: "斬擊", atk: 50, sp: 0, hitfix: 0
   //   }, prevSP:100 },
   //   target:{ key:0, isHit:false, prevLife:2000 }
   // });
+  // const [ moveStep, setMoveStep ] = useState(false);
 
-  const [ moveStep, setMoveStep ] = useState(true);
   const chessMap = useSelector(state=>state.chessMap);
   const chess = useSelector(state=>state.chess);
   const enemyChess = useSelector(state=>state.enemyChess);

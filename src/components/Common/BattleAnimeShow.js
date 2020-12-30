@@ -1,11 +1,13 @@
-import React,{ useState } from 'react';
+import React,{ useState, useEffect } from 'react';
 import { Container, Sprite, Graphics, Text } from '@inlet/react-pixi/animated';
 import { loader } from '../DataLoader';
 import * as PIXI from "pixi.js";
-import { Spring } from 'react-spring/renderprops';
 import { enemyChessDead } from "../../reducer/enemyChess";
+// bg
+import { AnimeShowBG } from "./AinmeShowBG";
 // skill
-import { ChessSkillShow } from "../../constants/ChessSkillShow";
+import { ChessSkillShow } from "../../constants/ChessSkillShow/Index";
+import { EnemyChessSkillShow } from "../../constants/EnemyChessSkillShow/Index";
 
 export const BattleAnimeShow = ({
   props
@@ -13,7 +15,7 @@ export const BattleAnimeShow = ({
   const { stageStatus, animeShow, chess, enemyChess, 
     setMoveStep, setAnimeShow, setUsualTip, dispatch } = props;
   const { target } = animeShow;
-  const [ targetHp, setTargetHp ] = useState(animeShow.target.prevLife);
+  const [ targetHp, setTargetHp ] = useState(target.prevLife);
   // TopBar
   const TopBar = ({
     attacker={},
@@ -152,66 +154,41 @@ export const BattleAnimeShow = ({
   };
   // CreateContent
   const CreateContent = ()=>{
-    const [ BGstatus, setBGstatus ] = useState({ type:'STANDBY' });
+    const [ BGstatus, setBGstatus ] = useState({ 
+      type:'STANDBY',
+      defence: false
+    });
     const [ BGprop, setBGpops ] = useState({ toX:400, duration: 20000 });
     const [ SkBGprop, setSkBGpops ] = useState({ toX:400, duration: 500 });
+    const [ animeIsDone, setAnimeIsDone ] = useState(false);
+    //  關閉動畫判斷
+    useEffect(()=>{
+      if(!animeIsDone){ return };
+      setAnimeShow({
+        status:false,
+        type:'',
+        isHit:false,
+        attacker:{ key:'', skill:{}, prevSP:0 },
+        target:{ key:'', isHit:false, prevLife:0 }
+      });
+      // result check line
+      if(animeShow.type==="USER" &&
+        enemyChess[target.key].hp <= 0
+      ){
+        dispatch(enemyChessDead({ key:target.key }));
+        setUsualTip({
+          title:`已擊敗 ${enemyChess[target.key].cn}!`,
+          status:true,
+        });
+      }else {
+        setMoveStep(true);
+      };
+    },[ animeIsDone ])
     return <Container sortableChildren={true}>
-      {BGstatus.type==='STANDBY'&&<Spring
-        from={{ x:-400, y:-100 }}
-        to={{ x: BGprop.toX, y:-100 }}
-        config={{ duration: BGprop.duration }}
-        onRest={()=>{
-          if(BGprop.toX===-400){
-            setBGpops({
-              toX:400,
-              duration: 20000
-            });
-          }else {
-            setBGpops({
-              toX:-400,
-              duration:-1000
-            });
-          };
-        }}
-      >
-        {props => 
-          <Sprite
-            zIndex={1}
-            width={1600}
-            height={500}
-            anchor={0.5}
-            image={loader.resources[`${stageStatus}-BG`].data}
-            {...props}
-        />}
-      </Spring>}
-      {BGstatus.type==='SKILL'&&<Spring
-        from={{ x:-400, y:-100 }}
-        to={{ x: SkBGprop.toX, y:-100 }}
-        config={{ duration: SkBGprop.duration }}
-        onRest={()=>{
-          if(SkBGprop.toX===-400){
-            setSkBGpops({
-              toX:400,
-              duration: 500
-            });
-          }else {
-            setSkBGpops({
-              toX:-400,
-              duration:-1000
-            });
-          };
-        }}
-      >
-        {props => 
-          <Sprite
-            zIndex={1}
-            width={1600}
-            height={500}
-            anchor={0.5}
-            image={loader.resources[`${stageStatus}-BG`].data}
-            {...props}
-        />}
-      </Spring>}
+      <AnimeShowBG
+        props={{stageStatus, BGstatus, BGprop, SkBGprop, 
+          setBGpops, setSkBGpops}}
+      />
       {animeShow.type==="USER"?
         <TopBar
           attacker={chess[typeof(animeShow.attacker.key)!=='number'?0:animeShow.attacker.key]}
@@ -222,11 +199,49 @@ export const BattleAnimeShow = ({
           target={chess[typeof(animeShow.attacker.key)!=='number'?0:animeShow.attacker.key]}
         />
       }
-      <ChessSkillShow
-        attacker={chess[typeof(animeShow.attacker.key)!=='number'?0:animeShow.attacker.key]}
-        skill={animeShow.attacker.skill}
-        setBGstatus={setBGstatus}
-      />
+      {animeShow.type==="USER"?
+        <>
+          <EnemyChessSkillShow
+            attacker={enemyChess[typeof(animeShow.target.key)!=='number'?0:animeShow.target.key]}
+            skill={{ name:'防禦' }}
+            BGstatus={BGstatus}
+            isHit={animeShow.isHit}
+            resultLife={
+              target.prevLife -
+              animeShow.attacker.skill.atk 
+            }
+            setBGstatus={setBGstatus}
+            setAnimeIsDone={setAnimeIsDone}
+          />
+          <ChessSkillShow
+            attacker={chess[typeof(animeShow.attacker.key)!=='number'?0:animeShow.attacker.key]}
+            skill={animeShow.attacker.skill}
+            BGstatus={BGstatus}
+            setBGstatus={setBGstatus}
+            setAnimeIsDone={setAnimeIsDone}
+          />
+        </>:
+        <>
+         <ChessSkillShow
+            attacker={chess[typeof(animeShow.target.key)!=='number'?0:animeShow.target.key]}
+            skill={{ name:'防禦' }}
+            BGstatus={BGstatus}
+            isHit={animeShow.isHit}
+            resultLife={
+              target.prevLife -
+              animeShow.attacker.skill.atk 
+            }
+            setBGstatus={setBGstatus}
+            setAnimeIsDone={setAnimeIsDone}
+         />
+         <EnemyChessSkillShow
+          attacker={enemyChess[typeof(animeShow.attacker.key)!=='number'?0:animeShow.attacker.key]}
+          skill={animeShow.attacker.skill}
+          BGstatus={BGstatus}
+          setBGstatus={setBGstatus}
+          setAnimeIsDone={setAnimeIsDone}
+         />
+       </>}
       <Bottombar/>
       <Graphics
         zIndex={99}
@@ -243,6 +258,7 @@ export const BattleAnimeShow = ({
           setAnimeShow({
             status:false,
             type:'',
+            isHit:false,
             attacker:{ key:'', skill:{}, prevSP:0 },
             target:{ key:'', isHit:false, prevLife:0 }
           });

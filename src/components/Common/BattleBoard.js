@@ -307,6 +307,7 @@ export const BattleBoard = ({ props })=>{
         setAnimeShow({
           status:true,
           type:'USER',
+          isHit: isHit,
           attacker:{ 
             key:battleInfo.attacker.key,
             skill:battleInfo.attacker.skill[atkSelectd.key],
