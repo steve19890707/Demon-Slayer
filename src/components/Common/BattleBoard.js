@@ -3,7 +3,7 @@ import { Container, Sprite, Graphics, Text } from '@inlet/react-pixi/animated';
 import { loader } from '../DataLoader';
 import * as PIXI from "pixi.js";
 import { ProbabilityCount } from "../Common/ProbabilityCount";
-import { chessAttackResult } from "../../reducer/chess";
+import { chessAttackResult, chessMoved } from "../../reducer/chess";
 import { enemyChessDefense } from "../../reducer/enemyChess";
 
 export const BattleBoard = ({ props })=>{
@@ -297,6 +297,9 @@ export const BattleBoard = ({ props })=>{
         dispatch(chessAttackResult({
           key: battleInfo.attacker.key,
           lessSp: battleInfo.attacker.skill[atkSelectd.key].sp
+        }));
+        dispatch(chessMoved({
+          key: battleInfo.attacker.key,
         }));
         if(isHit){
           dispatch(enemyChessDefense({

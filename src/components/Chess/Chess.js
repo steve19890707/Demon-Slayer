@@ -20,15 +20,17 @@ export const Chess = ({
     dispatch
   } = chessProps;
   return chess.map((value,key)=>{
+    const roundMoveDone = value.roundMove===0;
     return <React.Fragment key={key}>
       {value.debut&&<Sprite
-        interactive={moveStep}
+        interactive={roundMoveDone?false:moveStep}
         buttonMode={true}
         width={40}
         height={40}
         x={value.x*40}
         y={value.y*40}
         zIndex={2}
+        tint={roundMoveDone?0x495057:0xffffff}
         pointerover={()=>{
           dispatch(MoveSelect({
             position:{ 

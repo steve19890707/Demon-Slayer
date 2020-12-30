@@ -6,6 +6,7 @@ const basicCommon = {
   boardStatus:false,
   debut:false,
   roundAttack:false,
+  roundMove:1
 };
 const chess = createSlice({
   name:'chess',
@@ -139,10 +140,14 @@ const chess = createSlice({
     chessAttackResult: (state, actions)=> {
       const { key, lessSp } = actions.payload;
       state[key].sp -= lessSp;
+    },
+    chessMoved: (state, actions)=>{
+      const { key } = actions.payload;
+      state[key].roundMove -= 1;
     }
   }
 });
 export default chess.reducer;
 export const { 
-  stageDebut, chessMove, chessSelected, chessCheckStatus, chessAttackResult 
+  stageDebut, chessMove, chessSelected, chessCheckStatus, chessAttackResult, chessMoved
 } = chess.actions;
