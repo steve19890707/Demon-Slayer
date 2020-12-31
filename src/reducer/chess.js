@@ -5,7 +5,6 @@ const basicCommon = {
   checkStatus:false,
   boardStatus:false,
   debut:false,
-  roundAttack:false,
   roundMove:1
 };
 const chess = createSlice({
@@ -144,7 +143,7 @@ const chess = createSlice({
     chessMoved: (state, actions)=>{
       const { key } = actions.payload;
       state[key].roundMove -= 1;
-    }
+    },
   }
 });
 export default chess.reducer;

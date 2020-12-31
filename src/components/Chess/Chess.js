@@ -23,7 +23,7 @@ export const Chess = ({
     const roundMoveDone = value.roundMove===0;
     return <React.Fragment key={key}>
       {value.debut&&<Sprite
-        interactive={roundMoveDone?false:moveStep}
+        interactive={moveStep}
         buttonMode={true}
         width={40}
         height={40}

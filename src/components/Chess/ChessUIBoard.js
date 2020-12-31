@@ -78,15 +78,44 @@ export const ChessUIBoard = ({
     });
     return isAttack;
   };
+  const compareUsed = (
+    chessX,
+    chessY,
+    checkType
+  )=>{
+    let isUnused = false;
+    const isDebutChess = ChessData.filter(v=>v.debut);
+    isDebutChess.map(val=>{
+      if(val.x===chessX&&val.y===chessY){
+        switch (checkType) {
+          case 'MOVE':
+          case 'ATTACK':
+            const moved = val.roundMove>0;
+            return isUnused = moved;
+          default:
+            return true;
+        };
+      }else return null;
+    });
+    return isUnused;
+  };
   const CreateText = ({ noop })=>{
     const isAttack = compareAttack(ChessVal.x,ChessVal.y,ChessVal.attack);
     return textInforArray.map((val,key)=>{
+      const fetchInteractive = ()=>{
+        switch (val.get('id')) {
+          case 1:
+            return compareUsed(ChessVal.x,ChessVal.y,'MOVE');
+          case 2:
+            const result = isAttack && compareUsed(ChessVal.x,ChessVal.y,'ATTACK');
+            return result;
+          default:
+            return true;
+        };
+      }
       return <Text
         key={key}
-        interactive={
-          (val.get('id')===2)?
-          isAttack : true
-        }
+        interactive={fetchInteractive()}
         buttonMode={true}
         text={val.get('title')}
         x={10}
@@ -94,7 +123,7 @@ export const ChessUIBoard = ({
         style={new PIXI.TextStyle({
           fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
           fontSize: 20,
-          fill:((val.get('id')===2)&&!isAttack)? '#8d99ae' :val.get('textColor').toJS(),
+          fill:fetchInteractive()?val.get('textColor').toJS():'#8d99ae',
         })}
         pointerover={()=>{
           setTextInforArray(prev=>
