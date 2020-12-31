@@ -1,5 +1,5 @@
 import React from "react";
-import { TeoniSkill } from "./TeoniSkill";
+import { TeoniSkill } from "./TeoniSkill/Index";
 export const EnemyChessSkillShow = ({
   attacker={},
   skill={},
@@ -7,7 +7,8 @@ export const EnemyChessSkillShow = ({
   isHit=false,
   resultLife=0,
   setBGstatus,
-  setAnimeIsDone
+  setAnimeIsDone,
+  setTargetHp
 })=>{
   const defualtprops = {
     skillName: skill.name,
@@ -16,7 +17,8 @@ export const EnemyChessSkillShow = ({
     resultLife: resultLife,
     BGstatus: BGstatus,
     setBGstatus: setBGstatus,
-    setAnimeIsDone: setAnimeIsDone
+    setAnimeIsDone: setAnimeIsDone,
+    setTargetHp: setTargetHp
   }
   switch (attacker.name) {
     case `Teoni`:

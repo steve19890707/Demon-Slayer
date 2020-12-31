@@ -1,7 +1,7 @@
 import React from 'react';
 import { Sprite } from '@inlet/react-pixi/animated';
 import { Spring } from 'react-spring/renderprops';
-import { loader } from '../DataLoader';
+import { loader } from '../../DataLoader';
 
 export const AnimeShowBG = ({
   props,

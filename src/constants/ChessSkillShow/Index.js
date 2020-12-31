@@ -1,5 +1,5 @@
 import React from "react";
-import { TanjirouSkill } from "./TanjirouSkill";
+import { TanjirouSkill } from "./TanjirouSkill/Index";
 
 export const ChessSkillShow = ({
   attacker={},
@@ -8,7 +8,8 @@ export const ChessSkillShow = ({
   isHit=false,
   resultLife=0,
   setBGstatus,
-  setAnimeIsDone
+  setAnimeIsDone,
+  setTargetHp
 })=>{
   const defualtprops = {
     skillName: skill.name,
@@ -17,7 +18,8 @@ export const ChessSkillShow = ({
     resultLife: resultLife,
     BGstatus: BGstatus,
     setBGstatus: setBGstatus,
-    setAnimeIsDone: setAnimeIsDone
+    setAnimeIsDone: setAnimeIsDone,
+    setTargetHp: setTargetHp
   }
   switch (attacker.name) {
     case `Tanjirou`:

@@ -9,7 +9,7 @@ import { CreateCheckerboard } from './Common/Checkerboard';
 import { ConfirmTip } from "./Common/ConfirmTips";
 import { UsualTip } from "./Common/UsualTip";
 import { BattleBoard } from "./Common/BattleBoard";
-import { BattleAnimeShow } from "./Common/BattleAnimeShow";
+import { BattleAnimeShow } from "./Common/BattleAnimeShow/Index";
 import { Chess } from "../components/Chess/Chess";
 import { EnemyChess } from "../components/EnemyChess/EnemyChess";
 // rule
