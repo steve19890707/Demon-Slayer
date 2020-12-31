@@ -1,6 +1,7 @@
 export const steps = ({
   skillName='',
   isHit=false,
+  targetLife=0,
   resultLife=0,
   BGstatus={},
   setBGstatus=null,

@@ -82,6 +82,7 @@ export const BattleAnimeShow = ({
         }
         BGstatus={BGstatus}
         isHit={animeShow.isHit}
+        targetLife={target.prevLife}
         resultLife={
           target.prevLife -
           animeShow.attacker.skill.atk 
@@ -99,6 +100,7 @@ export const BattleAnimeShow = ({
         }
         BGstatus={BGstatus}
         isHit={animeShow.isHit}
+        targetLife={target.prevLife}
         resultLife={
           target.prevLife -
           animeShow.attacker.skill.atk 

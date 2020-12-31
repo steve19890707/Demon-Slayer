@@ -3,6 +3,7 @@ export const SkillShowProtoType = ({
   skillName,
   attackerName,
   isHit,
+  targetLife,
   resultLife,
   BGstatus,
   setBGstatus,
@@ -34,13 +35,14 @@ export const SkillShowProtoType = ({
     };
     const timeout = steps({
       skillName:skillName,
+      targetLife:targetLife,
       resultLife:resultLife,
       setBGstatus:setBGstatus,
       setTargetHp:setTargetHp,
       setPosition:setPosition
     });
     return ()=> clearTimeout(timeout);
-  },[ skillName, resultLife, setBGstatus, setTargetHp, defXPostion, steps ]);
+  },[ skillName, targetLife, resultLife, setBGstatus, setTargetHp, defXPostion, steps ]);
   return <ShowType
     skillName={skillName}
     attackerName={attackerName}

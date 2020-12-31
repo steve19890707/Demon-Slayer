@@ -3,6 +3,7 @@ import numeral from "numeral";
 export const steps = ({
   skillName='',
   isHit=false,
+  targetLife=0,
   resultLife=0,
   BGstatus={},
   setBGstatus=null,
@@ -45,7 +46,7 @@ export const steps = ({
         return timeout;
       };
       const step4 = ()=>{
-        const run = { number: 2000 }
+        const run = { number: targetLife }
         TweenMax.to(run, 0.8, {
           number: resultLife,
           onUpdate: () => {
