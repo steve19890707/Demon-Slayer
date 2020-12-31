@@ -5,128 +5,148 @@ object-assign
 */
 
 /*!
- * @pixi/core - v5.3.3
- * Compiled Tue, 04 Aug 2020 16:23:09 UTC
+ * @pixi/core - v5.3.6
+ * Compiled Mon, 21 Dec 2020 20:35:06 UTC
  *
  * @pixi/core is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license
  */
 
 /*!
- * @pixi/display - v5.3.3
- * Compiled Tue, 04 Aug 2020 16:23:09 UTC
+ * @pixi/display - v5.3.6
+ * Compiled Mon, 21 Dec 2020 20:35:06 UTC
  *
  * @pixi/display is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license
  */
 
 /*!
- * @pixi/extract - v5.3.3
- * Compiled Tue, 04 Aug 2020 16:23:09 UTC
+ * @pixi/extract - v5.3.6
+ * Compiled Mon, 21 Dec 2020 20:35:06 UTC
  *
  * @pixi/extract is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license
  */
 
 /*!
- * @pixi/filter-displacement - v5.3.3
- * Compiled Tue, 04 Aug 2020 16:23:09 UTC
+ * @pixi/filter-displacement - v5.3.6
+ * Compiled Mon, 21 Dec 2020 20:35:06 UTC
  *
  * @pixi/filter-displacement is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license
  */
 
 /*!
- * @pixi/loaders - v5.3.3
- * Compiled Tue, 04 Aug 2020 16:23:09 UTC
+ * @pixi/loaders - v5.3.6
+ * Compiled Mon, 21 Dec 2020 20:35:06 UTC
  *
  * @pixi/loaders is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license
  */
 
 /*!
- * @pixi/math - v5.3.3
- * Compiled Tue, 04 Aug 2020 16:23:09 UTC
+ * @pixi/math - v5.3.6
+ * Compiled Mon, 21 Dec 2020 20:35:06 UTC
  *
  * @pixi/math is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license
  */
 
 /*!
- * @pixi/mesh-extras - v5.3.3
- * Compiled Tue, 04 Aug 2020 16:23:09 UTC
+ * @pixi/mesh-extras - v5.3.6
+ * Compiled Mon, 21 Dec 2020 20:35:06 UTC
  *
  * @pixi/mesh-extras is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license
  */
 
 /*!
- * @pixi/mixin-get-child-by-name - v5.3.3
- * Compiled Tue, 04 Aug 2020 16:23:09 UTC
+ * @pixi/mixin-get-child-by-name - v5.3.6
+ * Compiled Mon, 21 Dec 2020 20:35:06 UTC
  *
  * @pixi/mixin-get-child-by-name is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license
  */
 
 /*!
- * @pixi/mixin-get-global-position - v5.3.3
- * Compiled Tue, 04 Aug 2020 16:23:09 UTC
+ * @pixi/mixin-get-global-position - v5.3.6
+ * Compiled Mon, 21 Dec 2020 20:35:06 UTC
  *
  * @pixi/mixin-get-global-position is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license
  */
 
 /*!
- * @pixi/particles - v5.3.3
- * Compiled Tue, 04 Aug 2020 16:23:09 UTC
+ * @pixi/particles - v5.3.6
+ * Compiled Mon, 21 Dec 2020 20:35:06 UTC
  *
  * @pixi/particles is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license
  */
 
 /*!
- * @pixi/polyfill - v5.3.3
- * Compiled Tue, 04 Aug 2020 16:23:09 UTC
+ * @pixi/polyfill - v5.3.6
+ * Compiled Mon, 21 Dec 2020 20:35:06 UTC
  *
  * @pixi/polyfill is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license
  */
 
 /*!
- * @pixi/prepare - v5.3.3
- * Compiled Tue, 04 Aug 2020 16:23:09 UTC
+ * @pixi/prepare - v5.3.6
+ * Compiled Mon, 21 Dec 2020 20:35:06 UTC
  *
  * @pixi/prepare is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license
  */
 
 /*!
- * @pixi/settings - v5.3.3
- * Compiled Tue, 04 Aug 2020 16:23:09 UTC
+ * @pixi/settings - v5.3.6
+ * Compiled Mon, 21 Dec 2020 20:35:06 UTC
  *
  * @pixi/settings is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license
  */
 
 /*!
- * @pixi/ticker - v5.3.3
- * Compiled Tue, 04 Aug 2020 16:23:09 UTC
+ * @pixi/ticker - v5.3.6
+ * Compiled Mon, 21 Dec 2020 20:35:06 UTC
  *
  * @pixi/ticker is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license
  */
 
 /*!
- * @pixi/utils - v5.3.3
- * Compiled Tue, 04 Aug 2020 16:23:09 UTC
+ * @pixi/utils - v5.3.6
+ * Compiled Mon, 21 Dec 2020 20:35:06 UTC
  *
  * @pixi/utils is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license
  */
 
 /*!
- * pixi.js - v5.3.3
- * Compiled Tue, 04 Aug 2020 16:23:09 UTC
+ * CSSPlugin 3.5.1
+ * https://greensock.com
+ *
+ * Copyright 2008-2020, GreenSock. All rights reserved.
+ * Subject to the terms at https://greensock.com/standard-license or for
+ * Club GreenSock members, the agreement issued with that membership.
+ * @author: Jack Doyle, jack@greensock.com
+*/
+
+/*!
+ * GSAP 3.5.1
+ * https://greensock.com
+ *
+ * @license Copyright 2008-2020, GreenSock. All rights reserved.
+ * Subject to the terms at https://greensock.com/standard-license or for
+ * Club GreenSock members, the agreement issued with that membership.
+ * @author: Jack Doyle, jack@greensock.com
+*/
+
+/*!
+ * pixi.js - v5.3.6
+ * Compiled Mon, 21 Dec 2020 20:35:06 UTC
  *
  * pixi.js is licensed under the MIT License.
  * http://www.opensource.org/licenses/mit-license
@@ -171,7 +191,15 @@ See the Apache Version 2.0 License for specific language governing permissions
 and limitations under the License.
 ***************************************************************************** */
 
-/*! https://mths.be/punycode v1.4.1 by @mathias */
+/*! @preserve
+ * numeral.js
+ * version : 2.0.6
+ * author : Adam Draper
+ * license : MIT
+ * http://adamwdraper.github.com/Numeral-js/
+ */
+
+/*! https://mths.be/punycode v1.3.2 by @mathias */
 
 /** @license React v0.20.1
  * scheduler.production.min.js
