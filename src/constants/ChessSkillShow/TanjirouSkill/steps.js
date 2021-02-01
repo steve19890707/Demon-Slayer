@@ -4,11 +4,15 @@ export const steps = ({
   skillName='',
   isHit=false,
   targetLife=0,
+  attackerSp=0,
   resultLife=0,
+  resultSp=0,
   BGstatus={},
   setBGstatus=null,
   setAnimeIsDone=null,
   setTargetHp=null,
+  setAttackerSp=null,
+  setLinesStatus=null,
   setPosition=null,
 }) => {
   // 技能動畫:
@@ -30,6 +34,14 @@ export const steps = ({
         return timeout;
       };
       const step2 = ()=>{
+        const run =  { number: attackerSp };
+        TweenMax.to(run, 0.8, {
+          number: resultSp,
+          onUpdate: () => {
+            setAttackerSp(numeral(run.number).format("0"))
+          },
+        });
+        setLinesStatus(prev=>{ return { ...prev, status:'attack' }});
         const timeout = setTimeout(() => {
           setBGstatus({ type:'STOP', defence:true });
           // callback
@@ -46,7 +58,7 @@ export const steps = ({
         return timeout;
       };
       const step4 = ()=>{
-        const run = { number: targetLife }
+        const run = { number: targetLife };
         TweenMax.to(run, 0.8, {
           number: resultLife,
           onUpdate: () => {

@@ -2,11 +2,15 @@ export const steps = ({
   skillName='',
   isHit=false,
   targetLife=0,
+  attackerSp=0,
   resultLife=0,
+  resultSp=0,
   BGstatus={},
   setBGstatus=null,
   setAnimeIsDone=null,
   setTargetHp=null,
+  setAttackerSp=null,
+  setLinesStatus=null,
   setPosition=null,
 }) => {
   switch (skillName) {
@@ -59,6 +63,12 @@ export const steps = ({
           setPosition(prev=>{return{ ...prev, x:-200, y:10, mass:1, 
             friction:20, tension:170, tint:0xffffff}});
           // callback
+          setLinesStatus(prev=>{ 
+            return { 
+              status:'default',
+              character: prev.character==="USER" ? "ENEMY" : "USER"
+            };
+          });
           end();
         },5000);
         return timeout;

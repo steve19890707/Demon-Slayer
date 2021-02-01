@@ -7,7 +7,19 @@ export const TopBar = ({
   left={},
   showType='',
   targetHp=0,
+  attackerSp=0
 })=> {
+  const hpBarCount = (hp,full)=>{
+    const percentage = Number(hp) / Number(full);
+    console.log(percentage * 200)
+    return 100;
+  };
+  const spBarCount = (sp,full)=>{
+    const percentage = Number(sp) / Number(full);
+    console.log(percentage * 100)
+    return 20;
+  }
+
   return <Graphics 
     x={-400}
     y={-300}
@@ -19,42 +31,22 @@ export const TopBar = ({
     }}
   >
     <Container sortableChildren={true}>
-      <Graphics
+      <Sprite
+        width={42}
+        height={42}
         x={370}
         y={40}
-        draw={g=> {
-          g.beginFill(`0x364958`);
-          g.drawRoundedRect(-21,-21,42,42,50);
-          g.endFill();
-        }}
-      >
-        <Text 
-          text={`守`} 
-          x={0} y={0}
-          anchor={0.5}
-          style={new PIXI.TextStyle({ fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-            fontSize: 24,
-            fill:'#ffffff',
-          })}/>
-      </Graphics>
-      <Graphics
+        anchor={0.5} 
+        image={loader.resources[`${showType==="USER" ? 'defIcon' : 'atkIcon' }`].data}
+      />
+      <Sprite
+        width={42}
+        height={42}
         x={420}
         y={40}
-        draw={g=> {
-          g.beginFill(`0xfe7f2d`);
-          g.drawRoundedRect(-21,-21,42,42,50);
-          g.endFill();
-        }}
-      >
-        <Text 
-          text={`攻`} 
-          x={0} y={0}
-          anchor={0.5}
-          style={new PIXI.TextStyle({ fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-            fontSize: 24,
-            fill:'#ffffff',
-          })}/>
-      </Graphics>
+        anchor={0.5} 
+        image={loader.resources[`${showType==="USER" ? 'atkIcon' : 'defIcon' }`].data}
+      />
       {/* left */}
       <Sprite
         width={50}
@@ -75,7 +67,7 @@ export const TopBar = ({
         x={320} y={35}
         zIndex={1}
         draw={g=> {
-          g.beginFill(`0x333533`);
+          g.beginFill(`0xe71d36`);
           g.drawRoundedRect(0,0,-200,10,0);
           g.endFill();
         }}
@@ -84,8 +76,34 @@ export const TopBar = ({
         x={320} y={35}
         zIndex={2}
         draw={g=> {
-          g.beginFill(`0xe71d36`);
-          g.drawRoundedRect(0,0,-200,10,0);
+          g.beginFill(`0x333533`);
+          g.drawRoundedRect(-200,0,hpBarCount(showType==="USER"?targetHp:left.hp,left.fullValue.hp),10,0);
+          g.endFill();
+        }}
+      />
+      <Text 
+        text={`${showType==="USER"? left.sp : attackerSp} / ${left.fullValue.sp}`}
+        anchor={{x:1,y:0.3}} 
+        x={210} y={55}
+        style={new PIXI.TextStyle({ fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
+          fontSize: 18,
+          fill:'#4A86E8',
+        })}/>
+      <Graphics
+        x={320} y={55}
+        zIndex={1}
+        draw={g=> {
+          g.beginFill(`0x4A86E8`);
+          g.drawRoundedRect(0,0,-100,10,0);
+          g.endFill();
+        }}
+      />
+      <Graphics
+        x={220} y={55}
+        zIndex={2}
+        draw={g=> {
+          g.beginFill(`0x333533`);
+          g.drawRoundedRect(0,0,spBarCount(showType==="USER"?left.sp:attackerSp,left.fullValue.sp),10,0);
           g.endFill();
         }}
       />
@@ -109,7 +127,7 @@ export const TopBar = ({
         x={670} y={35}
         zIndex={1}
         draw={g=> {
-          g.beginFill(`0x333533`);
+          g.beginFill(`0xe71d36`);
           g.drawRoundedRect(0,0,-200,10,0);
           g.endFill();
         }}
@@ -118,8 +136,34 @@ export const TopBar = ({
         x={670} y={35}
         zIndex={2}
         draw={g=> {
-          g.beginFill(`0xe71d36`);
-          g.drawRoundedRect(0,0,-200,10,0);
+          g.beginFill(`0x333533`);
+          g.drawRoundedRect(-200,0,hpBarCount(showType==="USER"?right.hp:targetHp,right.fullValue.hp),10,0);
+          g.endFill();
+        }}
+      />
+      <Text 
+        text={`${showType==="USER"? attackerSp : right.sp} / ${right.fullValue.sp}`}
+        anchor={{x:1,y:0.3}} 
+        x={560} y={55}
+        style={new PIXI.TextStyle({ fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
+          fontSize: 18,
+          fill:'#4A86E8',
+        })}/>
+      <Graphics
+        x={670} y={55}
+        zIndex={1}
+        draw={g=> {
+          g.beginFill(`0x4A86E8`);
+          g.drawRoundedRect(0,0,-100,10,0);
+          g.endFill();
+        }}
+      />
+      <Graphics
+        x={570} y={55}
+        zIndex={2}
+        draw={g=> {
+          g.beginFill(`0x333533`);
+          g.drawRoundedRect(0,0,spBarCount(showType==="USER"?attackerSp:right.sp,right.fullValue.sp),10,0);
           g.endFill();
         }}
       />

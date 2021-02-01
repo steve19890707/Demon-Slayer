@@ -16,11 +16,11 @@ const chess = createSlice({
       step:3,
       attack:2,
       hp:1500,
-      sp:100,
+      sp:125,
       dodge:65,
       fullValue:{
         hp:1500,
-        sp:100
+        sp:125
       },
       skill:[{ 
         name:'斬擊',
@@ -142,7 +142,7 @@ const chess = createSlice({
     },
     chessMoved: (state, actions)=>{
       const { key } = actions.payload;
-      state[key].roundMove -= 1;
+      state[key].roundMove -= 0;
     },
   }
 });

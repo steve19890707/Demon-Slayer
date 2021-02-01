@@ -6,25 +6,33 @@ export const EnemyChessSkillShow = ({
   BGstatus,
   isHit=false,
   targetLife=0,
+  attackerSp=0,
   resultLife=0,
+  resultSp=0,
   setBGstatus,
   setAnimeIsDone,
-  setTargetHp
+  setTargetHp,
+  setAttackerSp,
+  setLinesStatus
 })=>{
-  const defualtprops = {
+  const defaultprops = {
     skillName: skill.name,
     attackerName: attacker.name,
     isHit: isHit,
     targetLife: targetLife,
+    attackerSp: attackerSp,
     resultLife: resultLife,
+    resultSp: resultSp,
     BGstatus: BGstatus,
     setBGstatus: setBGstatus,
     setAnimeIsDone: setAnimeIsDone,
-    setTargetHp: setTargetHp
+    setTargetHp: setTargetHp,
+    setAttackerSp: setAttackerSp,
+    setLinesStatus: setLinesStatus
   }
   switch (attacker.name) {
     case `Teoni`:
-      return <TeoniSkill {...defualtprops}/>
+      return <TeoniSkill {...defaultprops}/>
     default:
       return;
   };

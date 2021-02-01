@@ -51,8 +51,8 @@ export const Canvas = ()=> {
   //   type:'USER',
   //   isHit:true,
   //   attacker:{ key:0, skill:{
-  //     name: "斬擊", atk: 50, sp: 0, hitfix: 0
-  //   }, prevSP:100 },
+  //     name: "斬擊", atk: 1300, sp: 15, hitfix: 0
+  //   }, prevSP:125 },
   //   target:{ key:0, isHit:false, prevLife:2000 }
   // });
   // const [ moveStep, setMoveStep ] = useState(false);

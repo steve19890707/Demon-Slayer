@@ -15,7 +15,7 @@ export const BattleAnimeShow = ({
 }) =>{
   const { stageStatus, animeShow, chess, enemyChess, 
     setMoveStep, setAnimeShow, setUsualTip, dispatch } = props;
-  const { target } = animeShow;
+  const { target, attacker } = animeShow;
   // CreateContent
   const CreateContent = ()=>{
     const [ BGstatus, setBGstatus ] = useState({ 
@@ -25,7 +25,12 @@ export const BattleAnimeShow = ({
     const [ BGprop, setBGpops ] = useState({ toX:400, duration: 20000 });
     const [ SkBGprop, setSkBGpops ] = useState({ toX:400, duration: 500 });
     const [ targetHp, setTargetHp ] = useState(target.prevLife);
+    const [ attackerSp, setAttackerSp ] = useState(attacker.prevSP);
     const [ animeIsDone, setAnimeIsDone ] = useState(false);
+    const [ linesStatus, setLinesStatus ] = useState({ 
+      character: animeShow.type,
+      status:'default'
+    });
     const fetchChessType = ( type='' )=>{
       switch (type) {
         case 'CHESS':
@@ -72,6 +77,7 @@ export const BattleAnimeShow = ({
         left={enemyChess[typeof(animeShow.target.key)!=='number'?0:animeShow.target.key]}
         showType={animeShow.type}
         targetHp={targetHp}
+        attackerSp={attackerSp}
       />
       <ChessSkillShow
         attacker={fetchChessType('CHESS')}
@@ -83,13 +89,20 @@ export const BattleAnimeShow = ({
         BGstatus={BGstatus}
         isHit={animeShow.isHit}
         targetLife={target.prevLife}
+        attackerSp={attacker.prevSP}
         resultLife={
           target.prevLife -
           animeShow.attacker.skill.atk 
         }
+        resultSp={
+          attacker.prevSP -
+          animeShow.attacker.skill.sp
+        }
         setBGstatus={setBGstatus}
         setAnimeIsDone={setAnimeIsDone}
         setTargetHp={setTargetHp}
+        setAttackerSp={setAttackerSp}
+        setLinesStatus={setLinesStatus}
       />
       <EnemyChessSkillShow
         attacker={fetchChessType('ENEMYCHESS')}
@@ -101,15 +114,26 @@ export const BattleAnimeShow = ({
         BGstatus={BGstatus}
         isHit={animeShow.isHit}
         targetLife={target.prevLife}
+        attackerSp={attacker.prevSP}
         resultLife={
           target.prevLife -
           animeShow.attacker.skill.atk 
         }
+        resultSp={
+          attacker.prevSP -
+          animeShow.attacker.skill.sp
+        }
         setBGstatus={setBGstatus}
         setAnimeIsDone={setAnimeIsDone}
         setTargetHp={setTargetHp}
+        setAttackerSp={setAttackerSp}
+        setLinesStatus={setLinesStatus}
       />
-      <BottomBar/>
+      <BottomBar
+        right={chess[typeof(animeShow.attacker.key)!=='number'?0:animeShow.attacker.key]}
+        left={enemyChess[typeof(animeShow.target.key)!=='number'?0:animeShow.target.key]}
+        linesStatus={linesStatus}
+      />
       <Graphics
         zIndex={99}
         interactive={true}
@@ -141,6 +165,11 @@ export const BattleAnimeShow = ({
           }else {
             setMoveStep(true);
           };
+          const clearAllTimeouts = ()=>{
+            let id = window.setTimeout(null,0);
+            while (id--) { window.clearTimeout(id); };
+          };
+          clearAllTimeouts();
         }}
       >
         <Text text={`戰鬥 off`} x={0} y={0}
