@@ -27,8 +27,8 @@ export const steps = ({
             friction:5, tension:1000, tint:0xd00000}});
           // callback
           if(resultLife<=0){
-            return isDead();
-          }else return next();
+            return isDead({ type:'dead' });
+          }else return next({ type:'def' });
         },1200);
         return timeout;
       }
@@ -36,15 +36,21 @@ export const steps = ({
         const timeout = setTimeout(() => {
           setPosition(prev=>{return{ ...prev, x:-235, y:-10 }});
           // callback
-          next();
+          next({ type:'dodge' });
         },1200);
         return timeout;
       };
-      const isDead = ()=> {
+      const isDead = ({ type })=> {
         const timeout = setTimeout(() => {
           setPosition(prev=>{return{ ...prev, x:-200, y:10, 
             friction:2, tint:0x03071e
           }});
+          setLinesStatus(prev=>{ 
+            return { 
+              status: type,
+              character: prev.character==="USER" ? "ENEMY" : "USER"
+            };
+          });
           // callback
           isDeadStep2();
         },5000);
@@ -58,17 +64,17 @@ export const steps = ({
         },3000);
         return timeout;
       }
-      const next = ()=>{
+      const next = ({ type })=>{
         const timeout = setTimeout(() => {
           setPosition(prev=>{return{ ...prev, x:-200, y:10, mass:1, 
             friction:20, tension:170, tint:0xffffff}});
-          // callback
           setLinesStatus(prev=>{ 
             return { 
-              status:'default',
+              status: type,
               character: prev.character==="USER" ? "ENEMY" : "USER"
             };
           });
+          // callback
           end();
         },5000);
         return timeout;

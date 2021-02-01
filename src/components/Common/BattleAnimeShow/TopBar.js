@@ -10,16 +10,17 @@ export const TopBar = ({
   attackerSp=0
 })=> {
   const hpBarCount = (hp,full)=>{
-    const percentage = Number(hp) / Number(full);
-    console.log(percentage * 200)
-    return 100;
+    const leftVal =  Number(full) - Number(hp);
+    const percentage = Number(full) / 200;
+    const result = leftVal / percentage;
+    return result;
   };
   const spBarCount = (sp,full)=>{
-    const percentage = Number(sp) / Number(full);
-    console.log(percentage * 100)
-    return 20;
-  }
-
+    const leftVal =  Number(full) - Number(sp);
+    const percentage = Number(full) / 100;
+    const result = leftVal / percentage;
+    return result;
+  };
   return <Graphics 
     x={-400}
     y={-300}

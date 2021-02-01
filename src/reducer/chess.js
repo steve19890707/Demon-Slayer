@@ -17,30 +17,30 @@ const chess = createSlice({
       attack:2,
       hp:1500,
       sp:125,
-      dodge:65,
+      dodge:60,
       fullValue:{
         hp:1500,
         sp:125
       },
       skill:[{ 
         name:'斬擊',
-        atk:50,
+        atk:150,
         sp:0,
         hitfix:0
       },{ 
         name:'叄之型―流流舞',
-        atk:200,
-        sp:5,
+        atk:300,
+        sp:15,
         hitfix:10
       },{ 
         name:'捌之型―滝壺',
-        atk:200,
-        sp:5,
+        atk:400,
+        sp:25,
         hitfix:5
       },{
         name:'拾之型―生生流轉',
-        atk:500,
-        sp:10,
+        atk:600,
+        sp:50,
         hitfix:20
       }],
       ...basicCommon

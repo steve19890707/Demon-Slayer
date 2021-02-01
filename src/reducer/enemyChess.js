@@ -15,7 +15,7 @@ const enemyChess = createSlice({
       cn:'手鬼',
       hp:2000,
       sp:100,
-      dodge:20,
+      dodge:25,
       fullValue:{
         hp:2000,
         sp:100

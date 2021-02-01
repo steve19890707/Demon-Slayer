@@ -59,12 +59,14 @@ export const steps = ({
       };
       const step4 = ()=>{
         const run = { number: targetLife };
-        TweenMax.to(run, 0.8, {
-          number: resultLife,
-          onUpdate: () => {
-            setTargetHp(numeral(run.number).format("0"))
-          },
-        });
+        if(isHit) {
+          TweenMax.to(run, 0.8, {
+            number: resultLife<0 ? 0 : resultLife,
+            onUpdate: () => {
+              setTargetHp(numeral(run.number).format("0"))
+            },
+          });
+        };
         const timeout = setTimeout(() => {
           setPosition(prev=>{return{ ...prev, x:550, y:50, tension:50 }});
         },3000);
