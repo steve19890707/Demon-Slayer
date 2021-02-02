@@ -10,7 +10,7 @@ export const UsualTip = ({
 })=> {
   const {
     stageStatus, chess, currentChess, enemyChess,
-    usualTip, setMoveStep, setUsualTip, setCurrentChess } = props;
+    usualTip, setMoveStep, setUsualTip, setCurrentChess, setEnemyRoundTab } = props;
     const [ textColor, setTextColor ] = useState(['#ffffff', '#ffffff']);
   return <Graphics
     x={400}
@@ -92,6 +92,16 @@ export const UsualTip = ({
             setUsualTip({
               title:``,
               status:false,
+            });
+            break;
+          case "ENDROUND":
+            setEnemyRoundTab({
+              oder:0,
+              status:true
+            });
+            setUsualTip({
+              title:``,
+              status:false
             });
             break;
           default:

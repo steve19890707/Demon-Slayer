@@ -14,7 +14,10 @@ export const ConfirmTip = ({
     tipStatus,
     dispatch,
     setMoveStep, 
-    setTipStatus
+    setTipStatus,
+    setOtherTab,
+    setRoundNum,
+    setUsualTip
   } = props;
   return <Graphics
     x={400}
@@ -74,6 +77,17 @@ export const ConfirmTip = ({
               return {...prev, status:false }
             });
             break;
+          case "ENDROUND":
+            setOtherTab(false);
+            setRoundNum(prev=>prev+=1);
+            setTipStatus(prev=>{
+              return {...prev, status:false }
+            });
+            setUsualTip({
+              title:'敵方回合',
+              status:true
+            })
+            break;
           default:
             return;
         }
@@ -106,7 +120,12 @@ export const ConfirmTip = ({
             setMoveStep(true);
             setTipStatus(prev=>{
               return {...prev, status:false }
-            })
+            });
+            break;
+          case "ENDROUND":
+            setTipStatus(prev=>{
+              return {...prev, status:false }
+            });
             break;
           default:
             return;

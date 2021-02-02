@@ -10,6 +10,8 @@ import { ConfirmTip } from "./Common/ConfirmTips";
 import { UsualTip } from "./Common/UsualTip";
 import { BattleBoard } from "./Common/BattleBoard";
 import { BattleAnimeShow } from "./Common/BattleAnimeShow/Index";
+import { OtherTab } from "./Common/OtherTab";
+import { EnemyRoundTab } from "./Common/EnemyRoundTab/Index";
 import { Chess } from "../components/Chess/Chess";
 import { EnemyChess } from "../components/EnemyChess/EnemyChess";
 // rule
@@ -17,6 +19,12 @@ import { stageRule } from "../constants/stageRule";
 import { loader } from './DataLoader';
 export const Canvas = ()=> {
   const [ stageStatus, setStageStatus ] = useState('stageOne');
+  const [ roundNum, setRoundNum ] = useState(1);
+  const [ otherTab, setOtherTab ] = useState(false);
+  const [ enemyRoundTab, setEnemyRoundTab ] = useState({
+    oder:0,
+    status:false
+  });
   const [ currentChess, setCurrentChess ] = useState({
     key:0,
     type:"MOVE"
@@ -24,7 +32,7 @@ export const Canvas = ()=> {
   const [ usualTip, setUsualTip ] = useState({
     title:``,
     status:false,
-  })
+  });
   const [ tipStatus, setTipStatus ] = useState({
     title:``,
     status:false,
@@ -60,6 +68,8 @@ export const Canvas = ()=> {
   const chessMap = useSelector(state=>state.chessMap);
   const chess = useSelector(state=>state.chess);
   const enemyChess = useSelector(state=>state.enemyChess);
+  const chessList = chess.filter(v=>v.debut);
+  const enemyList = enemyChess.filter(v=>v.debut);
   const dispatch = useDispatch();
   // debut
   useEffect(()=>{
@@ -79,6 +89,21 @@ export const Canvas = ()=> {
       backgroundColor:0x01262a
     }}>
     <Container sortableChildren={true}>
+      <Sprite
+        width={30}
+        height={30}
+        anchor={0.5} 
+        x={760}
+        y={40}
+        zIndex={99}
+        interactive={moveStep}
+        buttonMode={true}
+        image={loader.resources[`otherIcon`].data}
+        pointertap={()=>{
+          setOtherTab(true);
+          setMoveStep(false);
+        }}
+      />
       <Sprite
         width={800}
         height={600}
@@ -104,22 +129,37 @@ export const Canvas = ()=> {
         dispatch
       }}/>
       <EnemyChess enemyChessProps={{
-         enemyChess,
-         moveStep,
-         setMoveStep,
-         dispatch
+        enemyChess,
+        moveStep,
+        setMoveStep,
+        dispatch
       }}/>
     </Container>
-    {tipStatus.status&&<ConfirmTip 
-      props={{
-        chess,
-        currentChess,
-        tipStatus,
-        dispatch,
-        setMoveStep,
-        setTipStatus
-      }}
-    />}
+    {otherTab&&
+      <OtherTab
+        props={{
+          stageStatus,
+          roundNum,
+          setMoveStep,
+          setOtherTab,
+          setTipStatus,
+          setCurrentChess
+        }}
+      />}
+    {tipStatus.status&&
+      <ConfirmTip 
+        props={{
+          chess,
+          currentChess,
+          tipStatus,
+          dispatch,
+          setMoveStep,
+          setTipStatus,
+          setOtherTab,
+          setRoundNum,
+          setUsualTip
+        }}
+      />}
     {usualTip.status&&
       <UsualTip
         props={{
@@ -130,7 +170,8 @@ export const Canvas = ()=> {
           usualTip,
           setMoveStep,
           setUsualTip,
-          setCurrentChess
+          setCurrentChess,
+          setEnemyRoundTab
         }}
       />}
     {battleInfo.status&&
@@ -154,6 +195,14 @@ export const Canvas = ()=> {
           setAnimeShow,
           setUsualTip,
           dispatch
+        }}
+      />}
+    {enemyRoundTab.status&&
+      <EnemyRoundTab
+        props={{
+          enemyRoundTab,
+          chessList,
+          enemyList
         }}
       />}
   </Stage>

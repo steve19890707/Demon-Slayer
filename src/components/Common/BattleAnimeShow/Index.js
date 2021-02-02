@@ -1,7 +1,7 @@
 import React,{ useState, useEffect } from 'react';
-import { Container, Graphics, Text } from '@inlet/react-pixi/animated';
-import * as PIXI from "pixi.js";
+import { Container, Graphics, Sprite } from '@inlet/react-pixi/animated';
 import { enemyChessDead } from "../../../reducer/enemyChess";
+import { loader } from '../../DataLoader';
 // part
 import { AnimeShowBG } from "./AinmeShowBG";
 import { TopBar } from "./TopBar";
@@ -134,17 +134,15 @@ export const BattleAnimeShow = ({
         left={enemyChess[typeof(animeShow.target.key)!=='number'?0:animeShow.target.key]}
         linesStatus={linesStatus}
       />
-      <Graphics
+      <Sprite
         zIndex={99}
         interactive={true}
         buttonMode={true}
-        x={315}
-        y={255}
-        draw={g=> {
-          g.beginFill(`0x586f7c`);
-          g.drawRoundedRect(-6,-3,75,30,6);
-          g.endFill();
-        }}
+        width={75}
+        height={35}
+        x={310}
+        y={240}
+        image={loader.resources[`fightOff`].data}
         pointertap={()=>{
           setAnimeShow({
             status:false,
@@ -171,14 +169,7 @@ export const BattleAnimeShow = ({
           };
           clearAllTimeouts();
         }}
-      >
-        <Text text={`戰鬥 off`} x={0} y={0}
-          style={new PIXI.TextStyle({ fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-            fontSize: 18,
-            fill:'#c0fdff',
-          })}
-        />
-      </Graphics>
+      />
     </Container>
   };
   return <Graphics

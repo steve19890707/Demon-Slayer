@@ -26,4 +26,8 @@ loader
   .add('stageOne-main-BG',`${hostname}imgs/background/stage1-main-background.jpg`)
   .add('atkIcon',`${hostname}imgs/common/atk.png`)
   .add('defIcon',`${hostname}imgs/common/def.png`)
+  .add('otherIcon',`${hostname}imgs/common/other.png`)
+  .add('closeIcon',`${hostname}imgs/common/close.png`)
+  .add('endBtn',`${hostname}imgs/common/end.png`)
+  .add('fightOff',`${hostname}imgs/common/fightOff.png`)
   .load();

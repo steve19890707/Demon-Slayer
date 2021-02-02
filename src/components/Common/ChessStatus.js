@@ -47,33 +47,22 @@ export const ChessStatus = ({
       g.endFill();
     }}
   >
-    <Graphics
-      x={220}
-      y={-120}
+    <Sprite
       interactive={true}
       buttonMode={true}
-      pointertap={(e)=>{
+      width={25}
+      height={25}
+      anchor={0.5}
+      x={220}
+      y={-120}
+      image={loader.resources[`closeIcon`].data}
+      pointertap={()=>{
         setMoveStep(true);
         dispatch(CheckStatus({
           key:ChessKey
         }));
       }}
-      draw={g=> {
-        g.beginFill(`0x02040f`);
-        g.drawRoundedRect(-15,-15,30,30,50);
-        g.endFill();
-      }}
-    >
-      <Text
-        anchor={0.5}
-        text={`X`}
-        style={new PIXI.TextStyle({
-          fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-          fontSize: 16,
-          fill:'#ffffff',
-        })}
-      />
-    </Graphics>
+    />
     <Sprite
       width={80}
       height={80}

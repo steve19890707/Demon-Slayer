@@ -142,7 +142,7 @@ const chess = createSlice({
     },
     chessMoved: (state, actions)=>{
       const { key } = actions.payload;
-      state[key].roundMove -= 0;
+      state[key].roundMove -= 1;
     },
   }
 });
