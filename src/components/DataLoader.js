@@ -16,6 +16,7 @@ loader
   .add('Inosuke-fight',`${hostname}imgs/Inosuke/fight.png`)
   .add('Teoni-head-default',`${hostname}imgs/Teoni/head-default.png`)
   .add('Teoni-talk-default',`${hostname}imgs/Teoni/talk-default.jpg`)
+  .add('Teoni-talk-attack',`${hostname}imgs/Teoni/talk-attack.jpg`)
   .add('Teoni-talk-def',`${hostname}imgs/Teoni/talk-def.jpg`)
   .add('Teoni-talk-dodge',`${hostname}imgs/Teoni/talk-dodge.jpg`)
   .add('Teoni-talk-dead',`${hostname}imgs/Teoni/talk-dead.jpg`)
@@ -30,4 +31,5 @@ loader
   .add('closeIcon',`${hostname}imgs/common/close.png`)
   .add('endBtn',`${hostname}imgs/common/end.png`)
   .add('fightOff',`${hostname}imgs/common/fightOff.png`)
+  .add('fightDef',`${hostname}imgs/common/fightDef.png`)
   .load();

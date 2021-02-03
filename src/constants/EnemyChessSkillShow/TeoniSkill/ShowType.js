@@ -33,7 +33,7 @@ export const ShowType = ({
       </Spring>
     default:
       return <Spring
-        from={{ x:0, y:50 }}
+        from={{ x:-600, y:50 }}
         to={{ x:position.x, y:position.y }}
         config={{ 
           mass:1,

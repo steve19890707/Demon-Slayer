@@ -1,3 +1,5 @@
+import { TweenMax } from 'gsap';
+import numeral from "numeral";
 export const steps = ({
   skillName='',
   isHit=false,
@@ -16,7 +18,7 @@ export const steps = ({
   switch (skillName) {
     case '防禦':
       setPosition(prev=>{return{ ...prev, x:-200, tension:150 }});
-      const start = ()=>{
+      const defStart = ()=>{
         if(isHit){
           return isHitStep();
         }else return isDodge();
@@ -63,7 +65,7 @@ export const steps = ({
           end();
         },3000);
         return timeout;
-      }
+      };
       const next = ({ type })=>{
         const timeout = setTimeout(() => {
           setPosition(prev=>{return{ ...prev, x:-200, y:10, mass:1, 
@@ -78,7 +80,7 @@ export const steps = ({
           end();
         },5000);
         return timeout;
-      }
+      };
       const end = ()=> {
         const timeout = setTimeout(() => {
           // callback
@@ -86,8 +88,65 @@ export const steps = ({
         },3000);
         return timeout;
       };
-      return start();
+      return defStart();
+    // ATK
     default:
-      break;
+      setBGstatus({ type:'ENEMYSTANDBY', defence:false });
+      setPosition(prev=>{return{ ...prev, x:-600, tension:100 }});
+      const atkStart = ()=>{
+        setPosition(prev=>{
+          return{ ...prev, x:-200, tension:100 }});
+        // callback
+        return step1();
+      };
+      const step1 = ()=>{
+        const timeout = setTimeout(() => {
+          setPosition(prev=>{return{ ...prev, x:0, tension:100 }});
+          setBGstatus({ type:'ENEMYSKILL', defence:false });
+          // callback
+          step2();
+        },3000);
+        return timeout;
+      };
+      const step2 = ()=>{
+        const run =  { number: attackerSp };
+        TweenMax.to(run, 0.8, {
+          number: resultSp,
+          onUpdate: () => {
+            setAttackerSp(numeral(run.number).format("0"))
+          },
+        });
+        setLinesStatus(prev=>{ return { ...prev, status:'attack' }});
+        const timeout = setTimeout(() => {
+          setBGstatus({ type:'STOP', defence:true });
+          // callback
+          step3();
+        },3000);
+        return timeout;
+      };
+      const step3 = ()=>{
+        const timeout = setTimeout(() => {
+          setPosition(prev=>{return{ ...prev, x:175, tension:1000 }});
+          // callback
+          step4();
+        },1000);
+        return timeout;
+      };
+      const step4 = ()=>{
+        const run = { number: targetLife };
+        if(isHit) {
+          TweenMax.to(run, 0.8, {
+            number: resultLife<0 ? 0 : resultLife,
+            onUpdate: () => {
+              setTargetHp(numeral(run.number).format("0"))
+            },
+          });
+        };
+        const timeout = setTimeout(() => {
+          setPosition(prev=>{return{ ...prev, x:-600, tension:50 }});
+        },3000);
+        return timeout;
+      };
+      return atkStart();
   }
 };

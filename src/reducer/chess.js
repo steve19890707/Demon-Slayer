@@ -17,7 +17,7 @@ const chess = createSlice({
       attack:2,
       hp:1500,
       sp:125,
-      dodge:60,
+      dodge:80,
       fullValue:{
         hp:1500,
         sp:125
@@ -142,7 +142,7 @@ const chess = createSlice({
     },
     chessMoved: (state, actions)=>{
       const { key } = actions.payload;
-      state[key].roundMove -= 1;
+      state[key].roundMove -= 0;
     },
   }
 });

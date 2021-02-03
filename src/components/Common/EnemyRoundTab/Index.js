@@ -1,11 +1,15 @@
 import React,{ useState } from 'react';
-import { Graphics, Text } from '@inlet/react-pixi/animated';
+import { Graphics, Sprite } from '@inlet/react-pixi/animated';
+import { loader } from '../../DataLoader';
+import { ProbabilityCount } from "../../Common/ProbabilityCount";
 // common part
 import { EnemyList } from "./EnemyList";
 import { ChessList } from "./ChessList";
+import { Information } from "./Information";
 export const EnemyRoundTab = ({ props })=> {
   const [ defChess, setDefChess ] = useState(0);
-  const { enemyRoundTab, chessList, enemyList } = props;
+  const { enemyRoundTab, chessList, enemyList,
+    setEnemyRoundTab, setAnimeShow } = props;
   const enemySkill = enemyList[enemyRoundTab.oder].skill;
   const enemySp = enemyList[enemyRoundTab.oder].sp;
   const getAtkSkill = ()=>{
@@ -31,10 +35,48 @@ export const EnemyRoundTab = ({ props })=> {
       defChess={defChess}
       setDefChess={setDefChess}
     />
+    <Information
+      defChess={defChess}
+      chessList={chessList}
+      atkEnemy={enemyList[enemyRoundTab.oder].skill[enemyRandomSkill]}
+    />
     <EnemyList
       oder={enemyRoundTab.oder}
       enemyRandomSkill={enemyRandomSkill}
       enemyList={enemyList}
+    />
+    <Sprite
+      interactive={true}
+      buttonMode={true}
+      width={90}
+      height={42}
+      anchor={0.5}
+      zIndex={2}
+      x={230}
+      y={155}
+      image={loader.resources[`fightDef`].data}
+      pointertap={()=>{
+        const isHit = ProbabilityCount(
+          enemyList[enemyRoundTab.oder].skill[enemyRandomSkill].hitfix,
+          chessList[defChess].dodge
+        );
+        setEnemyRoundTab(prev=>{return{...prev, status:false}});
+        setAnimeShow({
+          status:true,
+          type:'ENEMY',
+          isHit: isHit,
+          attacker:{ 
+            key: enemyRoundTab.oder,
+            skill:enemyList[enemyRoundTab.oder].skill[enemyRandomSkill],
+            prevSP:enemyList[enemyRoundTab.oder].sp
+          },
+          target:{ 
+            key: defChess,
+            isHit:isHit,
+            prevLife:chessList[defChess].hp
+          }
+        });
+      }}
     />
   </Graphics>
 };

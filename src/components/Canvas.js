@@ -53,13 +53,13 @@ export const Canvas = ()=> {
     target:{ key:'', isHit:false, prevLife:0 }
   });
   const [ moveStep, setMoveStep ] = useState(true);
-
+ 
   // const [ animeShow, setAnimeShow ] = useState({
   //   status:true,
-  //   type:'USER',
+  //   type:'ENEMY',
   //   isHit:true,
   //   attacker:{ key:0, skill:{
-  //     name: "斬擊", atk: 1300, sp: 15, hitfix: 0
+  //     name: "", atk: 1300, sp: 15, hitfix: 0
   //   }, prevSP:125 },
   //   target:{ key:0, isHit:false, prevLife:2000 }
   // });
@@ -202,7 +202,9 @@ export const Canvas = ()=> {
         props={{
           enemyRoundTab,
           chessList,
-          enemyList
+          enemyList,
+          setEnemyRoundTab,
+          setAnimeShow
         }}
       />}
   </Stage>

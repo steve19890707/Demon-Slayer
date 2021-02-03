@@ -36,11 +36,11 @@ export const BattleAnimeShow = ({
         case 'CHESS':
           if(animeShow.type==="USER"){
             return chess[typeof(animeShow.attacker.key)!=='number'?0:animeShow.attacker.key];
-          }else return enemyChess[typeof(animeShow.target.key)!=='number'?0:animeShow.target.key];
+          }else return chess[typeof(animeShow.target.key)!=='number'?0:animeShow.target.key];
         case 'ENEMYCHESS':
           if(animeShow.type==="USER"){
             return enemyChess[typeof(animeShow.target.key)!=='number'?0:animeShow.target.key];
-          }else return chess[typeof(animeShow.attacker.key)!=='number'?0:animeShow.attacker.key];
+          }else return enemyChess[typeof(animeShow.attacker.key)!=='number'?0:animeShow.attacker.key];
         default:
           break;
       }; 

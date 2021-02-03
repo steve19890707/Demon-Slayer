@@ -1,8 +1,6 @@
 import React from 'react';
-import { Container, Graphics, Sprite, Text } from '@inlet/react-pixi/animated';
+import { Container, Graphics, Sprite } from '@inlet/react-pixi/animated';
 import { loader } from '../../DataLoader';
-import * as PIXI from "pixi.js";
-
 export const ChessList = ({
   chessList,
   defChess,
@@ -33,7 +31,19 @@ export const ChessList = ({
           x={-200}
           y={-125 + distance}
           image={loader.resources[`${v.name}-head-default`].data}
+          pointertap={()=>setDefChess(k)}
         />
+        {k===defChess&&<Graphics
+          anchor={0.5}
+          x={-200}
+          y={-125 + distance}
+          zIndex={1}
+          draw={g=> {
+            g.beginFill(`0x7b2cbf`);
+            g.drawRoundedRect(-38,-38,76,76,5);
+            g.endFill();
+          }}
+        />}
       </React.Fragment>
     })}
   </Container>

@@ -17,9 +17,84 @@ export const steps = ({
 }) => {
   // 技能動畫:
   switch (skillName) {
+    case '防禦':
+      setPosition(prev=>{return{ ...prev, x:200, y:50, tension:100 }});
+      const defStart = ()=>{
+        if(isHit){
+          return isHitStep();
+        }else return isDodge();
+      };
+      const isHitStep = ()=> {
+        const timeout = setTimeout(() => {
+          setPosition(prev=>{return{ ...prev, x:250, y:50, mass:2, 
+            friction:5, tension:1000, tint:0xd00000}});
+          // callback
+          if(resultLife<=0){
+            return isDead({ type:'dead' });
+          }else return next({ type:'def' });
+        },1200);
+        return timeout;
+      };
+      const isDodge = ()=>{
+        const timeout = setTimeout(() => {
+          setPosition(prev=>{return{ ...prev, x:250, y:0 }});
+          // callback
+          next({ type:'dodge' });
+        },1200);
+        return timeout;
+      };
+      const isDead = ({ type })=> {
+        const timeout = setTimeout(() => {
+          setPosition(prev=>{return{ ...prev, x:200, y:50, 
+            friction:2, tint:0x03071e
+          }});
+          setLinesStatus(prev=>{ 
+            return { 
+              status: type,
+              character: prev.character==="USER" ? "ENEMY" : "USER"
+            };
+          });
+          // callback
+          isDeadStep2();
+        },5000);
+        return timeout;
+      };
+      const isDeadStep2 = ()=>{
+        const timeout = setTimeout(() => {
+          setPosition(prev=>{return { ...prev, alpha:0 }});
+          // callback
+          end();
+        },3000);
+        return timeout;
+      };
+      const next = ({ type })=>{
+        const timeout = setTimeout(() => {
+          setPosition(prev=>{return{ ...prev, x:200, y:50, mass:1, 
+            friction:20, tension:170, tint:0xffffff}});
+          setLinesStatus(prev=>{ 
+            return { 
+              status: type,
+              character: prev.character==="USER" ? "ENEMY" : "USER"
+            };
+          });
+          // callback
+          end();
+        },5000);
+        return timeout;
+      };
+      const end = ()=> {
+        const timeout = setTimeout(() => {
+          // callback
+          setAnimeIsDone(true);
+        },3000);
+        return timeout;
+      };
+      return defStart();
+    // ATK
     default:
+      setBGstatus({ type:'STANDBY', defence:false });
       setPosition(prev=>{return{ ...prev, x:550,y:50,tension:100 }});
-      const start = ()=>{
+      const atkStart = ()=>{
         setPosition(prev=>{return{ ...prev, x:250, y:50, tension:100 }});
         // callback
         return step1();
@@ -72,6 +147,6 @@ export const steps = ({
         },3000);
         return timeout;
       };
-      return start();
+      return atkStart();
   }
 };
