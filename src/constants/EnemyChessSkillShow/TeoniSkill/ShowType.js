@@ -43,7 +43,7 @@ export const ShowType = ({
       >
       {props => 
         <Sprite
-          zIndex={2}
+          zIndex={3}
           width={300}
           height={300}
           anchor={0.5}

@@ -5,6 +5,7 @@ import * as PIXI from "pixi.js";
 export const Information = ({
   defChess, chessList, atkEnemy
 })=>{
+  const dodge = chessList[defChess].dodge - atkEnemy.hitfix>=0 ? chessList[defChess].dodge - atkEnemy.hitfix : 0;
   return <Container sortableChildren={true}>
     <Graphics
       x={-125} y={-150}
@@ -25,7 +26,7 @@ export const Information = ({
           fill:'#ff6b6b',
         })}/>
       <Text 
-        text={`迴避率：${chessList[defChess].dodge - atkEnemy.hitfix}%`}
+        text={`迴避率：${dodge}%`}
         anchor={{x:0}}
         y={60}
         style={new PIXI.TextStyle({ fontFamily: '"Source Sans Pro", Helvetica, sans-serif',

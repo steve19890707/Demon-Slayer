@@ -41,10 +41,12 @@ export const ShowType = ({
       >
       {props => 
         <Sprite
-          zIndex={3}
+          zIndex={2}
           width={200}
           height={200}
           anchor={0.5}
+          alpha={position.alpha}
+          tint={position.tint}
           image={loader.resources[`${attackerName}-fight-typeA`].data}
           {...props}
         />}

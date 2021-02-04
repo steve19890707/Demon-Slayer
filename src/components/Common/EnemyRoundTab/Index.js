@@ -2,14 +2,18 @@ import React,{ useState } from 'react';
 import { Graphics, Sprite } from '@inlet/react-pixi/animated';
 import { loader } from '../../DataLoader';
 import { ProbabilityCount } from "../../Common/ProbabilityCount";
+import { chessDefense } from "../../../reducer/chess";
+import { enemyChessAttackResult } from "../../../reducer/enemyChess";
 // common part
 import { EnemyList } from "./EnemyList";
 import { ChessList } from "./ChessList";
 import { Information } from "./Information";
 export const EnemyRoundTab = ({ props })=> {
   const [ defChess, setDefChess ] = useState(0);
-  const { enemyRoundTab, chessList, enemyList,
-    setEnemyRoundTab, setAnimeShow } = props;
+  const { enemyRoundTab, chess, enemyChess,
+    setEnemyRoundTab, setAnimeShow, setCurrentChess, dispatch } = props;
+  const chessList = chess.filter(v=>v.debut);
+  const enemyList = enemyChess.filter(v=>v.debut);
   const enemySkill = enemyList[enemyRoundTab.oder].skill;
   const enemySp = enemyList[enemyRoundTab.oder].sp;
   const getAtkSkill = ()=>{
@@ -19,6 +23,15 @@ export const EnemyRoundTab = ({ props })=> {
     return checkSp ? 0 : random;
   };
   const enemyRandomSkill = getAtkSkill();
+  const getCurrentChessKey = ({ chess, debut, key })=>{
+    let getKey;
+    chess.find((v,k)=>{
+      if(v.id===debut[key].id){
+        return getKey = k;
+      }else return null;
+    });
+    return getKey;
+  };
   return <Graphics
     x={400}
     y={300}
@@ -60,18 +73,45 @@ export const EnemyRoundTab = ({ props })=> {
           enemyList[enemyRoundTab.oder].skill[enemyRandomSkill].hitfix,
           chessList[defChess].dodge
         );
+        setCurrentChess(prev=>{return{...prev,type:"ATTACK"}});
+        dispatch(enemyChessAttackResult({
+          key: getCurrentChessKey({
+            chess: enemyChess,
+            debut: enemyList,
+            key: enemyRoundTab.oder
+          }),
+          lessSp:enemyList[enemyRoundTab.oder].skill[enemyRandomSkill].sp
+        }));
+        if(isHit){
+          dispatch(chessDefense({
+            key: getCurrentChessKey({
+              chess: chess,
+              debut: chessList,
+              key: defChess
+            }),
+            damage: enemyList[enemyRoundTab.oder].skill[enemyRandomSkill].atk
+          }));
+        };
         setEnemyRoundTab(prev=>{return{...prev, status:false}});
         setAnimeShow({
           status:true,
           type:'ENEMY',
           isHit: isHit,
           attacker:{ 
-            key: enemyRoundTab.oder,
+            key: getCurrentChessKey({
+              chess: enemyChess,
+              debut: enemyList,
+              key: enemyRoundTab.oder
+            }),
             skill:enemyList[enemyRoundTab.oder].skill[enemyRandomSkill],
             prevSP:enemyList[enemyRoundTab.oder].sp
           },
           target:{ 
-            key: defChess,
+            key: getCurrentChessKey({
+              chess: chess,
+              debut: chessList,
+              key: defChess
+            }),
             isHit:isHit,
             prevLife:chessList[defChess].hp
           }

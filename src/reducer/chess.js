@@ -12,7 +12,8 @@ const chess = createSlice({
   initialState:[
     {
       name:'Tanjirou',
-      cn:'竃門 碳治郎',
+      cn:'竈門 炭治郎',
+      id:1,
       step:3,
       attack:2,
       hp:1500,
@@ -24,28 +25,29 @@ const chess = createSlice({
       },
       skill:[{ 
         name:'斬擊',
-        atk:150,
+        atk:200,
         sp:0,
         hitfix:0
       },{ 
         name:'叄之型―流流舞',
-        atk:300,
+        atk:350,
         sp:15,
         hitfix:10
       },{ 
         name:'捌之型―滝壺',
-        atk:400,
+        atk:500,
         sp:25,
         hitfix:5
       },{
         name:'拾之型―生生流轉',
-        atk:600,
+        atk:850,
         sp:50,
         hitfix:20
       }],
       ...basicCommon
     },{
       name:'Nezuko',
+      id:2,
       step:2,
       attack:1,
       hp:2200,
@@ -75,6 +77,7 @@ const chess = createSlice({
     },{
       name:'Inosuke',
       cn:'嘴平 伊之助',
+      id:3,
       step:4,
       attack:3,
       hp:1800,
@@ -136,17 +139,33 @@ const chess = createSlice({
       const { key } = actions.payload;
       state[key].checkStatus = !state[key].checkStatus;
     },
+    chessDefense: (state, actions)=>{
+      const { key, damage } = actions.payload;
+      state[key].hp -= damage;
+    },
     chessAttackResult: (state, actions)=> {
       const { key, lessSp } = actions.payload;
       state[key].sp -= lessSp;
     },
+    chessDead: (state, actions)=> {
+      const { key } = actions.payload;
+      state[key].debut = false;
+      state[key].hp = state[key].fullValue.hp;
+      state[key].sp = state[key].fullValue.sp;
+    },
     chessMoved: (state, actions)=>{
       const { key } = actions.payload;
-      state[key].roundMove -= 0;
+      state[key].roundMove -= 1;
+    },
+    chessRoundRest:(state)=>{
+      for(let i=0;i<state.length;i++){
+        state[i].roundMove = 1;
+      };
     },
   }
 });
 export default chess.reducer;
 export const { 
-  stageDebut, chessMove, chessSelected, chessCheckStatus, chessAttackResult, chessMoved
+  stageDebut, chessMove, chessSelected, chessCheckStatus, chessAttackResult, 
+  chessDead, chessMoved, chessDefense, chessRoundRest
 } = chess.actions;

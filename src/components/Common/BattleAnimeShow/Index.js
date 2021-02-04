@@ -1,5 +1,6 @@
 import React,{ useState, useEffect } from 'react';
 import { Container, Graphics, Sprite } from '@inlet/react-pixi/animated';
+import { chessDead, chessRoundRest } from "../../../reducer/chess";
 import { enemyChessDead } from "../../../reducer/enemyChess";
 import { loader } from '../../DataLoader';
 // part
@@ -64,8 +65,19 @@ export const BattleAnimeShow = ({
           title:`已擊敗 ${enemyChess[target.key].cn}!`,
           status:true,
         });
+      }else if(animeShow.type==="ENEMY" &&
+        chess[target.key].hp <= 0
+      ){
+        dispatch(chessDead({ key:target.key }));
+        setUsualTip({
+          title:`${chess[target.key].cn} 戰敗`,
+          status:true,
+        });
       }else {
         setMoveStep(true);
+      };
+      if(animeShow.type==="ENEMY"){
+        dispatch(chessRoundRest());
       };
     },[ animeIsDone ]);
     return <Container sortableChildren={true}>
@@ -160,8 +172,19 @@ export const BattleAnimeShow = ({
               title:`已擊敗 ${enemyChess[target.key].cn}!`,
               status:true,
             });
+          }else if(animeShow.type==="ENEMY" &&
+            chess[target.key].hp <= 0
+          ){
+            dispatch(chessDead({ key:target.key }));
+            setUsualTip({
+              title:`${chess[target.key].cn} 戰敗`,
+              status:true,
+            });
           }else {
             setMoveStep(true);
+          };
+          if(animeShow.type==="ENEMY"){
+            dispatch(chessRoundRest());
           };
           const clearAllTimeouts = ()=>{
             let id = window.setTimeout(null,0);

@@ -13,6 +13,7 @@ const enemyChess = createSlice({
     {
       name:'Teoni',
       cn:'手鬼',
+      id:1,
       hp:2000,
       sp:100,
       dodge:25,
@@ -22,19 +23,20 @@ const enemyChess = createSlice({
       },
       skill:[{ 
         name:'胡亂毆打',
-        atk:50,
+        atk:150,
         sp:0,
         hitfix:10
       },{ 
         name:'你是第十四個',
-        atk:300,
-        sp:10,
+        atk:500,
+        sp:25,
         hitfix:20
       }],
       ...basicCommon
     },{
       name:'Nomanooni',
       cn:'沼鬼',
+      id:2,
       hp:1500,
       sp:200,
       dodge:30,
@@ -83,13 +85,20 @@ const enemyChess = createSlice({
       const { key, damage } = actions.payload;
       state[key].hp -= damage;
     },
+    enemyChessAttackResult: (state, actions)=> {
+      const { key, lessSp } = actions.payload;
+      state[key].sp -= lessSp;
+    },
     enemyChessDead: (state, actions)=> {
       const { key } = actions.payload;
       state[key].debut = false;
       state[key].hp = state[key].fullValue.hp;
       state[key].sp = state[key].fullValue.sp;
-    }
+    },
   }
 });
 export default enemyChess.reducer;
-export const { enemyStageDebut, enemyChessSelected, enemyChessCheckStatus, enemyChessDefense, enemyChessDead } = enemyChess.actions;
+export const { 
+  enemyStageDebut, enemyChessSelected, enemyChessCheckStatus, enemyChessDefense, 
+  enemyChessAttackResult, enemyChessDead 
+} = enemyChess.actions;

@@ -45,7 +45,6 @@ export const Canvas = ()=> {
     attacker:{ key:'' },
     target:{ key:'' }
   });
-
   const [ animeShow, setAnimeShow ] = useState({
     status:false,
     type:'',
@@ -53,23 +52,9 @@ export const Canvas = ()=> {
     target:{ key:'', isHit:false, prevLife:0 }
   });
   const [ moveStep, setMoveStep ] = useState(true);
- 
-  // const [ animeShow, setAnimeShow ] = useState({
-  //   status:true,
-  //   type:'ENEMY',
-  //   isHit:true,
-  //   attacker:{ key:0, skill:{
-  //     name: "", atk: 1300, sp: 15, hitfix: 0
-  //   }, prevSP:125 },
-  //   target:{ key:0, isHit:false, prevLife:2000 }
-  // });
-  // const [ moveStep, setMoveStep ] = useState(false);
-
   const chessMap = useSelector(state=>state.chessMap);
   const chess = useSelector(state=>state.chess);
   const enemyChess = useSelector(state=>state.enemyChess);
-  const chessList = chess.filter(v=>v.debut);
-  const enemyList = enemyChess.filter(v=>v.debut);
   const dispatch = useDispatch();
   // debut
   useEffect(()=>{
@@ -201,10 +186,12 @@ export const Canvas = ()=> {
       <EnemyRoundTab
         props={{
           enemyRoundTab,
-          chessList,
-          enemyList,
+          chess,
+          enemyChess,
           setEnemyRoundTab,
-          setAnimeShow
+          setAnimeShow,
+          setCurrentChess,
+          dispatch
         }}
       />}
   </Stage>
