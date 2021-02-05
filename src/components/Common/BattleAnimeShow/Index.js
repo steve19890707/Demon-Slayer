@@ -85,8 +85,8 @@ export const BattleAnimeShow = ({
         props={{stageStatus, BGstatus, BGprop, SkBGprop, setBGpops, setSkBGpops}}
       />
       <TopBar
-        right={chess[typeof(animeShow.attacker.key)!=='number'?0:animeShow.attacker.key]}
-        left={enemyChess[typeof(animeShow.target.key)!=='number'?0:animeShow.target.key]}
+        right={fetchChessType('CHESS')}
+        left={fetchChessType('ENEMYCHESS')}
         showType={animeShow.type}
         targetHp={targetHp}
         attackerSp={attackerSp}
@@ -142,8 +142,8 @@ export const BattleAnimeShow = ({
         setLinesStatus={setLinesStatus}
       />
       <BottomBar
-        right={chess[typeof(animeShow.attacker.key)!=='number'?0:animeShow.attacker.key]}
-        left={enemyChess[typeof(animeShow.target.key)!=='number'?0:animeShow.target.key]}
+        right={fetchChessType('CHESS')}
+        left={fetchChessType('ENEMYCHESS')}
         linesStatus={linesStatus}
       />
       <Sprite

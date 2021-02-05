@@ -1,6 +1,6 @@
 import React from "react";
 import { TanjirouSkill } from "./TanjirouSkill/Index";
-
+import { NezukoSkill } from "./Nezuko/Index";
 export const ChessSkillShow = ({
   attacker={},
   skill={},
@@ -34,6 +34,8 @@ export const ChessSkillShow = ({
   switch (attacker.name) {
     case `Tanjirou`:
       return <TanjirouSkill {...defaultprops}/>
+    case `Nezuko`:
+      return <NezukoSkill {...defaultprops}/>
     default:
       return;
   };

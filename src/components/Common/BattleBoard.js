@@ -218,8 +218,8 @@ export const BattleBoard = ({ props })=>{
       <Text
         text={`${
           100 +
-          data.attacker.skill[atkSelectd.key].hitfix -
-          data.target.dodge
+          ((data.attacker.skill[atkSelectd.key].hitfix - data.target.dodge)>=0 ? 0 :
+            (data.attacker.skill[atkSelectd.key].hitfix - data.target.dodge))
         }%`}
         zIndex={2}
         x={100}

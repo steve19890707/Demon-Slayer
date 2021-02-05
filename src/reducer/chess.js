@@ -47,31 +47,32 @@ const chess = createSlice({
       ...basicCommon
     },{
       name:'Nezuko',
+      cn:'竈門 禰豆子',
       id:2,
       step:2,
       attack:1,
       hp:2200,
       sp:200,
-      dodge:50,
+      dodge:80,
       fullValue:{
         hp:2200,
         sp:200
       },
       skill:[{ 
         name:'爪擊',
-        atk:50,
+        atk:150,
         sp:0,
         hitfix:0
       },{ 
         name:'踢擊',
-        atk:120,
-        sp:5,
-        hitfix:0
+        atk:250,
+        sp:10,
+        hitfix:15
       },{ 
         name:'血鬼術',
         atk:1000,
-        sp:100,
-        hitfix:0
+        sp:80,
+        hitfix:35
       }],
       ...basicCommon
     },{
