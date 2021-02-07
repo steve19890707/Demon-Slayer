@@ -13,7 +13,8 @@ export const EnemyChessSkillShow = ({
   setAnimeIsDone,
   setTargetHp,
   setAttackerSp,
-  setLinesStatus
+  setLinesStatus,
+  setShowSkill
 })=>{
   const defaultprops = {
     skillName: skill.name,
@@ -28,7 +29,8 @@ export const EnemyChessSkillShow = ({
     setAnimeIsDone: setAnimeIsDone,
     setTargetHp: setTargetHp,
     setAttackerSp: setAttackerSp,
-    setLinesStatus: setLinesStatus
+    setLinesStatus: setLinesStatus,
+    setShowSkill: setShowSkill
   }
   switch (attacker.name) {
     case `Teoni`:

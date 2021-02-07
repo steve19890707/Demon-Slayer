@@ -14,6 +14,7 @@ export const steps = ({
   setAttackerSp=null,
   setLinesStatus=null,
   setPosition=null,
+  setShowSkill=null
 }) => {
   // 技能動畫:
   switch (skillName) {
@@ -32,7 +33,7 @@ export const steps = ({
           if(resultLife<=0){
             return isDead({ type:'dead' });
           }else return next({ type:'def' });
-        },1200);
+        },BGstatus.seconds);
         return timeout;
       };
       const isDodge = ()=>{
@@ -40,7 +41,7 @@ export const steps = ({
           setPosition(prev=>{return{ ...prev, x:250, y:0 }});
           // callback
           next({ type:'dodge' });
-        },1200);
+        },BGstatus.seconds);
         return timeout;
       };
       const isDead = ({ type })=> {
@@ -92,7 +93,7 @@ export const steps = ({
       return defStart();
     // ATK
     default:
-      setBGstatus({ type:'STANDBY', defence:false });
+      setBGstatus({ type:'STANDBY', defence:false, seconds:1200 });
       setPosition(prev=>{return{ ...prev, x:550,y:50,tension:100 }});
       const atkStart = ()=>{
         setPosition(prev=>{return{ ...prev, x:250, y:50, tension:100 }});
@@ -102,7 +103,7 @@ export const steps = ({
       const step1 = ()=>{
         const timeout = setTimeout(() => {
           setPosition(prev=>{return{ ...prev, x:0, y:50, tension:100 }});
-          setBGstatus({ type:'SKILL', defence:false });
+          setBGstatus(prev=>{return{ ...prev, type:'SKILL' }});
           // callback
           step2();
         },3000);
@@ -118,7 +119,7 @@ export const steps = ({
         });
         setLinesStatus(prev=>{ return { ...prev, status:'attack' }});
         const timeout = setTimeout(() => {
-          setBGstatus({ type:'STOP', defence:true });
+          setBGstatus(prev=>{return{ ...prev, type:'STOP', defence:true }});
           // callback
           step3();
         },3000);

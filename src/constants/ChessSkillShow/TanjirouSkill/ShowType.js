@@ -63,11 +63,11 @@ export const ShowType = ({
       >
       {props => 
         <Sprite
-          zIndex={2}
+          zIndex={3}
           width={200}
           height={200}
           anchor={0.5}
-          image={loader.resources[`${attackerName}-fight-typeB`].data}
+          image={loader.resources[`${attackerName}-fight-typeA`].data}
           {...props}
         />}
       </Spring>

@@ -1,5 +1,6 @@
 import { TweenMax } from 'gsap';
 import numeral from "numeral";
+import { loader } from '../../../components/DataLoader';
 export const steps = ({
   skillName='',
   isHit=false,
@@ -14,6 +15,7 @@ export const steps = ({
   setAttackerSp=null,
   setLinesStatus=null,
   setPosition=null,
+  setShowSkill=null
 }) => {
   // 技能動畫:
   switch (skillName) {
@@ -32,7 +34,7 @@ export const steps = ({
           if(resultLife<=0){
             return isDead({ type:'dead' });
           }else return next({ type:'def' });
-        },1200);
+        },BGstatus.seconds);
         return timeout;
       };
       const isDodge = ()=>{
@@ -40,7 +42,7 @@ export const steps = ({
           setPosition(prev=>{return{ ...prev, x:250, y:0 }});
           // callback
           next({ type:'dodge' });
-        },1200);
+        },BGstatus.seconds);
         return timeout;
       };
       const isDead = ({ type })=> {
@@ -91,8 +93,64 @@ export const steps = ({
       };
       return defStart();
     // ATK
+    case '捌之型―滝壺':
+      setBGstatus({ type:'STANDBY', defence:false, seconds:0 });
+      setPosition(prev=>{return{ ...prev, x:550,y:50,tension:100 }});
+      const skill3atkStart = ()=>{
+        setPosition(prev=>{return{ ...prev, x:250, y:50, tension:100 }});
+        // callback
+        return skill3step1();
+      };
+      const skill3step1 = ()=>{
+        const timeout = setTimeout(() => {
+          setPosition(prev=>{return{ ...prev, x:0, y:-100, tension:100 }});
+          setBGstatus(prev=>{return{ ...prev, type:'SKILL' }});
+          // callback
+          skill3step2();
+        },3000);
+        return timeout;
+      };
+      const skill3step2 = ()=>{
+        const run =  { number: attackerSp };
+        TweenMax.to(run, 0.8, {
+          number: resultSp,
+          onUpdate: () => {
+            setAttackerSp(numeral(run.number).format("0"))
+          },
+        });
+        setLinesStatus(prev=>{ return { ...prev, status:'attack' }});
+        setShowSkill(prev=>{
+          const video = loader.resources[`${prev.name}-skill${`3`}-show`].data;
+          video.play();
+          return { ...prev, 
+            status:true, 
+            type:'3',
+            callback:()=>{
+              setBGstatus(prev=>{return{ ...prev, type:'STOP', defence:true }});
+              setPosition(prev=>{return{ ...prev, x:-400, y:50, tension:1000 }});
+              skill3step3();
+            }
+          };
+        });
+      };
+      const skill3step3 = ()=>{
+        const run = { number: targetLife };
+        if(isHit) {
+          TweenMax.to(run, 0.8, {
+            number: resultLife<0 ? 0 : resultLife,
+            onUpdate: () => {
+              setTargetHp(numeral(run.number).format("0"))
+            },
+          });
+        };
+        const timeout = setTimeout(() => {
+          setPosition(prev=>{return{ ...prev, x:550, y:50, tension:50 }});
+        },3000);
+        return timeout;
+      };
+      return skill3atkStart();
     default:
-      setBGstatus({ type:'STANDBY', defence:false });
+      setBGstatus({ type:'STANDBY', defence:false, seconds:1200 });
       setPosition(prev=>{return{ ...prev, x:550,y:50,tension:100 }});
       const atkStart = ()=>{
         setPosition(prev=>{return{ ...prev, x:250, y:50, tension:100 }});
@@ -102,7 +160,7 @@ export const steps = ({
       const step1 = ()=>{
         const timeout = setTimeout(() => {
           setPosition(prev=>{return{ ...prev, x:0, y:50, tension:100 }});
-          setBGstatus({ type:'SKILL', defence:false });
+          setBGstatus(prev=>{return{ ...prev, type:'SKILL' }});
           // callback
           step2();
         },3000);
@@ -118,7 +176,7 @@ export const steps = ({
         });
         setLinesStatus(prev=>{ return { ...prev, status:'attack' }});
         const timeout = setTimeout(() => {
-          setBGstatus({ type:'STOP', defence:true });
+          setBGstatus(prev=>{return{ ...prev, type:'STOP', defence:true }});
           // callback
           step3();
         },3000);

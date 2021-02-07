@@ -52,6 +52,7 @@ export const Canvas = ()=> {
     target:{ key:'', isHit:false, prevLife:0 }
   });
   const [ moveStep, setMoveStep ] = useState(true);
+  const [ currentBGM, setCurrentBGM ] = useState('');
   const chessMap = useSelector(state=>state.chessMap);
   const chess = useSelector(state=>state.chess);
   const enemyChess = useSelector(state=>state.enemyChess);
@@ -163,9 +164,11 @@ export const Canvas = ()=> {
       <BattleBoard
         props={{
           battleInfo,
+          currentBGM,
           setMoveStep,
           setBattleInfo,
           setAnimeShow,
+          setCurrentBGM,
           dispatch
         }}
       />}

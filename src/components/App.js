@@ -19,14 +19,18 @@ const StyledApp = styled.div`
 `;
 export const App = ()=> {
   const [ dataIsDone, setDataIsDone ] = useState(false);
+  const [ progress, setProgress ] = useState(0);
   useEffect(()=>{
-    loader.onComplete.add(()=>{
+    loader.onProgress.add((loader)=>{
+      setProgress(Math.floor(loader.progress));
+    });
+    loader.onComplete.add((loader,resources)=>{
       setDataIsDone(true);
     });
   });
   return <StyledApp>
     <GlobalStyle/>
     {dataIsDone?<Canvas />:
-      <span className="loading">Loading..</span>}
+      <span className="loading">Loading {progress}%..</span>}
   </StyledApp>
 };

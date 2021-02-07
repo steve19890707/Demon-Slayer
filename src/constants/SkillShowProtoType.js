@@ -13,6 +13,7 @@ export const SkillShowProtoType = ({
   setTargetHp,
   setAttackerSp,
   setLinesStatus,
+  setShowSkill,
   defXPostion,
   steps,
   ShowType
@@ -24,6 +25,7 @@ export const SkillShowProtoType = ({
       const timeout = steps({
         skillName:skillName,
         isHit:isHit,
+        BGstatus:BGstatus,
         resultLife:resultLife,
         setAnimeIsDone:setAnimeIsDone,
         setLinesStatus:setLinesStatus,
@@ -31,7 +33,7 @@ export const SkillShowProtoType = ({
       });
       return ()=> clearTimeout(timeout);
     };
-  },[ BGstatus.defence, skillName, isHit, resultLife, setAnimeIsDone, steps, setLinesStatus ])
+  },[ BGstatus, skillName, isHit, resultLife, setAnimeIsDone, steps, setLinesStatus ])
   // atk
   useEffect(()=>{
     if(skillName==='防禦'){ 
@@ -49,11 +51,12 @@ export const SkillShowProtoType = ({
       setTargetHp:setTargetHp,
       setAttackerSp:setAttackerSp,
       setLinesStatus:setLinesStatus,
+      setShowSkill:setShowSkill,
       setPosition:setPosition
     });
     return ()=> clearTimeout(timeout);
   },[ skillName, isHit, targetLife, attackerSp, resultLife, resultSp,
-    setBGstatus, setTargetHp, setAttackerSp, defXPostion, steps, setLinesStatus ]);
+    setBGstatus, setTargetHp, setAttackerSp, defXPostion, steps, setLinesStatus, setShowSkill ]);
   return <ShowType
     skillName={skillName}
     attackerName={attackerName}

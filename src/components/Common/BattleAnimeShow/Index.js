@@ -1,4 +1,5 @@
 import React,{ useState, useEffect } from 'react';
+import * as PIXI from "pixi.js";
 import { Container, Graphics, Sprite } from '@inlet/react-pixi/animated';
 import { chessDead, chessRoundRest } from "../../../reducer/chess";
 import { enemyChessDead } from "../../../reducer/enemyChess";
@@ -10,7 +11,6 @@ import { BottomBar } from "./BottomBar";
 // skill
 import { ChessSkillShow } from "../../../constants/ChessSkillShow/Index";
 import { EnemyChessSkillShow } from "../../../constants/EnemyChessSkillShow/Index";
-
 export const BattleAnimeShow = ({
   props
 }) =>{
@@ -21,7 +21,8 @@ export const BattleAnimeShow = ({
   const CreateContent = ()=>{
     const [ BGstatus, setBGstatus ] = useState({ 
       type:'STANDBY',
-      defence: false
+      defence: false,
+      seconds: 1200
     });
     const [ BGprop, setBGpops ] = useState({ toX:400, duration: 20000 });
     const [ SkBGprop, setSkBGpops ] = useState({ toX:400, duration: 500 });
@@ -31,6 +32,12 @@ export const BattleAnimeShow = ({
     const [ linesStatus, setLinesStatus ] = useState({ 
       character: animeShow.type,
       status:'default'
+    });
+    const [ showSkill, setShowSkill ] = useState({ 
+      status:false,
+      type:'0',
+      name: chess[attacker.key].name,
+      callback: null
     });
     const fetchChessType = ( type='' )=>{
       switch (type) {
@@ -46,6 +53,27 @@ export const BattleAnimeShow = ({
           break;
       }; 
     };
+    const CreateSkillSprite = ({}) => {
+      const video = PIXI.Texture.from(loader.resources[`${chess[attacker.key].name}-skill${showSkill.type}-show`].data);
+      const videoDom = video.baseTexture.resource.source;
+      videoDom.onended = function() {
+        setShowSkill(prev=>{
+          videoDom.currentTime = 0;
+          return { ...prev, status:false }
+        });
+        showSkill.callback();
+      };
+      return <Sprite
+        zIndex={99}
+        width={600}
+        height={370}
+        anchor={0.5}
+        x={0}
+        y={-35}
+        image={loader.resources[`${chess[attacker.key].name}-talk-attack`].data}
+        texture={video}
+      />
+    }
     //  關閉動畫判斷
     useEffect(()=>{
       if(!animeIsDone){ return };
@@ -115,6 +143,7 @@ export const BattleAnimeShow = ({
         setTargetHp={setTargetHp}
         setAttackerSp={setAttackerSp}
         setLinesStatus={setLinesStatus}
+        setShowSkill={setShowSkill}
       />
       <EnemyChessSkillShow
         attacker={fetchChessType('ENEMYCHESS')}
@@ -140,7 +169,9 @@ export const BattleAnimeShow = ({
         setTargetHp={setTargetHp}
         setAttackerSp={setAttackerSp}
         setLinesStatus={setLinesStatus}
+        setShowSkill={setShowSkill}
       />
+      {showSkill.status && <CreateSkillSprite/>}
       <BottomBar
         right={fetchChessType('CHESS')}
         left={fetchChessType('ENEMYCHESS')}

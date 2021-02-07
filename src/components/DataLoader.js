@@ -11,6 +11,7 @@ loader
   .add('Tanjirou-talk-dead',`${hostname}imgs/Tanjirou/talk-dead.jpg`)
   .add('Tanjirou-fight-typeA',`${hostname}imgs/Tanjirou/fight-typeA.png`)
   .add('Tanjirou-fight-typeB',`${hostname}imgs/Tanjirou/fight-typeB.png`)
+  .add('Tanjirou-skill3-show',`${hostname}imgs/Tanjirou/skill/skill3.mp4`)
   .add('Nezuko-head-default',`${hostname}imgs/Nezuko/head-default.jpg`)
   .add('Nezuko-talk-default',`${hostname}imgs/Nezuko/talk-default.jpg`)
   .add('Nezuko-talk-attack',`${hostname}imgs/Nezuko/talk-attack.jpg`)
@@ -38,4 +39,5 @@ loader
   .add('endBtn',`${hostname}imgs/common/end.png`)
   .add('fightOff',`${hostname}imgs/common/fightOff.png`)
   .add('fightDef',`${hostname}imgs/common/fightDef.png`)
+  .add('bgm-KimetsuNoYaiba',`${hostname}audio/bgm-KimetsuNoYaiba.mp3`)
   .load();

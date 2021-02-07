@@ -14,7 +14,8 @@ export const ChessSkillShow = ({
   setAnimeIsDone,
   setTargetHp,
   setAttackerSp,
-  setLinesStatus
+  setLinesStatus,
+  setShowSkill
 })=>{
   const defaultprops = {
     skillName: skill.name,
@@ -29,7 +30,8 @@ export const ChessSkillShow = ({
     setAnimeIsDone: setAnimeIsDone,
     setTargetHp: setTargetHp,
     setAttackerSp: setAttackerSp,
-    setLinesStatus: setLinesStatus
+    setLinesStatus: setLinesStatus,
+    setShowSkill: setShowSkill
   }
   switch (attacker.name) {
     case `Tanjirou`:
