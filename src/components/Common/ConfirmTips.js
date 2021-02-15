@@ -17,7 +17,8 @@ export const ConfirmTip = ({
     setTipStatus,
     setOtherTab,
     setRoundNum,
-    setUsualTip
+    setUsualTip,
+    setCurrentBGM
   } = props;
   return <Graphics
     x={400}
@@ -86,7 +87,8 @@ export const ConfirmTip = ({
             setUsualTip({
               title:'敵方回合',
               status:true
-            })
+            });
+            setCurrentBGM('');
             break;
           default:
             return;

@@ -1,6 +1,7 @@
 import React,{ useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Stage, Container, Sprite } from '@inlet/react-pixi/animated';
+import { Howler } from 'howler';
 // reducers
 import { stageDebut } from "../reducer/chess";
 import { enemyStageDebut } from "../reducer/enemyChess";
@@ -16,7 +17,7 @@ import { Chess } from "../components/Chess/Chess";
 import { EnemyChess } from "../components/EnemyChess/EnemyChess";
 // rule
 import { stageRule } from "../constants/stageRule";
-import { loader } from './DataLoader';
+import { audioData, loader } from './DataLoader';
 export const Canvas = ()=> {
   const [ stageStatus, setStageStatus ] = useState('stageOne');
   const [ roundNum, setRoundNum ] = useState(1);
@@ -53,10 +54,22 @@ export const Canvas = ()=> {
   });
   const [ moveStep, setMoveStep ] = useState(true);
   const [ currentBGM, setCurrentBGM ] = useState('');
+  const [ preBGM, setPreBGM ] = useState('');
   const chessMap = useSelector(state=>state.chessMap);
   const chess = useSelector(state=>state.chess);
   const enemyChess = useSelector(state=>state.enemyChess);
   const dispatch = useDispatch();
+  // bgm
+  useEffect(()=>{
+    switch (currentBGM) {
+      case 'KimetsuNoYaiba':
+        audioData.KimetsuNoYaiba.play();
+        break;
+      default:
+        Howler.stop();
+        break;
+    };
+  },[ currentBGM ]);
   // debut
   useEffect(()=>{
     dispatch(stageDebut({ 
@@ -143,7 +156,8 @@ export const Canvas = ()=> {
           setTipStatus,
           setOtherTab,
           setRoundNum,
-          setUsualTip
+          setUsualTip,
+          setCurrentBGM
         }}
       />}
     {usualTip.status&&
@@ -164,7 +178,6 @@ export const Canvas = ()=> {
       <BattleBoard
         props={{
           battleInfo,
-          currentBGM,
           setMoveStep,
           setBattleInfo,
           setAnimeShow,

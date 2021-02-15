@@ -8,25 +8,11 @@ import { enemyChessDefense } from "../../reducer/enemyChess";
 
 export const BattleBoard = ({ props })=>{
   const { 
-    battleInfo, currentBGM, 
-    setMoveStep, setBattleInfo, setAnimeShow, setCurrentBGM, dispatch
+    battleInfo, setMoveStep, setBattleInfo, setAnimeShow, setCurrentBGM, dispatch
   } = props;
   const [ atkSelectd, setAtkSelectd ] = useState({
     key:0,
   });
-  const getBGMPlay = (type='')=>{
-    if(currentBGM===type){ return };
-    setCurrentBGM(type);
-    let battleBGM;
-    switch (type) {
-      default:
-        battleBGM = loader.resources[`bgm-KimetsuNoYaiba`].data;
-        battleBGM.loop = true;
-        battleBGM.currentTime = 0;
-        battleBGM.play();
-        break;
-    };
-  };
   const CreateAttackerInfo = ({ pX=0, pY=0, data })=>{
     return <Container x={pX} y={pY} sortableChildren={true}>
       <Text
@@ -304,7 +290,7 @@ export const BattleBoard = ({ props })=>{
         fill:'#ffffff',
       })}
       pointertap={()=>{
-        getBGMPlay('KimetsuNoYaiba');
+        setCurrentBGM('KimetsuNoYaiba');
         const isHit = ProbabilityCount(
           battleInfo.attacker.skill[atkSelectd.key].hitfix,
           battleInfo.target.dodge

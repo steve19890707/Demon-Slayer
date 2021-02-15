@@ -1,7 +1,22 @@
 import * as PIXI from "pixi.js";
-export const loader = new PIXI.Loader();
+import { Howl } from 'howler';
 const hostname = window.location.hostname==='localhost'?'./Demon-Slayer/':'./';
-
+export const loader = new PIXI.Loader();
+export const audioData = {
+  open: new Howl({
+    src: [`${hostname}audio/bgm-open.mp3`],
+    preload: 'metadata',
+    loop: true
+  }),
+  KimetsuNoYaiba: new Howl({
+    src: [`${hostname}audio/bgm-KimetsuNoYaiba.mp3`],
+    preload: 'metadata',
+    loop: true
+  })
+};
+audioData.KimetsuNoYaiba.on('end', function(){
+  console.log('Finished!');
+});
 loader
   .add('Tanjirou-head-default',`${hostname}imgs/Tanjirou/head-default.png`)
   .add('Tanjirou-talk-default',`${hostname}imgs/Tanjirou/talk-default.jpg`)
@@ -39,5 +54,4 @@ loader
   .add('endBtn',`${hostname}imgs/common/end.png`)
   .add('fightOff',`${hostname}imgs/common/fightOff.png`)
   .add('fightDef',`${hostname}imgs/common/fightDef.png`)
-  .add('bgm-KimetsuNoYaiba',`${hostname}audio/bgm-KimetsuNoYaiba.mp3`)
   .load();

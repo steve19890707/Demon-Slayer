@@ -156,7 +156,7 @@ const chess = createSlice({
     },
     chessMoved: (state, actions)=>{
       const { key } = actions.payload;
-      state[key].roundMove -= 1;
+      state[key].roundMove -= 0;
     },
     chessRoundRest:(state)=>{
       for(let i=0;i<state.length;i++){

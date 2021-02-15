@@ -53,7 +53,7 @@ export const BattleAnimeShow = ({
           break;
       }; 
     };
-    const CreateSkillSprite = ({}) => {
+    const CreateSkillSprite = () => {
       const video = PIXI.Texture.from(loader.resources[`${chess[attacker.key].name}-skill${showSkill.type}-show`].data);
       const videoDom = video.baseTexture.resource.source;
       videoDom.onended = function() {
