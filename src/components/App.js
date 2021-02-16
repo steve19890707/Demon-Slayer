@@ -20,7 +20,7 @@ const StyledApp = styled.div`
   }
   canvas {
     width:${({ isDesktop })=>!isDesktop&&`
-      100% !important
+      75% !important
     `};
     height:${({ isDesktop })=>!isDesktop&&`
       100% !important
