@@ -5,7 +5,7 @@ import { Container, Text, Graphics, Sprite, useTick } from '@inlet/react-pixi/an
 export const GameStart = ({
   props
 })=>{
-  const { setRoundStart } = props;
+  const { setRoundStart, setCurrentBGM } = props;
   const [ logoWidth, setLogoWidth ] = useState(200);
   const [ start, setStart ] = useState(false);
   const [ startBtn, setStartBtn ] = useState(false);
@@ -69,6 +69,7 @@ export const GameStart = ({
           pointertap={()=>{
             audioData.open.fade(1,0,1000)
             setRoundStart(true);
+            setCurrentBGM('userRounds');
           }}
         />
       }

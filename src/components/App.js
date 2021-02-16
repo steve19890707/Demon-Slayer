@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
+import device from "current-device";
 import { Canvas } from './Canvas';
 import { audioData, loader } from './DataLoader';
-
+const isDesktop = device.desktop();
 const GlobalStyle = createGlobalStyle`
   body { background:#1d2430; }
 `;
@@ -16,6 +17,14 @@ const StyledApp = styled.div`
   .loading {
     color: #fff;
     font-size:24px;
+  }
+  canvas {
+    width:${({ isDesktop })=>!isDesktop&&`
+      100% !important
+    `};
+    height:${({ isDesktop })=>!isDesktop&&`
+      100% !important
+    `};
   }
 `;
 export const App = ()=> {
@@ -51,9 +60,9 @@ export const App = ()=> {
       setGameStart(true);
     }; 
   },[dataIsDone,mp3load])
-  return <StyledApp>
+  return <StyledApp isDesktop={isDesktop}>
     <GlobalStyle/>
-    {gameStart?<Canvas />:
+    {gameStart?<Canvas/>:
       <span className="loading">
         {dataIsDone ? `讀取音訊中...` :
         `Loading ${progress}%..`}

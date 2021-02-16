@@ -65,21 +65,21 @@ export const Canvas = ()=> {
   useEffect(()=>{
     switch (currentBGM) {
       case 'Tanjirou':
-        audioData.round.fade(1,0,1000);
+        audioData.round.fade(0.6,0,1000);
         audioData.KimetsuNoYaiba.stop();
         audioData.KimetsuNoYaiba.volume(1);
         audioData.KimetsuNoYaiba.play();
         break;
       case 'Teoni':
-        audioData.round.fade(1,0,1000);
+        audioData.round.fade(0.6,0,1000);
         audioData.KimetsuNoYaibaEnemy.stop();
         audioData.KimetsuNoYaibaEnemy.volume(1);
         audioData.KimetsuNoYaibaEnemy.play();
         break;
-      case 'enemyRounds':
       case 'userRounds':
+      case 'enemyRounds':
         audioData.round.stop();
-        audioData.round.volume(1);
+        audioData.round.volume(0.6);
         audioData.round.play();
         break;
       default:
@@ -98,7 +98,6 @@ export const Canvas = ()=> {
         setCurrentBGM('userRounds');
         break;
       default:
-        Howler.stop();
         break;
     };
   },[ fadeBGM, stageStatus ]);
@@ -252,7 +251,8 @@ export const Canvas = ()=> {
     {!roundStart&&
     <GameStart 
       props={{
-        setRoundStart
+        setRoundStart,
+        setCurrentBGM
       }}
     />}
   </Stage>

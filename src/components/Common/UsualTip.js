@@ -107,6 +107,7 @@ export const UsualTip = ({
             break;
           case "USERROUND":
             setFadeBGM(currentBGM);
+            setMoveStep(true);
             setUsualTip({
               title:``,
               status:false

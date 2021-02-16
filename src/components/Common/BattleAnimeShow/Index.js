@@ -101,10 +101,7 @@ export const BattleAnimeShow = ({
           title:`${chess[target.key].cn} 戰敗`,
           status:true,
         });
-      }else {
-        setMoveStep(true);
-      };
-      if(animeShow.type==="ENEMY"){
+      }else if(animeShow.type==="ENEMY") {
         dispatch(chessRoundRest());
         setCurrentChess(prev=>{
           return { ...prev, type:"USERROUND"
@@ -113,6 +110,8 @@ export const BattleAnimeShow = ({
           title:`我方回合`,
           status:true,
         });
+      }else {
+        setMoveStep(true);
       };
     },[ animeIsDone ]);
     return <Container sortableChildren={true}>
@@ -218,10 +217,7 @@ export const BattleAnimeShow = ({
               title:`${chess[target.key].cn} 戰敗`,
               status:true,
             });
-          }else {
-            setMoveStep(true);
-          };
-          if(animeShow.type==="ENEMY"){
+          }else if(animeShow.type==="ENEMY") {
             dispatch(chessRoundRest());
             setCurrentChess(prev=>{
               return { ...prev, type:"USERROUND"
@@ -230,6 +226,8 @@ export const BattleAnimeShow = ({
               title:`我方回合`,
               status:true,
             });
+          }else {
+            setMoveStep(true);
           };
           const clearAllTimeouts = ()=>{
             let id = window.setTimeout(null,0);

@@ -13,6 +13,11 @@ export const audioData = {
     preload: 'metadata',
     loop: true
   }),
+  enemyRound: new Howl({
+    src: [`${hostname}audio/bgm-round.mp3`],
+    preload: 'metadata',
+    loop: true
+  }),
   KimetsuNoYaiba: new Howl({
     src: [`${hostname}audio/bgm-KimetsuNoYaiba.mp3`],
     preload: 'metadata',
