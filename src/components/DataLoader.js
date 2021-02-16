@@ -8,15 +8,22 @@ export const audioData = {
     preload: 'metadata',
     loop: true
   }),
+  round: new Howl({
+    src: [`${hostname}audio/bgm-round.mp3`],
+    preload: 'metadata',
+    loop: true
+  }),
   KimetsuNoYaiba: new Howl({
     src: [`${hostname}audio/bgm-KimetsuNoYaiba.mp3`],
     preload: 'metadata',
     loop: true
-  })
+  }),
+  KimetsuNoYaibaEnemy: new Howl({
+    src: [`${hostname}audio/bgm-KimetsuNoYaibaEnemy.mp3`],
+    preload: 'metadata',
+    loop: true
+  }),
 };
-audioData.KimetsuNoYaiba.on('end', function(){
-  console.log('Finished!');
-});
 loader
   .add('Tanjirou-head-default',`${hostname}imgs/Tanjirou/head-default.png`)
   .add('Tanjirou-talk-default',`${hostname}imgs/Tanjirou/talk-default.jpg`)
@@ -47,10 +54,12 @@ loader
   .add('Nomanooni-fight',`${hostname}imgs/Nomanooni/fight.png`)
   .add('stageOne-BG',`${hostname}imgs/background/stage1-background.png`)
   .add('stageOne-main-BG',`${hostname}imgs/background/stage1-main-background.jpg`)
+  .add('logo',`${hostname}imgs/common/logo.png`)
   .add('atkIcon',`${hostname}imgs/common/atk.png`)
   .add('defIcon',`${hostname}imgs/common/def.png`)
   .add('otherIcon',`${hostname}imgs/common/other.png`)
   .add('closeIcon',`${hostname}imgs/common/close.png`)
+  .add('startBtn',`${hostname}imgs/common/startBtn.png`)
   .add('endBtn',`${hostname}imgs/common/end.png`)
   .add('fightOff',`${hostname}imgs/common/fightOff.png`)
   .add('fightDef',`${hostname}imgs/common/fightDef.png`)

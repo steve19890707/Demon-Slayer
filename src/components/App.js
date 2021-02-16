@@ -20,18 +20,43 @@ const StyledApp = styled.div`
 `;
 export const App = ()=> {
   const [ dataIsDone, setDataIsDone ] = useState(false);
+  const [ gameStart, setGameStart ] = useState(false);
   const [ progress, setProgress ] = useState(0);
+  const [ mp3load, setMp3load ] = useState({
+    open:false,
+    KimetsuNoYaiba:false,
+  });
+  // mp3 load
+  audioData.KimetsuNoYaiba.on('load', function(){
+    setMp3load(prev=>{return{...prev,KimetsuNoYaiba:true}});
+  });
+  audioData.open.on('load', function(){
+    setMp3load(prev=>{return{...prev,open:true}});
+  });
   useEffect(()=>{
     loader.onProgress.add((loader)=>{
       setProgress(Math.floor(loader.progress));
     });
     loader.onComplete.add((loader,resources)=>{
+      setProgress(100);
       setDataIsDone(true);
     });
   });
+  useEffect(()=>{
+    const state = 
+      mp3load.KimetsuNoYaiba&&
+      mp3load.open&&
+      dataIsDone;
+    if(state){
+      setGameStart(true);
+    }; 
+  },[dataIsDone,mp3load])
   return <StyledApp>
     <GlobalStyle/>
-    {dataIsDone?<Canvas />:
-      <span className="loading">Loading {progress}%..</span>}
+    {gameStart?<Canvas />:
+      <span className="loading">
+        {dataIsDone ? `讀取音訊中...` :
+        `Loading ${progress}%..`}
+      </span>}
   </StyledApp>
 };

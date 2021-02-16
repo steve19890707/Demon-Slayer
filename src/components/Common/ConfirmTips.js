@@ -12,13 +12,14 @@ export const ConfirmTip = ({
     chess,
     currentChess,
     tipStatus,
+    currentBGM,
     dispatch,
     setMoveStep, 
     setTipStatus,
     setOtherTab,
     setRoundNum,
     setUsualTip,
-    setCurrentBGM
+    setFadeBGM
   } = props;
   return <Graphics
     x={400}
@@ -88,7 +89,7 @@ export const ConfirmTip = ({
               title:'敵方回合',
               status:true
             });
-            setCurrentBGM('');
+            setFadeBGM(currentBGM);
             break;
           default:
             return;

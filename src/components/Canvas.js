@@ -6,6 +6,7 @@ import { Howler } from 'howler';
 import { stageDebut } from "../reducer/chess";
 import { enemyStageDebut } from "../reducer/enemyChess";
 // other part
+import { GameStart } from './Common/GameStart/Index';
 import { CreateCheckerboard } from './Common/Checkerboard';
 import { ConfirmTip } from "./Common/ConfirmTips";
 import { UsualTip } from "./Common/UsualTip";
@@ -19,6 +20,7 @@ import { EnemyChess } from "../components/EnemyChess/EnemyChess";
 import { stageRule } from "../constants/stageRule";
 import { audioData, loader } from './DataLoader';
 export const Canvas = ()=> {
+  const [ roundStart, setRoundStart ] = useState(false);
   const [ stageStatus, setStageStatus ] = useState('stageOne');
   const [ roundNum, setRoundNum ] = useState(1);
   const [ otherTab, setOtherTab ] = useState(false);
@@ -54,7 +56,7 @@ export const Canvas = ()=> {
   });
   const [ moveStep, setMoveStep ] = useState(true);
   const [ currentBGM, setCurrentBGM ] = useState('');
-  const [ preBGM, setPreBGM ] = useState('');
+  const [ fadeBGM, setFadeBGM ] = useState('');
   const chessMap = useSelector(state=>state.chessMap);
   const chess = useSelector(state=>state.chess);
   const enemyChess = useSelector(state=>state.enemyChess);
@@ -62,23 +64,55 @@ export const Canvas = ()=> {
   // bgm
   useEffect(()=>{
     switch (currentBGM) {
-      case 'KimetsuNoYaiba':
+      case 'Tanjirou':
+        audioData.round.fade(1,0,1000);
+        audioData.KimetsuNoYaiba.stop();
+        audioData.KimetsuNoYaiba.volume(1);
         audioData.KimetsuNoYaiba.play();
+        break;
+      case 'Teoni':
+        audioData.round.fade(1,0,1000);
+        audioData.KimetsuNoYaibaEnemy.stop();
+        audioData.KimetsuNoYaibaEnemy.volume(1);
+        audioData.KimetsuNoYaibaEnemy.play();
+        break;
+      case 'enemyRounds':
+      case 'userRounds':
+        audioData.round.stop();
+        audioData.round.volume(1);
+        audioData.round.play();
         break;
       default:
         Howler.stop();
         break;
     };
   },[ currentBGM ]);
+  useEffect(()=>{
+    switch (fadeBGM){
+      case 'Tanjirou':
+        audioData.KimetsuNoYaiba.fade(1,0,1000);
+        setCurrentBGM('enemyRounds');
+        break;
+      case 'Teoni':
+        audioData.KimetsuNoYaibaEnemy.fade(1,0,1000);
+        setCurrentBGM('userRounds');
+        break;
+      default:
+        Howler.stop();
+        break;
+    };
+  },[ fadeBGM, stageStatus ]);
   // debut
   useEffect(()=>{
-    dispatch(stageDebut({ 
-      isDebutChess:stageRule.getIn([stageStatus,'debutChess'])
-    }));
-    dispatch(enemyStageDebut({ 
-      isDebutChess:stageRule.getIn([stageStatus,'debutEnemyChess'])
-    }));
-  },[ dispatch, stageStatus ]);
+    if(roundStart){
+      dispatch(stageDebut({ 
+        isDebutChess:stageRule.getIn([stageStatus,'debutChess'])
+      }));
+      dispatch(enemyStageDebut({ 
+        isDebutChess:stageRule.getIn([stageStatus,'debutEnemyChess'])
+      }));
+    };
+  },[ dispatch, roundStart, stageStatus ]);
   return <Stage
     width={800}
     height={600}
@@ -88,7 +122,7 @@ export const Canvas = ()=> {
       backgroundColor:0x01262a
     }}>
     <Container sortableChildren={true}>
-      <Sprite
+      {roundStart&&<Sprite
         width={30}
         height={30}
         anchor={0.5} 
@@ -102,7 +136,7 @@ export const Canvas = ()=> {
           setOtherTab(true);
           setMoveStep(false);
         }}
-      />
+      />}
       <Sprite
         width={800}
         height={600}
@@ -151,13 +185,14 @@ export const Canvas = ()=> {
           chess,
           currentChess,
           tipStatus,
+          currentBGM,
           dispatch,
           setMoveStep,
           setTipStatus,
           setOtherTab,
           setRoundNum,
           setUsualTip,
-          setCurrentBGM
+          setFadeBGM
         }}
       />}
     {usualTip.status&&
@@ -168,9 +203,11 @@ export const Canvas = ()=> {
           currentChess,
           enemyChess,
           usualTip,
+          currentBGM,
           setMoveStep,
           setUsualTip,
           setCurrentChess,
+          setFadeBGM,
           setEnemyRoundTab
         }}
       />}
@@ -195,6 +232,7 @@ export const Canvas = ()=> {
           setMoveStep,
           setAnimeShow,
           setUsualTip,
+          setCurrentChess,
           dispatch
         }}
       />}
@@ -207,8 +245,15 @@ export const Canvas = ()=> {
           setEnemyRoundTab,
           setAnimeShow,
           setCurrentChess,
+          setCurrentBGM,
           dispatch
         }}
       />}
+    {!roundStart&&
+    <GameStart 
+      props={{
+        setRoundStart
+      }}
+    />}
   </Stage>
 };

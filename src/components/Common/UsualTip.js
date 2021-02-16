@@ -9,8 +9,9 @@ export const UsualTip = ({
   props,
 })=> {
   const {
-    stageStatus, chess, currentChess, enemyChess,
-    usualTip, setMoveStep, setUsualTip, setCurrentChess, setEnemyRoundTab } = props;
+    stageStatus, chess, currentChess, enemyChess, currentBGM,
+    usualTip, setMoveStep, setUsualTip, setCurrentChess, setFadeBGM,
+    setEnemyRoundTab } = props;
     const [ textColor, setTextColor ] = useState(['#ffffff', '#ffffff']);
   return <Graphics
     x={400}
@@ -99,6 +100,13 @@ export const UsualTip = ({
               oder:0,
               status:true
             });
+            setUsualTip({
+              title:``,
+              status:false
+            });
+            break;
+          case "USERROUND":
+            setFadeBGM(currentBGM);
             setUsualTip({
               title:``,
               status:false

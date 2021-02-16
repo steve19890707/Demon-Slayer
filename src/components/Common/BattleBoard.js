@@ -290,7 +290,7 @@ export const BattleBoard = ({ props })=>{
         fill:'#ffffff',
       })}
       pointertap={()=>{
-        setCurrentBGM('KimetsuNoYaiba');
+        setCurrentBGM(battleInfo.attacker.name);
         const isHit = ProbabilityCount(
           battleInfo.attacker.skill[atkSelectd.key].hitfix,
           battleInfo.target.dodge

@@ -11,7 +11,7 @@ import { Information } from "./Information";
 export const EnemyRoundTab = ({ props })=> {
   const [ defChess, setDefChess ] = useState(0);
   const { enemyRoundTab, chess, enemyChess,
-    setEnemyRoundTab, setAnimeShow, setCurrentChess, dispatch } = props;
+    setEnemyRoundTab, setAnimeShow, setCurrentChess, setCurrentBGM, dispatch } = props;
   const chessList = chess.filter(v=>v.debut);
   const enemyList = enemyChess.filter(v=>v.debut);
   const enemySkill = enemyList[enemyRoundTab.oder].skill;
@@ -69,6 +69,7 @@ export const EnemyRoundTab = ({ props })=> {
       y={155}
       image={loader.resources[`fightDef`].data}
       pointertap={()=>{
+        setCurrentBGM(enemyList[enemyRoundTab.oder].name);
         const isHit = ProbabilityCount(
           enemyList[enemyRoundTab.oder].skill[enemyRandomSkill].hitfix,
           chessList[defChess].dodge

@@ -15,7 +15,7 @@ export const BattleAnimeShow = ({
   props
 }) =>{
   const { stageStatus, animeShow, chess, enemyChess, 
-    setMoveStep, setAnimeShow, setUsualTip, dispatch } = props;
+    setMoveStep, setAnimeShow, setUsualTip, setCurrentChess, dispatch } = props;
   const { target, attacker } = animeShow;
   // CreateContent
   const CreateContent = ()=>{
@@ -106,6 +106,13 @@ export const BattleAnimeShow = ({
       };
       if(animeShow.type==="ENEMY"){
         dispatch(chessRoundRest());
+        setCurrentChess(prev=>{
+          return { ...prev, type:"USERROUND"
+        }});
+        setUsualTip({
+          title:`我方回合`,
+          status:true,
+        });
       };
     },[ animeIsDone ]);
     return <Container sortableChildren={true}>
@@ -216,6 +223,13 @@ export const BattleAnimeShow = ({
           };
           if(animeShow.type==="ENEMY"){
             dispatch(chessRoundRest());
+            setCurrentChess(prev=>{
+              return { ...prev, type:"USERROUND"
+            }});
+            setUsualTip({
+              title:`我方回合`,
+              status:true,
+            });
           };
           const clearAllTimeouts = ()=>{
             let id = window.setTimeout(null,0);
