@@ -56,7 +56,6 @@ export const BattleAnimeShow = ({
       const video = videos[`${chess[attacker.key].name}`][`skill${showSkill.type}`];
       const videoDom = video.baseTexture.resource.source;
       videoDom.onended = function() {
-        console.log(videoDom)
         setShowSkill(prev=>{
           videoDom.currentTime = 0;
           return { ...prev, status:false }

@@ -11,8 +11,9 @@ export const GameStart = ({
   const [ startBtn, setStartBtn ] = useState(false);
   let i = 0;
   useTick(delta=>{
-    const add = i += 0.25 * delta;
-    if(logoWidth<350){
+    if(!start){ return };
+    const add = i += 0.28 * delta;
+    if(!startBtn){
       setLogoWidth(prev=>{return prev+=Math.floor(add)});
     };
   });

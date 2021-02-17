@@ -59,7 +59,7 @@ export const App = ()=> {
     if(state){
       setGameStart(true);
     }; 
-  },[dataIsDone,mp3load])
+  },[dataIsDone, mp3load]);
   return <StyledApp isDesktop={isDesktop}>
     <GlobalStyle/>
     {gameStart?<Canvas/>:
