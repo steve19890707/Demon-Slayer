@@ -13,11 +13,6 @@ export const audioData = {
     preload: 'metadata',
     loop: true
   }),
-  enemyRound: new Howl({
-    src: [`${hostname}audio/bgm-round.mp3`],
-    preload: 'metadata',
-    loop: true
-  }),
   KimetsuNoYaiba: new Howl({
     src: [`${hostname}audio/bgm-KimetsuNoYaiba.mp3`],
     preload: 'metadata',
@@ -29,6 +24,12 @@ export const audioData = {
     loop: true
   }),
 };
+export const videos = {
+  Tanjirou: {
+    skill3: PIXI.Texture.from(`${hostname}video/Tanjirou/skill3.mp4`)
+  }
+};
+
 loader
   .add('Tanjirou-head-default',`${hostname}imgs/Tanjirou/head-default.png`)
   .add('Tanjirou-talk-default',`${hostname}imgs/Tanjirou/talk-default.jpg`)
@@ -38,7 +39,6 @@ loader
   .add('Tanjirou-talk-dead',`${hostname}imgs/Tanjirou/talk-dead.jpg`)
   .add('Tanjirou-fight-typeA',`${hostname}imgs/Tanjirou/fight-typeA.png`)
   .add('Tanjirou-fight-typeB',`${hostname}imgs/Tanjirou/fight-typeB.png`)
-  .add('Tanjirou-skill3-show',`${hostname}imgs/Tanjirou/skill/skill3.mp4`)
   .add('Nezuko-head-default',`${hostname}imgs/Nezuko/head-default.jpg`)
   .add('Nezuko-talk-default',`${hostname}imgs/Nezuko/talk-default.jpg`)
   .add('Nezuko-talk-attack',`${hostname}imgs/Nezuko/talk-attack.jpg`)

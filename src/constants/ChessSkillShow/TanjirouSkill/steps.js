@@ -1,6 +1,6 @@
 import { TweenMax } from 'gsap';
 import numeral from "numeral";
-import { loader } from '../../../components/DataLoader';
+import { videos } from '../../../components/DataLoader';
 export const steps = ({
   skillName='',
   isHit=false,
@@ -120,7 +120,7 @@ export const steps = ({
         });
         setLinesStatus(prev=>{ return { ...prev, status:'attack' }});
         setShowSkill(prev=>{
-          const video = loader.resources[`${prev.name}-skill${`3`}-show`].data;
+          const video = videos[`${prev.name}`].skill3.baseTexture.resource.source;
           video.play();
           return { ...prev, 
             status:true, 

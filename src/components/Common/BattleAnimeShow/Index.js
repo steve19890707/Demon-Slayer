@@ -1,9 +1,8 @@
 import React,{ useState, useEffect } from 'react';
-import * as PIXI from "pixi.js";
 import { Container, Graphics, Sprite } from '@inlet/react-pixi/animated';
 import { chessDead, chessRoundRest } from "../../../reducer/chess";
 import { enemyChessDead } from "../../../reducer/enemyChess";
-import { loader } from '../../DataLoader';
+import { videos, loader } from '../../DataLoader';
 // part
 import { AnimeShowBG } from "./AinmeShowBG";
 import { TopBar } from "./TopBar";
@@ -54,9 +53,10 @@ export const BattleAnimeShow = ({
       }; 
     };
     const CreateSkillSprite = () => {
-      const video = PIXI.Texture.from(loader.resources[`${chess[attacker.key].name}-skill${showSkill.type}-show`].data);
+      const video = videos[`${chess[attacker.key].name}`][`skill${showSkill.type}`];
       const videoDom = video.baseTexture.resource.source;
       videoDom.onended = function() {
+        console.log(videoDom)
         setShowSkill(prev=>{
           videoDom.currentTime = 0;
           return { ...prev, status:false }
