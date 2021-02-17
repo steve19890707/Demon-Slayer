@@ -30,6 +30,7 @@ const StyledApp = styled.div`
 export const App = ()=> {
   const [ dataIsDone, setDataIsDone ] = useState(false);
   const [ gameStart, setGameStart ] = useState(false);
+  const [ mobileResize, setMobileResize ] = useState((window.innerHeight > window.innerWidth));
   const [ progress, setProgress ] = useState(0);
   const [ mp3load, setMp3load ] = useState({
     open:false,
@@ -51,6 +52,17 @@ export const App = ()=> {
       setDataIsDone(true);
     });
   });
+  useEffect(()=>{
+    const handleResize = function(){
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      setMobileResize(height > width);
+    };
+    window.addEventListener('resize',handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  },[]);
   useEffect(()=>{
     const state = 
       mp3load.KimetsuNoYaiba&&
