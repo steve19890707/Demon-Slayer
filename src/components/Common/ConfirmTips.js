@@ -25,6 +25,7 @@ export const ConfirmTip = ({
     x={400}
     y={300}
     draw={g=> {
+      g.clear();
       g.lineStyle(1,`0xffffff`,1);
       g.beginFill(`0x22223b`);
       g.drawRoundedRect(-90,-50,180,100,8);

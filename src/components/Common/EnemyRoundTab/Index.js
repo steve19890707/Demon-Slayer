@@ -37,6 +37,7 @@ export const EnemyRoundTab = ({ props })=> {
     y={300}
     zIndex={99}
     draw={g=> {
+      g.clear();
       g.lineStyle(1,`0xffffff`,1);
       g.beginFill(`0x22223b`);
       g.drawRoundedRect(-300,-200,600,400,8);

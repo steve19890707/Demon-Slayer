@@ -64,6 +64,8 @@ loader
   .add('defIcon',`${hostname}imgs/common/def.png`)
   .add('otherIcon',`${hostname}imgs/common/other.png`)
   .add('closeIcon',`${hostname}imgs/common/close.png`)
+  .add('muteIcon',`${hostname}imgs/common/mute.png`)
+  .add('volumeIcon',`${hostname}imgs/common/volume.png`)
   .add('startBtn',`${hostname}imgs/common/startBtn.png`)
   .add('endBtn',`${hostname}imgs/common/end.png`)
   .add('fightOff',`${hostname}imgs/common/fightOff.png`)

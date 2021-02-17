@@ -12,10 +12,23 @@ export const OtherTab = ({ props })=> {
     setTipStatus,
     setCurrentChess
   } = props;
+  const checkStageRound = ()=>{
+    switch (stageStatus) {
+      case 'stageOne':
+        return 1;
+      case 'stageTwo':
+        return 2;
+      case 'stageThree':
+        return 3;
+      default:
+        return 1;
+    };
+  };
   return <Graphics
     x={400}
     y={300}
     draw={g=> {
+      g.clear();
       g.lineStyle(1,`0xffffff`,1);
       g.beginFill(`0x22223b`);
       g.drawRoundedRect(-200,-150,400,300,8);
@@ -61,7 +74,7 @@ export const OtherTab = ({ props })=> {
       }}
     />
     <Text
-      text={'作戰目的'}
+      text={`【 第 ${checkStageRound()} 話 】作戰目的`}
       x={-170}
       y={-125}
       style={new PIXI.TextStyle({

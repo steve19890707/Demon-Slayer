@@ -41,6 +41,7 @@ export const ChessStatus = ({
     y={300}
     zIndex={99}
     draw={g=> {
+      g.clear();
       g.lineStyle(1,`0xffffff`,1);
       g.beginFill(`0x22223b`);
       g.drawRoundedRect(-250,-150,500,300,8);

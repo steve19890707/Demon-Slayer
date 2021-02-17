@@ -24,6 +24,7 @@ export const Canvas = ()=> {
   const [ stageStatus, setStageStatus ] = useState('stageOne');
   const [ roundNum, setRoundNum ] = useState(1);
   const [ otherTab, setOtherTab ] = useState(false);
+  const [ volume, setVolume ] = useState(true);
   const [ enemyRoundTab, setEnemyRoundTab ] = useState({
     oder:0,
     status:false
@@ -83,7 +84,6 @@ export const Canvas = ()=> {
         audioData.round.play();
         break;
       default:
-        Howler.stop();
         break;
     };
   },[ currentBGM ]);
@@ -136,6 +136,21 @@ export const Canvas = ()=> {
           setMoveStep(false);
         }}
       />}
+      <Sprite
+        width={30}
+        height={30}
+        anchor={0.5} 
+        x={40}
+        y={40}
+        zIndex={99}
+        interactive={!animeShow.status}
+        buttonMode={true}
+        image={loader.resources[volume?`volumeIcon`:`muteIcon`].data}
+        pointertap={()=>{
+          setVolume(prev=>!prev);
+          volume ? Howler.volume(0): Howler.volume(1);
+        }}
+      />
       <Sprite
         width={800}
         height={600}
@@ -249,11 +264,11 @@ export const Canvas = ()=> {
         }}
       />}
     {!roundStart&&
-    <GameStart 
-      props={{
-        setRoundStart,
-        setCurrentBGM
-      }}
-    />}
+      <GameStart 
+        props={{
+          setRoundStart,
+          setCurrentBGM
+        }}
+      />}
   </Stage>
 };

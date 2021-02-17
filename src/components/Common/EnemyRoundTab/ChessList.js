@@ -12,6 +12,7 @@ export const ChessList = ({
       y={-180}
       zIndex={1}
       draw={g=> {
+        g.clear();
         g.lineStyle(1,`0xffffff`,1);
         g.beginFill(`0x0f0f1b`);
         g.drawRoundedRect(0,0,100,360,8);
@@ -39,6 +40,7 @@ export const ChessList = ({
           y={-125 + distance}
           zIndex={1}
           draw={g=> {
+            g.clear();
             g.beginFill(`0x7b2cbf`);
             g.drawRoundedRect(-38,-38,76,76,5);
             g.endFill();

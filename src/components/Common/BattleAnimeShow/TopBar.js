@@ -26,6 +26,7 @@ export const TopBar = ({
     y={-300}
     zIndex={98}
     draw={g=> {
+      g.clear();
       g.beginFill(`0x000f23`);
       g.drawRoundedRect(0,0,800,80,0);
       g.endFill();
@@ -68,6 +69,7 @@ export const TopBar = ({
         x={320} y={35}
         zIndex={1}
         draw={g=> {
+          g.clear();
           g.beginFill(`0xe71d36`);
           g.drawRoundedRect(0,0,-200,10,0);
           g.endFill();
@@ -77,6 +79,7 @@ export const TopBar = ({
         x={320} y={35}
         zIndex={2}
         draw={g=> {
+          g.clear();
           g.beginFill(`0x333533`);
           g.drawRoundedRect(-200,0,hpBarCount(showType==="USER"?targetHp:left.hp,left.fullValue.hp),10,0);
           g.endFill();
@@ -94,6 +97,7 @@ export const TopBar = ({
         x={320} y={55}
         zIndex={1}
         draw={g=> {
+          g.clear();
           g.beginFill(`0x4A86E8`);
           g.drawRoundedRect(0,0,-100,10,0);
           g.endFill();
@@ -103,6 +107,7 @@ export const TopBar = ({
         x={220} y={55}
         zIndex={2}
         draw={g=> {
+          g.clear();
           g.beginFill(`0x333533`);
           g.drawRoundedRect(0,0,spBarCount(showType==="USER"?left.sp:attackerSp,left.fullValue.sp),10,0);
           g.endFill();
@@ -128,6 +133,7 @@ export const TopBar = ({
         x={670} y={35}
         zIndex={1}
         draw={g=> {
+          g.clear();
           g.beginFill(`0xe71d36`);
           g.drawRoundedRect(0,0,-200,10,0);
           g.endFill();
@@ -137,6 +143,7 @@ export const TopBar = ({
         x={670} y={35}
         zIndex={2}
         draw={g=> {
+          g.clear();
           g.beginFill(`0x333533`);
           g.drawRoundedRect(-200,0,hpBarCount(showType==="USER"?right.hp:targetHp,right.fullValue.hp),10,0);
           g.endFill();
@@ -154,6 +161,7 @@ export const TopBar = ({
         x={670} y={55}
         zIndex={1}
         draw={g=> {
+          g.clear();
           g.beginFill(`0x4A86E8`);
           g.drawRoundedRect(0,0,-100,10,0);
           g.endFill();
@@ -163,6 +171,7 @@ export const TopBar = ({
         x={570} y={55}
         zIndex={2}
         draw={g=> {
+          g.clear();
           g.beginFill(`0x333533`);
           g.drawRoundedRect(0,0,spBarCount(showType==="USER"?attackerSp:right.sp,right.fullValue.sp),10,0);
           g.endFill();

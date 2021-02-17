@@ -203,6 +203,7 @@ export const ChessUIBoard = ({
     y={(positionY!==560&&positionY!==520)?positionY:specialPosition.y}
     zIndex={3}
     draw={g=> {
+      g.clear();
       g.lineStyle(1,`0xffffff`,1);
       g.beginFill(`0x22223b`);
       g.drawRoundedRect(0,0,60,110,8);

@@ -32,7 +32,7 @@ export const GameStart = ({
   const [ startBtn, setStartBtn ] = useState(false);
   useEffect(()=>{
     (logoWidth>=350)&&setStartBtn(true);
-  },[logoWidth])
+  },[logoWidth]);
   return <Container sortableChildren={true}>
     {!start?<>
       <Graphics
@@ -41,7 +41,8 @@ export const GameStart = ({
         x={0} y={0}
         zIndex={1}
         draw={g=> {
-          g.beginFill(`0x0000`);
+          g.clear();
+          g.beginFill(0x0000);
           g.drawRoundedRect(0,0,800,600,0);
           g.endFill();
         }}
@@ -49,6 +50,7 @@ export const GameStart = ({
           audioData.open.play();
           setStart(true);
         }}
+        alpha={0.5}
       />
       <Text
         text={`任意點擊`}

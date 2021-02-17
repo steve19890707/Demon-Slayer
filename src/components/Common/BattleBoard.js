@@ -72,6 +72,7 @@ export const BattleBoard = ({ props })=>{
         y={115}
         zIndex={1}
         draw={g=> {
+          g.clear();
           g.lineStyle(1,`0xffffff`,1);
           g.beginFill(`0x0f0f1b`);
           g.drawRoundedRect(0,0,240,180,8);
@@ -159,6 +160,7 @@ export const BattleBoard = ({ props })=>{
         y={0}
         zIndex={1}
         draw={g=> {
+          g.clear();
           g.lineStyle(1,`0x00ff99`,1);
           g.beginFill(`0x0f0f1b`);
           g.drawRoundedRect(0,0,265,215,8);
@@ -256,6 +258,7 @@ export const BattleBoard = ({ props })=>{
     y={300}
     zIndex={99}
     draw={g=> {
+      g.clear();
       g.lineStyle(1,`0xffffff`,1);
       g.beginFill(`0x22223b`);
       g.drawRoundedRect(-300,-200,600,400,8);

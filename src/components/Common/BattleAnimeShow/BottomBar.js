@@ -16,6 +16,7 @@ export const BottomBar = ({
     y={150}
     zIndex={98}
     draw={g=> {
+      g.clear();
       g.beginFill(`0x000f23`);
       g.drawRoundedRect(0,0,800,150,0);
       g.endFill();

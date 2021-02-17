@@ -242,6 +242,7 @@ export const BattleAnimeShow = ({
     y={300}
     zIndex={99}
     draw={g=> {
+      g.clear();
       g.beginFill(`0x011627`);
       g.drawRoundedRect(-400,-300,800,600,0);
       g.endFill();
