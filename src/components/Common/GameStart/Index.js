@@ -2,6 +2,27 @@ import React,{ useState, useEffect } from 'react';
 import * as PIXI from "pixi.js";
 import { audioData, loader } from '../../DataLoader';
 import { Container, Text, Graphics, Sprite, useTick } from '@inlet/react-pixi/animated';
+const Logo = ({
+  logoWidth=200,
+  startBtn,
+  setLogoWidth
+}) =>{
+  let i = 0;
+  useTick(delta=>{
+    if(!startBtn){
+      const add = i += 0.28 * delta;
+      setLogoWidth(prev=>{return prev+=Math.floor(add)});
+    }else return;
+  });
+  return <Sprite
+    anchor={0.5}
+    x={400}
+    y={250}
+    width={logoWidth}
+    height={logoWidth}
+    image={loader.resources[`logo`].data}
+  />
+};
 export const GameStart = ({
   props
 })=>{
@@ -9,14 +30,6 @@ export const GameStart = ({
   const [ logoWidth, setLogoWidth ] = useState(200);
   const [ start, setStart ] = useState(false);
   const [ startBtn, setStartBtn ] = useState(false);
-  let i = 0;
-  useTick(delta=>{
-    if(!start){ return };
-    const add = i += 0.28 * delta;
-    if(!startBtn){
-      setLogoWidth(prev=>{return prev+=Math.floor(add)});
-    };
-  });
   useEffect(()=>{
     (logoWidth>=350)&&setStartBtn(true);
   },[logoWidth])
@@ -49,13 +62,10 @@ export const GameStart = ({
         })}
       />
     </>:<>
-      <Sprite
-        anchor={0.5}
-        x={400}
-        y={250}
-        width={logoWidth}
-        height={logoWidth}
-        image={loader.resources[`logo`].data}
+      <Logo
+        logoWidth={logoWidth}
+        startBtn={startBtn}
+        setLogoWidth={setLogoWidth}
       />
       {startBtn&&
         <Sprite
