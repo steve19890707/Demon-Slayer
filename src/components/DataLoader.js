@@ -70,4 +70,5 @@ loader
   .add('endBtn',`${hostname}imgs/common/end.png`)
   .add('fightOff',`${hostname}imgs/common/fightOff.png`)
   .add('fightDef',`${hostname}imgs/common/fightDef.png`)
+  .add('trun',`${hostname}imgs/common/trun.png`)
   .load();

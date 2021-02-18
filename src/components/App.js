@@ -26,6 +26,35 @@ const StyledApp = styled.div`
       100% !important
     `};
   }
+  .mobile-cover {
+    @keyframes trun {
+      0% { transform: translate(-50%,-50%)rotate(0deg) }
+      75% { transform: translate(0%,-50%)rotate(90deg) }
+      100% { transform: translate(0%,-50%)rotate(90deg) }
+    }
+    position: fixed;
+    width:100%;
+    height:100vh;
+    z-index:99;
+    background-color:#000;
+    img { 
+      position: absolute;
+      transform:translate(-50%,-50%);
+      top:40%;
+      left:50%;
+      width:15%;
+      max-width:75px;
+      animation:trun 2s infinite;
+    }
+    .subtitle {
+      position: absolute;
+      transform:translate(-50%,-50%);
+      top:50%;
+      left:50%;
+      color:#f90;
+      font-size:18px;
+    }
+  }
 `;
 export const App = ()=> {
   const [ dataIsDone, setDataIsDone ] = useState(false);
@@ -79,5 +108,10 @@ export const App = ()=> {
         {dataIsDone ? `讀取音訊中...` :
         `Loading ${progress}%..`}
       </span>}
+    {(mobileResize&&!isDesktop) &&
+      <div className="mobile-cover">
+        <img alt=''src={loader.resources[`trun`].url}/>
+        <div className="subtitle">請橫放裝置</div>
+      </div>}
   </StyledApp>
 };
