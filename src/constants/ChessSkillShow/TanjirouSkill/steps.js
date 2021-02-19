@@ -93,6 +93,62 @@ export const steps = ({
       };
       return defStart();
     // ATK
+    case '叄之型―流流舞':
+      setBGstatus({ type:'STANDBY', defence:false, seconds:0 });
+      setPosition(prev=>{return{ ...prev, x:550,y:50,tension:100 }});
+      const skill2atkStart = ()=>{
+        setPosition(prev=>{return{ ...prev, x:250, y:50, tension:100 }});
+        // callback
+        return skill2step1();
+      };
+      const skill2step1 = ()=>{
+        const timeout = setTimeout(() => {
+          setPosition(prev=>{return{ ...prev, x:0, tension:100 }});
+          setBGstatus(prev=>{return{ ...prev, type:'SKILL' }});
+          // callback
+          skill2step2();
+        },3000);
+        return timeout;
+      };
+      const skill2step2 = ()=>{
+        const run =  { number: attackerSp };
+        TweenMax.to(run, 0.8, {
+          number: resultSp,
+          onUpdate: () => {
+            setAttackerSp(numeral(run.number).format("0"))
+          },
+        });
+        setLinesStatus(prev=>{ return { ...prev, status:'attack' }});
+        setShowSkill(prev=>{
+          const video = videos[`${prev.name}`].skill2.baseTexture.resource.source;
+          video.play();
+          return { ...prev, 
+            status:true, 
+            type:'2',
+            callback:()=>{
+              setBGstatus(prev=>{return{ ...prev, type:'STOP', defence:true }});
+              setPosition(prev=>{return{ ...prev, x:-400, tension:1000 }});
+              skill2step3();
+            }
+          };
+        });
+      };
+      const skill2step3 = ()=>{
+        const run = { number: targetLife };
+        if(isHit) {
+          TweenMax.to(run, 0.8, {
+            number: resultLife<0 ? 0 : resultLife,
+            onUpdate: () => {
+              setTargetHp(numeral(run.number).format("0"))
+            },
+          });
+        };
+        const timeout = setTimeout(() => {
+          setPosition(prev=>{return{ ...prev, x:550, y:50, tension:50 }});
+        },3000);
+        return timeout;
+      };
+      return skill2atkStart();
     case '捌之型―滝壺':
       setBGstatus({ type:'STANDBY', defence:false, seconds:0 });
       setPosition(prev=>{return{ ...prev, x:550,y:50,tension:100 }});
@@ -149,6 +205,62 @@ export const steps = ({
         return timeout;
       };
       return skill3atkStart();
+      case '拾之型―生生流轉':
+        setBGstatus({ type:'STANDBY', defence:false, seconds:0 });
+        setPosition(prev=>{return{ ...prev, x:550,y:50,tension:100 }});
+        const skill4atkStart = ()=>{
+          setPosition(prev=>{return{ ...prev, x:250, y:50, tension:100 }});
+          // callback
+          return skill4step1();
+        };
+        const skill4step1 = ()=>{
+          const timeout = setTimeout(() => {
+            setPosition(prev=>{return{ ...prev, x:0, y:-100, tension:100 }});
+            setBGstatus(prev=>{return{ ...prev, type:'SKILL' }});
+            // callback
+            skill4step2();
+          },3000);
+          return timeout;
+        };
+        const skill4step2 = ()=>{
+          const run =  { number: attackerSp };
+          TweenMax.to(run, 0.8, {
+            number: resultSp,
+            onUpdate: () => {
+              setAttackerSp(numeral(run.number).format("0"))
+            },
+          });
+          setLinesStatus(prev=>{ return { ...prev, status:'attack' }});
+          setShowSkill(prev=>{
+            const video = videos[`${prev.name}`].skill4.baseTexture.resource.source;
+            video.play();
+            return { ...prev, 
+              status:true, 
+              type:'4',
+              callback:()=>{
+                setBGstatus(prev=>{return{ ...prev, type:'STOP', defence:true }});
+                setPosition(prev=>{return{ ...prev, x:-400, y:50, tension:1000 }});
+                skill4step3();
+              }
+            };
+          });
+        };
+        const skill4step3 = ()=>{
+          const run = { number: targetLife };
+          if(isHit) {
+            TweenMax.to(run, 0.8, {
+              number: resultLife<0 ? 0 : resultLife,
+              onUpdate: () => {
+                setTargetHp(numeral(run.number).format("0"))
+              },
+            });
+          };
+          const timeout = setTimeout(() => {
+            setPosition(prev=>{return{ ...prev, x:550, y:50, tension:50 }});
+          },3000);
+          return timeout;
+        };
+        return skill4atkStart();
     default:
       setBGstatus({ type:'STANDBY', defence:false, seconds:1200 });
       setPosition(prev=>{return{ ...prev, x:550,y:50,tension:100 }});

@@ -6,7 +6,8 @@ export const audioData = {
   open: new Howl({
     src: [`${hostname}audio/bgm-open.mp3`],
     preload: 'metadata',
-    loop: true
+    loop: true,
+    autoplay: false
   }),
   round: new Howl({
     src: [`${hostname}audio/bgm-round.mp3`],
@@ -26,9 +27,20 @@ export const audioData = {
 };
 export const videos = {
   Tanjirou: {
-    skill3: PIXI.Texture.from(`${hostname}video/Tanjirou/skill3.mp4`)
+    skill2: PIXI.Texture.from(`${hostname}video/Tanjirou/skill2.mp4`),
+    skill3: PIXI.Texture.from(`${hostname}video/Tanjirou/skill3.mp4`),
+    skill4: PIXI.Texture.from(`${hostname}video/Tanjirou/skill4.mp4`)
   }
 };
+// closeAutoPlay
+const closeAutoPlay = ()=>{
+  const Tanjirou = Object.keys(videos.Tanjirou);
+  for(let i=0; i<Tanjirou.length; i++){
+    videos.Tanjirou[`skill${i+2}`].baseTexture.resource.autoPlay= false;
+    videos.Tanjirou[`skill${i+2}`].baseTexture.resource.muted= true;
+  };
+};
+closeAutoPlay();
 
 loader
   .add('Tanjirou-head-default',`${hostname}imgs/Tanjirou/head-default.png`)
