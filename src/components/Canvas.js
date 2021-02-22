@@ -16,11 +16,13 @@ import { OtherTab } from "./Common/OtherTab";
 import { EnemyRoundTab } from "./Common/EnemyRoundTab/Index";
 import { Chess } from "../components/Chess/Chess";
 import { EnemyChess } from "../components/EnemyChess/EnemyChess";
+import { Conversation } from "../components/Common/Conversation/Index";
 // rule
 import { stageRule } from "../constants/stageRule";
 import { audioData, loader } from './DataLoader';
 export const Canvas = ()=> {
   const [ roundStart, setRoundStart ] = useState(false);
+  const [ stageStart, setStageStart ] = useState(false);
   const [ stageStatus, setStageStatus ] = useState('stageOne');
   const [ roundNum, setRoundNum ] = useState(1);
   const [ otherTab, setOtherTab ] = useState(false);
@@ -263,10 +265,17 @@ export const Canvas = ()=> {
           dispatch
         }}
       />}
-    {!roundStart&&
+    {(stageStart&&!roundStart)&&
+      <Conversation
+        props={{
+          stageStatus,
+          setRoundStart
+        }}
+      />}
+    {!stageStart&&
       <GameStart 
         props={{
-          setRoundStart,
+          setStageStart,
           setCurrentBGM
         }}
       />}

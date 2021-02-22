@@ -83,4 +83,5 @@ loader
   .add('fightOff',`${hostname}imgs/common/fightOff.png`)
   .add('fightDef',`${hostname}imgs/common/fightDef.png`)
   .add('trun',`${hostname}imgs/common/trun.png`)
+  .add('next',`${hostname}imgs/common/next.png`)
   .load();

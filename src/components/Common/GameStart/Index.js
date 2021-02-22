@@ -26,7 +26,7 @@ const Logo = ({
 export const GameStart = ({
   props
 })=>{
-  const { setRoundStart, setCurrentBGM } = props;
+  const { setStageStart, setCurrentBGM } = props;
   const [ logoWidth, setLogoWidth ] = useState(200);
   const [ start, setStart ] = useState(false);
   const [ startBtn, setStartBtn ] = useState(false);
@@ -81,7 +81,7 @@ export const GameStart = ({
           image={loader.resources[`startBtn`].data}
           pointertap={()=>{
             audioData.open.fade(1,0,1000)
-            setRoundStart(true);
+            setStageStart(true);
             setCurrentBGM('userRounds');
           }}
         />

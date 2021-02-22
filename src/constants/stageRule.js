@@ -20,6 +20,36 @@ export const stageRule = fromJS({
       win:'擊敗手鬼。',
       lose:'竃門 碳治郎 戰敗。'
     },
+    recap:'前情提要：碳治郎與鬼殺隊士們。',
+    story:[{
+        character:'Tanjirou-talk-default',
+        name:'竈門 炭治郎',
+        content:'1:台詞測試'
+      },{
+        character:'Tanjirou-talk-default',
+        name:'竈門 炭治郎',
+        content:'2:台詞測試'
+      },{
+        character:'Tanjirou-talk-default',
+        name:'竈門 炭治郎',
+        content:'3:台詞測試'
+      },{
+        character:'Teoni-talk-default',
+        name:'手鬼',
+        content:'4:台詞測試!!!'
+      },{
+        character:'Tanjirou-talk-def',
+        name:'竈門 炭治郎',
+        content:'5:台詞測試!!!'
+      },{
+        character:'Teoni-talk-default',
+        name:'手鬼',
+        content:'6:台詞測試!!!'
+      },{
+        character:'Tanjirou-talk-attack',
+        name:'竈門 炭治郎',
+        content:'7:台詞測試!!!'
+    }],
     isWin: enemyList => {
       let totalLife = 0;
         enemyList.map(v => {
