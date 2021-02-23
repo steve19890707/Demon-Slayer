@@ -24,7 +24,7 @@ export const EnemyChessUIBoard = ({
       title:"返回",
       textColor:['#ffffff', '#ffffff']
   }]));
-  const CreateText = ({ noop })=>{
+  const CreateText = ()=>{
     return textInforArray.map((val,key)=>{
       return <Text
         key={key}

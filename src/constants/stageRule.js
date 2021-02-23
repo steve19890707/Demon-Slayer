@@ -24,30 +24,37 @@ export const stageRule = fromJS({
     story:[{
         character:'Tanjirou-talk-default',
         name:'竈門 炭治郎',
+        color:'#00ff99',
         content:'1:台詞測試'
       },{
         character:'Tanjirou-talk-default',
         name:'竈門 炭治郎',
+        color:'#00ff99',
         content:'2:台詞測試'
       },{
         character:'Tanjirou-talk-default',
         name:'竈門 炭治郎',
+        color:'#00ff99',
         content:'3:台詞測試'
       },{
         character:'Teoni-talk-default',
         name:'手鬼',
+        color:'#9d4edd',
         content:'4:台詞測試!!!'
       },{
         character:'Tanjirou-talk-def',
         name:'竈門 炭治郎',
+        color:'#00ff99',
         content:'5:台詞測試!!!'
       },{
         character:'Teoni-talk-default',
         name:'手鬼',
+        color:'#9d4edd',
         content:'6:台詞測試!!!'
       },{
         character:'Tanjirou-talk-attack',
         name:'竈門 炭治郎',
+        color:'#00ff99',
         content:'7:台詞測試!!!'
     }],
     isWin: enemyList => {

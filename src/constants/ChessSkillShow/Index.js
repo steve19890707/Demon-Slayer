@@ -1,6 +1,7 @@
 import React from "react";
 import { TanjirouSkill } from "./TanjirouSkill/Index";
 import { NezukoSkill } from "./Nezuko/Index";
+import { ZenitsuSkill } from "./Zenitsu/Index";
 export const ChessSkillShow = ({
   attacker={},
   skill={},
@@ -38,6 +39,8 @@ export const ChessSkillShow = ({
       return <TanjirouSkill {...defaultprops}/>
     case `Nezuko`:
       return <NezukoSkill {...defaultprops}/>
+    case `Zenitsu`:
+      return <ZenitsuSkill {...defaultprops}/>
     default:
       return;
   };

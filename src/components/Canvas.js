@@ -68,6 +68,7 @@ export const Canvas = ()=> {
   useEffect(()=>{
     switch (currentBGM) {
       case 'Tanjirou':
+      case 'Zenitsu':
         audioData.round.fade(0.6,0,1000);
         audioData.KimetsuNoYaiba.stop();
         audioData.KimetsuNoYaiba.volume(1);
@@ -92,6 +93,7 @@ export const Canvas = ()=> {
   useEffect(()=>{
     switch (fadeBGM){
       case 'Tanjirou':
+      case 'Zenitsu':
         audioData.KimetsuNoYaiba.fade(1,0,1000);
         setCurrentBGM('enemyRounds');
         break;

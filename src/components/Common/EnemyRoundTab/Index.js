@@ -9,16 +9,17 @@ import { EnemyList } from "./EnemyList";
 import { ChessList } from "./ChessList";
 import { Information } from "./Information";
 export const EnemyRoundTab = ({ props })=> {
-  const [ defChess, setDefChess ] = useState(0);
   const { enemyRoundTab, chess, enemyChess,
     setEnemyRoundTab, setAnimeShow, setCurrentChess, setCurrentBGM, dispatch } = props;
   const chessList = chess.filter(v=>v.debut);
   const enemyList = enemyChess.filter(v=>v.debut);
   const enemySkill = enemyList[enemyRoundTab.oder].skill;
   const enemySp = enemyList[enemyRoundTab.oder].sp;
+  const [ defChess, setDefChess ] = useState(0);
+  const [ random ] = useState(
+    Math.round(Math.random()*(enemySkill.length-1))
+  );
   const getAtkSkill = ()=>{
-    const totalSize = enemySkill.length-1;
-    const random = Math.round(Math.random()*totalSize);
     const checkSp = (enemySp===0)||(enemySkill[random].sp>enemySp);
     return checkSp ? 0 : random;
   };

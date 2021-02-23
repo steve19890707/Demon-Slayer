@@ -76,9 +76,39 @@ const chess = createSlice({
       }],
       ...basicCommon
     },{
+      name:'Zenitsu',
+      cn:'我妻善逸',
+      id:3,
+      step:3,
+      attack:2,
+      hp:1250,
+      sp:100,
+      dodge:90,
+      fullValue:{
+        hp:1250,
+        sp:100
+      },
+      skill:[{ 
+        name:'斬擊',
+        atk:200,
+        sp:0,
+        hitfix:0
+      },{ 
+        name:'壹之型―霹靂一閃',
+        atk:400,
+        sp:15,
+        hitfix:15
+      },{
+        name:'壹之型―霹靂一閃―六連',
+        atk:1000,
+        sp:70,
+        hitfix:30
+      }],
+      ...basicCommon
+    },{
       name:'Inosuke',
       cn:'嘴平 伊之助',
-      id:3,
+      id:4,
       step:4,
       attack:3,
       hp:1800,

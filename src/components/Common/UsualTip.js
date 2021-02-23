@@ -73,15 +73,26 @@ export const UsualTip = ({
                 status:true,
               });
             }else {
-              setMoveStep(true);
-              setUsualTip({
-                title:``,
-                status:false,
-              });
+              if(!checkLose(chess)){
+                setUsualTip({
+                  title:`我方回合`,
+                  status:true,
+                });
+                setCurrentChess({
+                  key:0,
+                  type:"USERROUND"
+                });
+              }else {
+                setMoveStep(true);
+                setUsualTip({
+                  title:``,
+                  status:false,
+                });
+              };
             }
             break;
           case "CHECKWIN":
-            setMoveStep(true);
+            setMoveStep(false);
             setTextColor(['#ffffff', '#ffffff']);
             setUsualTip({
               title:``,
@@ -89,7 +100,7 @@ export const UsualTip = ({
             });
             break;
           case "CHECKLOSE":
-            setMoveStep(true);
+            setMoveStep(false);
             setTextColor(['#ffffff', '#ffffff']);
             setUsualTip({
               title:``,
@@ -115,7 +126,7 @@ export const UsualTip = ({
             });
             break;
           default:
-            return;
+            break;
         }
       }}
     />

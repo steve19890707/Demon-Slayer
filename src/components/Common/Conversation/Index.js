@@ -94,7 +94,7 @@ export const Conversation = ({ props })=> {
             y={65}
             style={new PIXI.TextStyle({ fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
               fontSize: 16,
-              fill:['#ffffff', '#00ff99'],
+              fill:['#ffffff', currentConversation.getIn([currentStory,'color'])],
             })}
           />
           <Spring
