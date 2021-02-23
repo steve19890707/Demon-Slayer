@@ -11,7 +11,8 @@ export const UsualTip = ({
   const {
     stageStatus, chess, currentChess, enemyChess, currentBGM,
     usualTip, setMoveStep, setUsualTip, setCurrentChess, setFadeBGM,
-    setEnemyRoundTab } = props;
+    setEnemyRoundTab, setRoundStart, setStageStatus 
+  } = props;
     const [ textColor, setTextColor ] = useState(['#ffffff', '#ffffff']);
   return <Graphics
     x={400}
@@ -92,20 +93,28 @@ export const UsualTip = ({
             }
             break;
           case "CHECKWIN":
-            setMoveStep(false);
             setTextColor(['#ffffff', '#ffffff']);
             setUsualTip({
               title:``,
               status:false,
             });
+            setRoundStart(false);
+            setFadeBGM(currentBGM);
+            setStageStatus('stageTwo');
             break;
           case "CHECKLOSE":
-            setMoveStep(false);
             setTextColor(['#ffffff', '#ffffff']);
             setUsualTip({
-              title:``,
-              status:false,
+              title:`GAME OVER`,
+              status:true,
             });
+            setCurrentChess({
+              key:0,
+              type:"GAMEOVER"
+            });
+            break;
+          case "GAMEOVER":
+            window.location.reload();
             break;
           case "ENDROUND":
             setEnemyRoundTab({

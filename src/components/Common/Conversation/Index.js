@@ -5,7 +5,7 @@ import { stageRule } from '../../../constants/stageRule';
 import { Container, Graphics, Sprite, Text } from '@inlet/react-pixi/animated';
 import { Spring } from 'react-spring/renderprops';
 export const Conversation = ({ props })=> {
-  const { stageStatus, setRoundStart } = props;
+  const { stageStatus, setRoundStart, setMoveStep } = props;
   const currentConversation = stageRule.getIn([stageStatus,'story']);
   const currentRecap = stageRule.getIn([stageStatus,'recap']);
   const [ isRecap, setIsRecap ] = useState(true);
@@ -132,6 +132,7 @@ export const Conversation = ({ props })=> {
                 setCurrentStory(prev=>prev+=1);
               }else {
                 setRoundStart(true);
+                setMoveStep(true)
               };    
             }}
           />

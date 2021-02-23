@@ -149,6 +149,7 @@ const chess = createSlice({
         return isDebutChess.map(v=>{
           if(value.name===v.get('name')){
             return (
+              state[key].roundMove = 1,
               state[key].debut = true,
               state[key].x = v.get('x'),
               state[key].y = v.get('y')

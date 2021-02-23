@@ -30,6 +30,10 @@ export const videos = {
     skill2: PIXI.Texture.from(`${hostname}video/Tanjirou/skill2.mp4`),
     skill3: PIXI.Texture.from(`${hostname}video/Tanjirou/skill3.mp4`),
     skill4: PIXI.Texture.from(`${hostname}video/Tanjirou/skill4.mp4`)
+  },
+  Zenitsu: {
+    skill2: PIXI.Texture.from(`${hostname}video/Zenitsu/skill2.mp4`),
+    skill3: PIXI.Texture.from(`${hostname}video/Zenitsu/skill3.mp4`)
   }
 };
 // closeAutoPlay
@@ -38,6 +42,11 @@ const closeAutoPlay = ()=>{
   for(let i=0; i<Tanjirou.length; i++){
     videos.Tanjirou[`skill${i+2}`].baseTexture.resource.autoPlay= false;
     videos.Tanjirou[`skill${i+2}`].baseTexture.resource.muted= true;
+  };
+  const Zenitsu = Object.keys(videos.Zenitsu);
+  for(let i=0; i<Zenitsu.length; i++){
+    videos.Zenitsu[`skill${i+2}`].baseTexture.resource.autoPlay= false;
+    videos.Zenitsu[`skill${i+2}`].baseTexture.resource.muted= true;
   };
 };
 closeAutoPlay();
@@ -81,6 +90,8 @@ loader
   .add('Nomanooni-fight',`${hostname}imgs/Nomanooni/fight.png`)
   .add('stageOne-BG',`${hostname}imgs/background/stage1-background.png`)
   .add('stageOne-main-BG',`${hostname}imgs/background/stage1-main-background.jpg`)
+  .add('stageTwo-BG',`${hostname}imgs/background/stage2-background.png`)
+  .add('stageTwo-main-BG',`${hostname}imgs/background/stage2-main-background.jpg`)
   .add('logo',`${hostname}imgs/common/logo.png`)
   .add('atkIcon',`${hostname}imgs/common/atk.png`)
   .add('defIcon',`${hostname}imgs/common/def.png`)

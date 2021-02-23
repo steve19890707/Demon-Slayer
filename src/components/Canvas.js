@@ -226,7 +226,9 @@ export const Canvas = ()=> {
           setUsualTip,
           setCurrentChess,
           setFadeBGM,
-          setEnemyRoundTab
+          setEnemyRoundTab,
+          setRoundStart,
+          setStageStatus
         }}
       />}
     {battleInfo.status&&
@@ -271,7 +273,8 @@ export const Canvas = ()=> {
       <Conversation
         props={{
           stageStatus,
-          setRoundStart
+          setRoundStart,
+          setMoveStep
         }}
       />}
     {!stageStart&&
