@@ -71,14 +71,20 @@ export const Canvas = ()=> {
       case 'Zenitsu':
       case 'Rengoku':
         audioData.round.fade(0.6,0,1000);
-        if(audioData.KimetsuNoYaiba.playing()){ return };
+        if(
+          audioData.KimetsuNoYaiba.playing() &&
+          audioData.KimetsuNoYaiba._volume===1
+        ){ return };
         audioData.KimetsuNoYaiba.stop();
         audioData.KimetsuNoYaiba.volume(1);
         audioData.KimetsuNoYaiba.play();
         break;
       case 'Teoni':
         audioData.round.fade(0.6,0,1000);
-        if(audioData.KimetsuNoYaibaEnemy.playing()){ return };
+        if(
+          audioData.KimetsuNoYaibaEnemy.playing() &&
+          audioData.KimetsuNoYaibaEnemy._volume===1
+        ){ return };
         audioData.KimetsuNoYaibaEnemy.stop();
         audioData.KimetsuNoYaibaEnemy.volume(1);
         audioData.KimetsuNoYaibaEnemy.play();
