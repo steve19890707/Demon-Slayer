@@ -34,6 +34,12 @@ export const videos = {
   Zenitsu: {
     skill2: PIXI.Texture.from(`${hostname}video/Zenitsu/skill2.mp4`),
     skill3: PIXI.Texture.from(`${hostname}video/Zenitsu/skill3.mp4`)
+  },
+  Rengoku: {
+    skill2: PIXI.Texture.from(`${hostname}video/Rengoku/skill2.mp4`),
+    skill3: PIXI.Texture.from(`${hostname}video/Rengoku/skill3.mp4`),
+    skill4: PIXI.Texture.from(`${hostname}video/Rengoku/skill4.mp4`),
+    skill5: PIXI.Texture.from(`${hostname}video/Rengoku/skill5.mp4`)
   }
 };
 // closeAutoPlay
@@ -47,6 +53,11 @@ const closeAutoPlay = ()=>{
   for(let i=0; i<Zenitsu.length; i++){
     videos.Zenitsu[`skill${i+2}`].baseTexture.resource.autoPlay= false;
     videos.Zenitsu[`skill${i+2}`].baseTexture.resource.muted= true;
+  };
+  const Rengoku = Object.keys(videos.Rengoku);
+  for(let i=0; i<Rengoku.length; i++){
+    videos.Rengoku[`skill${i+2}`].baseTexture.resource.autoPlay= false;
+    videos.Rengoku[`skill${i+2}`].baseTexture.resource.muted= true;
   };
 };
 closeAutoPlay();
@@ -79,6 +90,16 @@ loader
   .add('Zenitsu-fight',`${hostname}imgs/Zenitsu/fight.png`)
   .add('Inosuke-head-default',`${hostname}imgs/Inosuke/head-default.jpg`)
   .add('Inosuke-fight',`${hostname}imgs/Inosuke/fight.png`)
+  .add('Rengoku-head-default',`${hostname}imgs/Rengoku/head-default.png`)
+  .add('Rengoku-talk-default',`${hostname}imgs/Rengoku/talk-default.jpg`)
+  .add('Rengoku-talk-attack',`${hostname}imgs/Rengoku/talk-attack.jpg`)
+  .add('Rengoku-talk-def',`${hostname}imgs/Rengoku/talk-def.jpg`)
+  .add('Rengoku-talk-dodge',`${hostname}imgs/Rengoku/talk-dodge.jpg`)
+  .add('Rengoku-talk-dead',`${hostname}imgs/Rengoku/talk-dead.jpg`)
+  .add('Rengoku-talk-usual',`${hostname}imgs/Rengoku/talk-usual.jpg`)
+  .add('Rengoku-talk-spark',`${hostname}imgs/Rengoku/talk-spark.jpg`)
+  .add('Rengoku-talk-last',`${hostname}imgs/Rengoku/talk-last.jpg`)
+  .add('Rengoku-fight',`${hostname}imgs/Rengoku/fight.png`)
   .add('Teoni-head-default',`${hostname}imgs/Teoni/head-default.png`)
   .add('Teoni-talk-default',`${hostname}imgs/Teoni/talk-default.jpg`)
   .add('Teoni-talk-attack',`${hostname}imgs/Teoni/talk-attack.jpg`)

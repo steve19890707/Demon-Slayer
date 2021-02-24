@@ -69,12 +69,15 @@ export const Canvas = ()=> {
     switch (currentBGM) {
       case 'Tanjirou':
       case 'Zenitsu':
+      case 'Rengoku':
+        if(audioData.KimetsuNoYaiba.playing()){ return };
         audioData.round.fade(0.6,0,1000);
         audioData.KimetsuNoYaiba.stop();
         audioData.KimetsuNoYaiba.volume(1);
         audioData.KimetsuNoYaiba.play();
         break;
       case 'Teoni':
+        if(audioData.KimetsuNoYaibaEnemy.playing()){ return };
         audioData.round.fade(0.6,0,1000);
         audioData.KimetsuNoYaibaEnemy.stop();
         audioData.KimetsuNoYaibaEnemy.volume(1);
@@ -94,6 +97,7 @@ export const Canvas = ()=> {
     switch (fadeBGM){
       case 'Tanjirou':
       case 'Zenitsu':
+      case 'Rengoku':
         audioData.KimetsuNoYaiba.fade(1,0,1000);
         setCurrentBGM('enemyRounds');
         break;
@@ -228,7 +232,8 @@ export const Canvas = ()=> {
           setFadeBGM,
           setEnemyRoundTab,
           setRoundStart,
-          setStageStatus
+          setStageStatus,
+          dispatch
         }}
       />}
     {battleInfo.status&&

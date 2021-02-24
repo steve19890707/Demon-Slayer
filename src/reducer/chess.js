@@ -140,8 +140,47 @@ const chess = createSlice({
         hitfix:0
       }],
       ...basicCommon
-    }
-  ],
+    },{
+      name:'Rengoku',
+      cn:'煉獄 杏壽郎',
+      id:5,
+      step:4,
+      attack:4,
+      hp:2500,
+      sp:200,
+      dodge:85,
+      fullValue:{
+        hp:2500,
+        sp:200
+      },
+      skill:[{ 
+        name:'斬擊',
+        atk:300,
+        sp:0,
+        hitfix:10
+      },{ 
+        name:'壹之型―不知火',
+        atk:400,
+        sp:15,
+        hitfix:40
+      },{ 
+        name:'肆之型―盛炎的蜿蜒',
+        atk:500,
+        sp:15,
+        hitfix:25
+      },{
+        name:'伍之型―炎虎',
+        atk:800,
+        sp:30,
+        hitfix:40
+      },{
+        name:'玖之型―煉獄',
+        atk:1500,
+        sp:100,
+        hitfix:50
+      }],
+      ...basicCommon
+  }],
   reducers:{
     stageDebut:(state, actions)=> {
       const { isDebutChess } = actions.payload;
@@ -194,10 +233,18 @@ const chess = createSlice({
         state[i].roundMove = 1;
       };
     },
+    chessDone:(state)=>{
+      for(let i=0;i<state.length;i++){
+        state[i].debut = false;
+        state[i].hp = state[i].fullValue.hp;
+        state[i].sp = state[i].fullValue.sp;
+        state[i].roundMove = 1;
+      };
+    }
   }
 });
 export default chess.reducer;
 export const { 
   stageDebut, chessMove, chessSelected, chessCheckStatus, chessAttackResult, 
-  chessDead, chessMoved, chessDefense, chessRoundRest
+  chessDead, chessMoved, chessDefense, chessRoundRest, chessDone
 } = chess.actions;
