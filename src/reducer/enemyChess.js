@@ -56,8 +56,35 @@ const enemyChess = createSlice({
         hitfix:30
       }],
       ...basicCommon
-    }
-  ],
+    },{
+      name:'Hakuji',
+      cn:'猗窩座',
+      id:3,
+      hp:3000,
+      sp:200,
+      dodge:40,
+      fullValue:{
+        hp:3000,
+        sp:200
+      },
+      skill:[{ 
+        name:'破壞殺攻擊',
+        atk:350,
+        sp:0,
+        hitfix:20
+      },{ 
+        name:'破壞殺-亂式',
+        atk:600,
+        sp:15,
+        hitfix:30
+      },{ 
+        name:'術式展開-破壞殺-羅針',
+        atk:800,
+        sp:30,
+        hitfix:30
+      }],
+      ...basicCommon
+  }],
   reducers:{
     enemyStageDebut:(state, actions)=> {
       const { isDebutChess } = actions.payload;

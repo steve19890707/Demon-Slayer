@@ -35,7 +35,8 @@ export const BattleAnimeShow = ({
     const [ showSkill, setShowSkill ] = useState({ 
       status:false,
       type:'0',
-      name: chess[attacker.key].name,
+      name: (animeShow.type==="USER") ? chess[attacker.key].name :
+        enemyChess[attacker.key].name,
       callback: null
     });
     const fetchChessType = ( type='' )=>{
@@ -53,7 +54,9 @@ export const BattleAnimeShow = ({
       }; 
     };
     const CreateSkillSprite = () => {
-      const video = videos[`${chess[attacker.key].name}`][`skill${showSkill.type}`];
+      const video = (animeShow.type==="USER") ?
+        videos[`${chess[attacker.key].name}`][`skill${showSkill.type}`]:
+        videos[`${enemyChess[attacker.key].name}`][`skill${showSkill.type}`];
       const videoDom = video.baseTexture.resource.source;
       videoDom.onended = function() {
         setShowSkill(prev=>{
@@ -69,7 +72,10 @@ export const BattleAnimeShow = ({
         anchor={0.5}
         x={0}
         y={-35}
-        image={loader.resources[`${chess[attacker.key].name}-talk-attack`].data}
+        image={loader.resources[`${
+          (animeShow.type==="USER") ?
+            chess[attacker.key].name : enemyChess[attacker.key].name
+        }-talk-attack`].data}
         texture={video}
       />
     }

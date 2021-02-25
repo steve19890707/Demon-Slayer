@@ -15,7 +15,7 @@ export const stageRule = fromJS({
     ],
     debutEnemyChess:[
       {
-        name:'Teoni',
+        name:'Hakuji',
         x:14,
         y:7
       }

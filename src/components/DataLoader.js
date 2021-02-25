@@ -40,6 +40,10 @@ export const videos = {
     skill3: PIXI.Texture.from(`${hostname}video/Rengoku/skill3.mp4`),
     skill4: PIXI.Texture.from(`${hostname}video/Rengoku/skill4.mp4`),
     skill5: PIXI.Texture.from(`${hostname}video/Rengoku/skill5.mp4`)
+  },
+  Hakuji: {
+    skill2: PIXI.Texture.from(`${hostname}video/Hakuji/skill2.mp4`),
+    skill3: PIXI.Texture.from(`${hostname}video/Hakuji/skill3.mp4`)
   }
 };
 // closeAutoPlay
@@ -58,6 +62,11 @@ const closeAutoPlay = ()=>{
   for(let i=0; i<Rengoku.length; i++){
     videos.Rengoku[`skill${i+2}`].baseTexture.resource.autoPlay= false;
     videos.Rengoku[`skill${i+2}`].baseTexture.resource.muted= true;
+  };
+  const Hakuji = Object.keys(videos.Hakuji);
+  for(let i=0; i<Hakuji.length; i++){
+    videos.Hakuji[`skill${i+2}`].baseTexture.resource.autoPlay= false;
+    videos.Hakuji[`skill${i+2}`].baseTexture.resource.muted= true;
   };
 };
 closeAutoPlay();
@@ -109,6 +118,14 @@ loader
   .add('Teoni-fight',`${hostname}imgs/Teoni/fight.png`)
   .add('Nomanooni-head-default',`${hostname}imgs/Nomanooni/head-default.jpg`)
   .add('Nomanooni-fight',`${hostname}imgs/Nomanooni/fight.png`)
+  .add('Hakuji-head-default',`${hostname}imgs/Hakuji/head-default.png`)
+  .add('Hakuji-talk-default',`${hostname}imgs/Hakuji/talk-default.jpg`)
+  .add('Hakuji-talk-attack',`${hostname}imgs/Hakuji/talk-attack.jpg`)
+  .add('Hakuji-talk-def',`${hostname}imgs/Hakuji/talk-def.jpg`)
+  .add('Hakuji-talk-dodge',`${hostname}imgs/Hakuji/talk-dodge.jpg`)
+  .add('Hakuji-talk-dead',`${hostname}imgs/Hakuji/talk-dead.jpg`)
+  .add('Hakuji-talk-usual',`${hostname}imgs/Hakuji/talk-usual.jpg`)
+  .add('Hakuji-fight',`${hostname}imgs/Hakuji/fight.png`)
   .add('stageOne-BG',`${hostname}imgs/background/stage1-background.png`)
   .add('stageOne-main-BG',`${hostname}imgs/background/stage1-main-background.jpg`)
   .add('stageTwo-BG',`${hostname}imgs/background/stage2-background.png`)

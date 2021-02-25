@@ -80,6 +80,7 @@ export const Canvas = ()=> {
         audioData.KimetsuNoYaiba.play();
         break;
       case 'Teoni':
+      case 'Hakuji':
         audioData.round.fade(0.6,0,1000);
         if(
           audioData.KimetsuNoYaibaEnemy.playing() &&
@@ -108,6 +109,7 @@ export const Canvas = ()=> {
         setCurrentBGM('enemyRounds');
         break;
       case 'Teoni':
+      case 'Hakuji':
         audioData.KimetsuNoYaibaEnemy.fade(1,0,1000);
         setCurrentBGM('userRounds');
         break;
