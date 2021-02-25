@@ -73,12 +73,12 @@ const enemyChess = createSlice({
         sp:0,
         hitfix:20
       },{ 
-        name:'破壞殺-亂式',
+        name:'破壞殺―亂式',
         atk:600,
         sp:15,
         hitfix:30
       },{ 
-        name:'術式展開-破壞殺-羅針',
+        name:'術式展開―破壞殺―羅針',
         atk:800,
         sp:30,
         hitfix:30

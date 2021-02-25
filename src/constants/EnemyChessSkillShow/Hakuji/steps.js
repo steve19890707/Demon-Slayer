@@ -92,7 +92,7 @@ export const steps = ({
       };
       return defStart();
     // ATK
-    case '破壞殺-亂式':
+    case '破壞殺―亂式':
       setBGstatus({ type:'STANDBY', defence:false, seconds:0 });
       setPosition(prev=>{return{ ...prev, x:-600, tension:100 }});
       const skill2atkStart = ()=>{
@@ -148,7 +148,7 @@ export const steps = ({
         return timeout;
       };
       return skill2atkStart();
-    case '術式展開-破壞殺-羅針':
+    case '術式展開―破壞殺―羅針':
       setBGstatus({ type:'STANDBY', defence:false, seconds:0 });
       setPosition(prev=>{return{ ...prev, x:-600, tension:100 }});
       const skill3atkStart = ()=>{
