@@ -10,7 +10,7 @@ export const UsualTip = ({
   props,
 })=> {
   const {
-    stageStatus, chess, currentChess, enemyChess, currentBGM,
+    stageStatus, chess, currentChess, enemyChess, currentBGM, animeShow,
     usualTip, setMoveStep, setUsualTip, setCurrentChess, setFadeBGM,
     setEnemyRoundTab, setRoundStart, setStageStatus, dispatch
   } = props;
@@ -75,7 +75,7 @@ export const UsualTip = ({
                 status:true,
               });
             }else {
-              if(!checkLose(chess)){
+              if(!checkLose(chess)&&(animeShow.type==="ENEMY")){
                 setUsualTip({
                   title:`我方回合`,
                   status:true,

@@ -234,6 +234,7 @@ export const Canvas = ()=> {
           enemyChess,
           usualTip,
           currentBGM,
+          animeShow,
           setMoveStep,
           setUsualTip,
           setCurrentChess,
@@ -262,10 +263,12 @@ export const Canvas = ()=> {
           animeShow,
           chess,
           enemyChess,
+          enemyRoundTab,
           setMoveStep,
           setAnimeShow,
           setUsualTip,
           setCurrentChess,
+          setEnemyRoundTab,
           dispatch
         }}
       />}

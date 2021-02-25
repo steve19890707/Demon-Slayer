@@ -13,8 +13,8 @@ import { EnemyChessSkillShow } from "../../../constants/EnemyChessSkillShow/Inde
 export const BattleAnimeShow = ({
   props
 }) =>{
-  const { stageStatus, animeShow, chess, enemyChess, 
-    setMoveStep, setAnimeShow, setUsualTip, setCurrentChess, dispatch } = props;
+  const { stageStatus, animeShow, chess, enemyChess, enemyRoundTab,
+    setMoveStep, setAnimeShow, setUsualTip, setCurrentChess, setEnemyRoundTab, dispatch } = props;
   const { target, attacker } = animeShow;
   // CreateContent
   const CreateContent = ()=>{
@@ -111,10 +111,20 @@ export const BattleAnimeShow = ({
         setCurrentChess(prev=>{
           return { ...prev, type:"USERROUND"
         }});
-        setUsualTip({
-          title:`我方回合`,
-          status:true,
-        });
+        const enemyList = enemyChess.filter(v=>v.debut);
+        if(enemyRoundTab.oder < (enemyList.length-1)) {
+          setEnemyRoundTab(prev=>{
+            return{
+              oder:prev.oder+=1,
+              status:true
+            }
+          });
+        }else {
+          setUsualTip({
+            title:`我方回合`,
+            status:true,
+          });
+        };
       }else {
         setMoveStep(true);
       };
@@ -227,10 +237,20 @@ export const BattleAnimeShow = ({
             setCurrentChess(prev=>{
               return { ...prev, type:"USERROUND"
             }});
-            setUsualTip({
-              title:`我方回合`,
-              status:true,
-            });
+            const enemyList = enemyChess.filter(v=>v.debut);
+            if(enemyRoundTab.oder < (enemyList.length-1)) {
+              setEnemyRoundTab(prev=>{
+                return{
+                  oder:prev.oder+=1,
+                  status:true
+                }
+              });
+            }else {
+              setUsualTip({
+                title:`我方回合`,
+                status:true,
+              });
+            };
           }else {
             setMoveStep(true);
           };

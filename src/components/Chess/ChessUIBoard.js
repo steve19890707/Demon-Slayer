@@ -39,13 +39,13 @@ export const ChessUIBoard = ({
       title:"返回",
       textColor:['#ffffff', '#ffffff']
   }]));
-  ChessData.map((v)=>{
+  ChessData.filter(v=>v.debut).map((v)=>{
     return (
       forMoveArray.push({ x:v.x, y:v.y }),
       forAttackArray.push({ x:v.x, y:v.y })
     );
   });
-  EnemyChessData.map((v)=>{
+  EnemyChessData.filter(v=>v.debut).map((v)=>{
     return forMoveArray.push({ x:v.x, y:v.y });
   });
   const compareAttack = (
@@ -54,7 +54,6 @@ export const ChessUIBoard = ({
     chessAtk
   )=>{
     let isAttack = false;
-    const isDebutEnemy = EnemyChessData.filter(v=>v.debut);
     const limitPosition = { x:19, y:14 };
     const positionRange = [];
     for(let i=0; i < chessAtk; i++){
@@ -69,7 +68,7 @@ export const ChessUIBoard = ({
         { x:chessX, y:getlessY }
       );
     };
-    isDebutEnemy.map(val=>{
+    EnemyChessData.filter(v=>v.debut).map(val=>{
       return positionRange.map(v=>{
         if(val.x===v.x&&val.y===v.y){
           return isAttack = true;
