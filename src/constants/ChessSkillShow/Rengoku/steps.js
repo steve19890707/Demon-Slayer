@@ -159,7 +159,7 @@ export const steps = ({
       };
       const skill3step1 = ()=>{
         const timeout = setTimeout(() => {
-          setPosition(prev=>{return{ ...prev, x:0, y:-100, tension:100 }});
+          setPosition(prev=>{return{ ...prev, x:0, tension:100 }});
           setBGstatus(prev=>{return{ ...prev, type:'SKILL' }});
           // callback
           skill3step2();
@@ -215,7 +215,7 @@ export const steps = ({
       };
       const skill4step1 = ()=>{
         const timeout = setTimeout(() => {
-          setPosition(prev=>{return{ ...prev, x:0, y:-100, tension:100 }});
+          setPosition(prev=>{return{ ...prev, x:0, tension:100 }});
           setBGstatus(prev=>{return{ ...prev, type:'SKILL' }});
           // callback
           skill4step2();
@@ -271,7 +271,7 @@ export const steps = ({
       };
       const skill5step1 = ()=>{
         const timeout = setTimeout(() => {
-          setPosition(prev=>{return{ ...prev, x:0, y:-100, tension:100 }});
+          setPosition(prev=>{return{ ...prev, x:0, tension:100 }});
           setBGstatus(prev=>{return{ ...prev, type:'SKILL' }});
           // callback
           skill5step2();

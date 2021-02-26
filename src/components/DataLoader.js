@@ -38,6 +38,10 @@ export const videos = {
     skill2: PIXI.Texture.from(`${hostname}video/Zenitsu/skill2.mp4`),
     skill3: PIXI.Texture.from(`${hostname}video/Zenitsu/skill3.mp4`)
   },
+  Inosuke: {
+    skill3: PIXI.Texture.from(`${hostname}video/Inosuke/skill3.mp4`),
+    skill4: PIXI.Texture.from(`${hostname}video/Inosuke/skill4.mp4`)
+  },
   Rengoku: {
     skill2: PIXI.Texture.from(`${hostname}video/Rengoku/skill2.mp4`),
     skill3: PIXI.Texture.from(`${hostname}video/Rengoku/skill3.mp4`),
@@ -65,6 +69,11 @@ const closeAutoPlay = ()=>{
   for(let i=0; i<Zenitsu.length; i++){
     videos.Zenitsu[`skill${i+2}`].baseTexture.resource.autoPlay= false;
     videos.Zenitsu[`skill${i+2}`].baseTexture.resource.muted= true;
+  };
+  const Inosuke = Object.keys(videos.Inosuke);
+  for(let i=0; i<Inosuke.length; i++){
+    videos.Inosuke[`skill${i+3}`].baseTexture.resource.autoPlay= false;
+    videos.Inosuke[`skill${i+3}`].baseTexture.resource.muted= true;
   };
   const Rengoku = Object.keys(videos.Rengoku);
   for(let i=0; i<Rengoku.length; i++){

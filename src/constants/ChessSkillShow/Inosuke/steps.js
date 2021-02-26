@@ -149,7 +149,7 @@ export const steps = ({
         return timeout;
       };
       return skill2atkStart();
-    case '貳之牙―利刃對劈?':
+    case '貳之牙―利刃對劈':
       setBGstatus({ type:'STANDBY', defence:false, seconds:0 });
       setPosition(prev=>{return{ ...prev, x:550,y:50,tension:100 }});
       const skill3atkStart = ()=>{
@@ -205,7 +205,7 @@ export const steps = ({
         return timeout;
       };
       return skill3atkStart();
-    case '叄之牙―獠牙撕扯?':
+    case '叄之牙―獠牙撕扯':
       setBGstatus({ type:'STANDBY', defence:false, seconds:0 });
       setPosition(prev=>{return{ ...prev, x:550,y:50,tension:100 }});
       const skill4atkStart = ()=>{
