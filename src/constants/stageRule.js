@@ -19,7 +19,7 @@ export const stageRule = fromJS({
         x:14,
         y:7
       },{
-        name:'Hakuji',
+        name:'Nomanooni',
         x:14,
         y:9
       }

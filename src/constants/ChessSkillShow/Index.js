@@ -1,5 +1,5 @@
 import React from "react";
-import { TanjirouSkill } from "./TanjirouSkill/Index";
+import { TanjirouSkill } from "./Tanjirou/Index";
 import { NezukoSkill } from "./Nezuko/Index";
 import { ZenitsuSkill } from "./Zenitsu/Index";
 import { RengokuSkill } from "./Rengoku/Index";

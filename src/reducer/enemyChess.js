@@ -46,7 +46,7 @@ const enemyChess = createSlice({
       },
       skill:[{ 
         name:'爪擊',
-        atk:70,
+        atk:150,
         sp:0,
         hitfix:15
       },{ 

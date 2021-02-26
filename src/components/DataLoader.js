@@ -31,6 +31,9 @@ export const videos = {
     skill3: PIXI.Texture.from(`${hostname}video/Tanjirou/skill3.mp4`),
     skill4: PIXI.Texture.from(`${hostname}video/Tanjirou/skill4.mp4`)
   },
+  Nezuko: {
+    skill2: PIXI.Texture.from(`${hostname}video/Nezuko/skill2.mp4`),
+  },
   Zenitsu: {
     skill2: PIXI.Texture.from(`${hostname}video/Zenitsu/skill2.mp4`),
     skill3: PIXI.Texture.from(`${hostname}video/Zenitsu/skill3.mp4`)
@@ -52,6 +55,11 @@ const closeAutoPlay = ()=>{
   for(let i=0; i<Tanjirou.length; i++){
     videos.Tanjirou[`skill${i+2}`].baseTexture.resource.autoPlay= false;
     videos.Tanjirou[`skill${i+2}`].baseTexture.resource.muted= true;
+  };
+  const Nezuko = Object.keys(videos.Nezuko);
+  for(let i=0; i<Nezuko.length; i++){
+    videos.Nezuko[`skill${i+2}`].baseTexture.resource.autoPlay= false;
+    videos.Nezuko[`skill${i+2}`].baseTexture.resource.muted= true;
   };
   const Zenitsu = Object.keys(videos.Zenitsu);
   for(let i=0; i<Zenitsu.length; i++){
@@ -80,7 +88,7 @@ loader
   .add('Tanjirou-talk-dead',`${hostname}imgs/Tanjirou/talk-dead.jpg`)
   .add('Tanjirou-fight-typeA',`${hostname}imgs/Tanjirou/fight-typeA.png`)
   .add('Tanjirou-fight-typeB',`${hostname}imgs/Tanjirou/fight-typeB.png`)
-  .add('Nezuko-head-default',`${hostname}imgs/Nezuko/head-default.jpg`)
+  .add('Nezuko-head-default',`${hostname}imgs/Nezuko/head-default.png`)
   .add('Nezuko-talk-default',`${hostname}imgs/Nezuko/talk-default.jpg`)
   .add('Nezuko-talk-attack',`${hostname}imgs/Nezuko/talk-attack.jpg`)
   .add('Nezuko-talk-def',`${hostname}imgs/Nezuko/talk-def.jpg`)
@@ -116,7 +124,12 @@ loader
   .add('Teoni-talk-dodge',`${hostname}imgs/Teoni/talk-dodge.jpg`)
   .add('Teoni-talk-dead',`${hostname}imgs/Teoni/talk-dead.jpg`)
   .add('Teoni-fight',`${hostname}imgs/Teoni/fight.png`)
-  .add('Nomanooni-head-default',`${hostname}imgs/Nomanooni/head-default.jpg`)
+  .add('Nomanooni-head-default',`${hostname}imgs/Nomanooni/head-default.png`)
+  .add('Nomanooni-talk-default',`${hostname}imgs/Nomanooni/talk-default.jpg`)
+  .add('Nomanooni-talk-attack',`${hostname}imgs/Nomanooni/talk-attack.jpg`)
+  .add('Nomanooni-talk-def',`${hostname}imgs/Nomanooni/talk-def.jpg`)
+  .add('Nomanooni-talk-dodge',`${hostname}imgs/Nomanooni/talk-dodge.jpg`)
+  .add('Nomanooni-talk-dead',`${hostname}imgs/Nomanooni/talk-dead.jpg`)
   .add('Nomanooni-fight',`${hostname}imgs/Nomanooni/fight.png`)
   .add('Hakuji-head-default',`${hostname}imgs/Hakuji/head-default.png`)
   .add('Hakuji-talk-default',`${hostname}imgs/Hakuji/talk-default.jpg`)

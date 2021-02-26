@@ -68,6 +68,7 @@ export const Canvas = ()=> {
   useEffect(()=>{
     switch (currentBGM) {
       case 'Tanjirou':
+      case 'Nezuko':
       case 'Zenitsu':
       case 'Rengoku':
         audioData.round.fade(0.6,0,1000);
@@ -81,6 +82,7 @@ export const Canvas = ()=> {
         break;
       case 'Teoni':
       case 'Hakuji':
+      case 'Nomanooni':
         audioData.round.fade(0.6,0,1000);
         if(
           audioData.KimetsuNoYaibaEnemy.playing() &&
@@ -103,6 +105,7 @@ export const Canvas = ()=> {
   useEffect(()=>{
     switch (fadeBGM){
       case 'Tanjirou':
+      case 'Nezuko':
       case 'Zenitsu':
       case 'Rengoku':
         audioData.KimetsuNoYaiba.fade(1,0,1000);
@@ -110,6 +113,7 @@ export const Canvas = ()=> {
         break;
       case 'Teoni':
       case 'Hakuji':
+      case 'Nomanooni':
         audioData.KimetsuNoYaibaEnemy.fade(1,0,1000);
         setCurrentBGM('userRounds');
         break;

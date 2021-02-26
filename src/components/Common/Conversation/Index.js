@@ -68,10 +68,10 @@ export const Conversation = ({ props })=> {
             }
           </Spring>
           <Sprite
-            width={24}
-            height={14}
+            width={32}
+            height={22}
             anchor={0.5}
-            y={90}
+            y={85}
             interactive={true}
             buttonMode={true}
             image={loader.resources[`next`].data}
@@ -119,10 +119,11 @@ export const Conversation = ({ props })=> {
             }
           </Spring>
           <Sprite
-            width={24}
-            height={14}
+            width={32}
+            height={22}
             anchor={0.5}
-            y={90}
+            x={245}
+            y={85}
             interactive={true}
             buttonMode={true}
             image={loader.resources[`next`].data}

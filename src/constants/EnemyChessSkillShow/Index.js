@@ -1,6 +1,7 @@
 import React from "react";
-import { TeoniSkill } from "./TeoniSkill/Index";
+import { TeoniSkill } from "./Teoni/Index";
 import { HakujiSkill } from "./Hakuji/Index";
+import { NomanooniSkill } from "./Nomanooni/Index";
 export const EnemyChessSkillShow = ({
   attacker={},
   skill={},
@@ -38,6 +39,8 @@ export const EnemyChessSkillShow = ({
       return <TeoniSkill {...defaultprops}/>
     case `Hakuji`:
       return <HakujiSkill {...defaultprops}/>
+    case `Nomanooni`:
+      return <NomanooniSkill {...defaultprops}/>
     default:
       return;
   };
