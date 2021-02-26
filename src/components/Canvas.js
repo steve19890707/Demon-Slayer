@@ -25,7 +25,7 @@ export const Canvas = ()=> {
   const [ roundStart, setRoundStart ] = useState(false);
   const [ stageStart, setStageStart ] = useState(false);
   const [ roundEnd, setRoundEnd ] = useState(false);
-  const [ stageStatus, setStageStatus ] = useState('stageTwo');
+  const [ stageStatus, setStageStatus ] = useState('stageOne');
   const [ roundNum, setRoundNum ] = useState(1);
   const [ otherTab, setOtherTab ] = useState(false);
   const [ volume, setVolume ] = useState(true);
