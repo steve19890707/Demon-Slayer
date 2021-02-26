@@ -21,6 +21,11 @@ export const TopBar = ({
     const result = leftVal / percentage;
     return result;
   };
+  const filterCopyChessName = (name)=>{
+    if(!!~name.indexOf('Nomanooni')){
+      return 'Nomanooni';
+    }else return name;
+  };
   return <Graphics 
     x={-400}
     y={-300}
@@ -55,7 +60,7 @@ export const TopBar = ({
         height={50}
         x={50}
         y={15}
-        image={loader.resources[`${left.name}-head-default`].data}
+        image={loader.resources[`${filterCopyChessName(left.name)}-head-default`].data}
       />
       <Text 
         text={`${showType==="USER"?targetHp:left.hp} / ${left.fullValue.hp}`}
@@ -119,7 +124,7 @@ export const TopBar = ({
         height={50}
         x={690}
         y={15}
-        image={loader.resources[`${right.name}-head-default`].data}
+        image={loader.resources[`${filterCopyChessName(right.name)}-head-default`].data}
       />
       <Text 
         text={`${showType==="USER"?right.hp:targetHp} / ${right.fullValue.hp}`}

@@ -8,6 +8,11 @@ export const EnemyList = ({
   enemyList=[]
 })=>{
   const skill = enemyList[oder].skill;
+  const filterCopyChessName = (name)=>{
+    if(!!~name.indexOf('Nomanooni')){
+      return 'Nomanooni';
+    }else return name;
+  };
   return <Container sortableChildren={true}>
     <Sprite
       width={65}
@@ -15,7 +20,7 @@ export const EnemyList = ({
       anchor={0.5}
       x={175}
       y={-75}
-      image={loader.resources[`${enemyList[oder].name}-head-default`].data}
+      image={loader.resources[`${filterCopyChessName(enemyList[oder].name)}-head-default`].data}
     />
     <Text 
       text={`${enemyList[oder].cn} / 技能`}

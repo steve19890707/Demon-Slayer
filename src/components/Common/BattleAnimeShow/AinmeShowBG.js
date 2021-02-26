@@ -8,6 +8,14 @@ export const AnimeShowBG = ({
 })=>{
   const { stageStatus, BGstatus, BGprop, SkBGprop, 
     setSkBGpops, setBGpops } = props;
+  const filterBackgroundImg = (stageStatus)=>{
+    switch (stageStatus){
+      case 'stageTwo':
+        return 'stageOne';
+      default:
+        return stageStatus;
+    };
+  };
   return <>
     {BGstatus.type==='STOP'&&<Sprite
       x={-400}
@@ -16,7 +24,7 @@ export const AnimeShowBG = ({
       width={1600}
       height={500}
       anchor={0.5}
-      image={loader.resources[`${stageStatus}-BG`].data}
+      image={loader.resources[`${filterBackgroundImg(stageStatus)}-BG`].data}
     />}
     {BGstatus.type==='STANDBY'&&<Spring
       from={{ x:-400, y:-100 }}
@@ -42,7 +50,7 @@ export const AnimeShowBG = ({
           width={1600}
           height={500}
           anchor={0.5}
-          image={loader.resources[`${stageStatus}-BG`].data}
+          image={loader.resources[`${filterBackgroundImg(stageStatus)}-BG`].data}
           {...props}
       />}
     </Spring>}
@@ -70,7 +78,7 @@ export const AnimeShowBG = ({
           width={1600}
           height={500}
           anchor={0.5}
-          image={loader.resources[`${stageStatus}-BG`].data}
+          image={loader.resources[`${filterBackgroundImg(stageStatus)}-BG`].data}
           {...props}
       />}
     </Spring>}
@@ -98,7 +106,7 @@ export const AnimeShowBG = ({
           width={1600}
           height={500}
           anchor={0.5}
-          image={loader.resources[`${stageStatus}-BG`].data}
+          image={loader.resources[`${filterBackgroundImg(stageStatus)}-BG`].data}
           {...props}
       />}
     </Spring>}
@@ -126,7 +134,7 @@ export const AnimeShowBG = ({
           width={1600}
           height={500}
           anchor={0.5}
-          image={loader.resources[`${stageStatus}-BG`].data}
+          image={loader.resources[`${filterBackgroundImg(stageStatus)}-BG`].data}
           {...props}
       />}
     </Spring>}

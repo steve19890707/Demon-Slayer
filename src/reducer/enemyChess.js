@@ -35,14 +35,14 @@ const enemyChess = createSlice({
       ...basicCommon
     },{
       name:'Nomanooni',
-      cn:'沼鬼',
+      cn:'沼鬼(壹)',
       id:2,
-      hp:1500,
-      sp:200,
-      dodge:30,
+      hp:1200,
+      sp:120,
+      dodge:25,
       fullValue:{
-        hp:1500,
-        sp:200
+        hp:1200,
+        sp:120
       },
       skill:[{ 
         name:'爪擊',
@@ -51,15 +51,61 @@ const enemyChess = createSlice({
         hitfix:15
       },{ 
         name:'分身攻擊',
-        atk:600,
-        sp:15,
+        atk:300,
+        sp:20,
+        hitfix:30
+      }],
+      ...basicCommon
+    },{
+      name:'Nomanooni-2',
+      cn:'沼鬼(貳)',
+      id:3,
+      hp:1200,
+      sp:120,
+      dodge:25,
+      fullValue:{
+        hp:1200,
+        sp:120
+      },
+      skill:[{ 
+        name:'爪擊',
+        atk:150,
+        sp:0,
+        hitfix:15
+      },{ 
+        name:'分身攻擊',
+        atk:300,
+        sp:20,
+        hitfix:30
+      }],
+      ...basicCommon
+    },{
+      name:'Nomanooni-3',
+      cn:'沼鬼(參)',
+      id:4,
+      hp:1200,
+      sp:120,
+      dodge:25,
+      fullValue:{
+        hp:1200,
+        sp:120
+      },
+      skill:[{ 
+        name:'爪擊',
+        atk:150,
+        sp:0,
+        hitfix:15
+      },{ 
+        name:'分身攻擊',
+        atk:300,
+        sp:20,
         hitfix:30
       }],
       ...basicCommon
     },{
       name:'Hakuji',
       cn:'猗窩座',
-      id:3,
+      id:5,
       hp:3000,
       sp:200,
       dodge:40,

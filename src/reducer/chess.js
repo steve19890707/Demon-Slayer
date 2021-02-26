@@ -83,7 +83,7 @@ const chess = createSlice({
       attack:2,
       hp:1250,
       sp:100,
-      dodge:90,
+      dodge:80,
       fullValue:{
         hp:1250,
         sp:100

@@ -13,6 +13,11 @@ export const BattleBoard = ({ props })=>{
   const [ atkSelectd, setAtkSelectd ] = useState({
     key:0,
   });
+  const filterCopyChessName = (name)=>{
+    if(!!~name.indexOf('Nomanooni')){
+      return 'Nomanooni';
+    }else return name;
+  };
   const CreateAttackerInfo = ({ pX=0, pY=0, data })=>{
     return <Container x={pX} y={pY} sortableChildren={true}>
       <Text
@@ -149,7 +154,7 @@ export const BattleBoard = ({ props })=>{
         height={50}
         x={200}
         y={0}
-        image={loader.resources[`${data.name}-head-default`].data}
+        image={loader.resources[`${filterCopyChessName(data.name)}-head-default`].data}
       />
     </Container>
   };

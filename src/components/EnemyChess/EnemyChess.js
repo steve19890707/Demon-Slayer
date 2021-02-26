@@ -16,6 +16,11 @@ export const EnemyChess = ({
     setMoveStep,
     dispatch
   } = enemyChessProps;
+  const filterCopyChessName = (name)=>{
+    if(!!~name.indexOf('Nomanooni')){
+      return 'Nomanooni';
+    }else return name;
+  };
   return enemyChess.map((value,key)=>{
     return <React.Fragment key={key}>
       {value.debut&&<Sprite
@@ -32,7 +37,7 @@ export const EnemyChess = ({
             key:key
           }));
         }}
-        image={loader.resources[`${value.name}-head-default`].data}
+        image={loader.resources[`${filterCopyChessName(value.name)}-head-default`].data}
       />}
       {value.boardStatus&&<EnemyChessUIBoard
         ChessKey={key}

@@ -11,6 +11,7 @@ export const Conversation = ({ props })=> {
   const currentConversation = stageRule.getIn([stageStatus,'story']);
   const currentRecap = stageRule.getIn([stageStatus,'recap']);
   const [ isRecap, setIsRecap ] = useState(true);
+  const [ textRest, setTextRest ] = useState(false);
   const [ currentStory, setCurrentStory ] = useState(0);
   const checkStageRound = ()=>{
     switch (stageStatus) {
@@ -103,7 +104,8 @@ export const Conversation = ({ props })=> {
             from={{ x:-140, y: 25, alpha:0 }}
             to={{ x:-140, y:0, alpha:1 }}
             config={{ duration: 250 }}
-            reset={true}
+            reset={textRest}
+            onStart={()=>setTextRest(false)}
           >
             {props =>
               <Text
@@ -133,6 +135,7 @@ export const Conversation = ({ props })=> {
               const converLength = currentConversation.size-1;
               if(currentStory<converLength){
                 setCurrentStory(prev=>prev+=1);
+                setTextRest(true);
               }else {
                 setRoundStart(true);
                 setOtherTab(true);
@@ -146,8 +149,9 @@ export const Conversation = ({ props })=> {
 };
 export const RoundEndConversation = ({ props })=> {
   const { stageStatus, currentBGM, 
-    setFadeBGM, setRoundStart, setStageStatus, setRoundEnd, dispatch } = props;
+    setFadeBGM, setRoundStart, setStageStatus, setRoundEnd, setRoundNum, dispatch } = props;
   const currentConversation = stageRule.getIn([stageStatus,'endStory']);
+  const [ textRest, setTextRest ] = useState(false);
   const [ currentEndStory, setCurrentEndStory ] = useState(0);
   return <Graphics
     x={400}
@@ -183,7 +187,8 @@ export const RoundEndConversation = ({ props })=> {
         from={{ x:-140, y: 5, alpha:0 }}
         to={{ x:-140, y:-20, alpha:1 }}
         config={{ duration: 250 }}
-        reset={true}
+        reset={textRest}
+        onStart={()=>setTextRest(false)}
       >
         {props =>
           <Text
@@ -223,10 +228,12 @@ export const RoundEndConversation = ({ props })=> {
           const converLength = currentConversation.size-1;
           if(currentEndStory<converLength){
             setCurrentEndStory(prev=>prev+=1);
+            setTextRest(true);
           }else {
             setRoundEnd(false);
             setRoundStart(false);
             setFadeBGM(currentBGM);
+            setRoundNum(1);
             setStageStatus('stageTwo');
             dispatch(chessDone());
           };    

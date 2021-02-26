@@ -8,8 +8,13 @@ export const BottomBar = ({
   left={},
   linesStatus={}
 })=> {
+  const filterCopyChessName = (name)=>{
+    if(!!~name.indexOf('Nomanooni')){
+      return 'Nomanooni';
+    }else return name;
+  };
   const showCharacter = linesStatus.character==="USER" ? right.name : left.name;
-  const randomSize = lines.getIn([showCharacter,linesStatus.status]).size-1;
+  const randomSize = lines.getIn([filterCopyChessName(showCharacter),linesStatus.status]).size-1;
   const [ random ] = useState(Math.round(Math.random()*randomSize));
   return <Graphics 
     x={-400}
@@ -28,10 +33,10 @@ export const BottomBar = ({
         height={100}
         x={50}
         y={25}
-        image={loader.resources[`${showCharacter}-talk-${linesStatus.status}`].data}
+        image={loader.resources[`${filterCopyChessName(showCharacter)}-talk-${linesStatus.status}`].data}
       />
       <Text 
-        text={lines.getIn([showCharacter,linesStatus.status,random])}
+        text={lines.getIn([filterCopyChessName(showCharacter),linesStatus.status,random])}
         anchor={{x:0,y:0}} 
         x={170} y={60}
         style={new PIXI.TextStyle({ fontFamily: '"Source Sans Pro", Helvetica, sans-serif',

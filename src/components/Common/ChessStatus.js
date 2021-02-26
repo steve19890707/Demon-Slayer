@@ -36,6 +36,11 @@ export const ChessStatus = ({
       </React.Fragment>
     });  
   };
+  const filterCopyChessName = (name)=>{
+    if(!!~name.indexOf('Nomanooni')){
+      return 'Nomanooni';
+    }else return name;
+  };
   return <Graphics
     x={400}
     y={300}
@@ -69,7 +74,7 @@ export const ChessStatus = ({
       height={80}
       x={-200}
       y={-90}
-      image={loader.resources[`${ChessData.name}-head-default`].data}
+      image={loader.resources[`${filterCopyChessName(ChessData.name)}-head-default`].data}
     />
     <Text
       x={-200}

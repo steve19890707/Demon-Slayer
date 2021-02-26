@@ -40,6 +40,8 @@ export const EnemyChessSkillShow = ({
     case `Hakuji`:
       return <HakujiSkill {...defaultprops}/>
     case `Nomanooni`:
+    case `Nomanooni-2`:
+    case `Nomanooni-3`:
       return <NomanooniSkill {...defaultprops}/>
     default:
       return;

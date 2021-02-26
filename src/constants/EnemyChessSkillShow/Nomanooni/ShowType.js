@@ -8,6 +8,11 @@ export const ShowType = ({
   attackerName,
   position,
 }) =>{
+  const filterCopyChessName = (name)=>{
+    if(!!~name.indexOf('Nomanooni')){
+      return 'Nomanooni';
+    }else return name;
+  };
   switch (skillName) {
     case '防禦':
       return <Spring
@@ -27,7 +32,7 @@ export const ShowType = ({
           anchor={0.5}
           alpha={position.alpha}
           tint={position.tint}
-          image={loader.resources[`${attackerName}-fight`].data}
+          image={loader.resources[`${filterCopyChessName(attackerName)}-fight`].data}
           {...props}
         />}
       </Spring>
@@ -47,7 +52,7 @@ export const ShowType = ({
           width={280}
           height={280}
           anchor={0.5}
-          image={loader.resources[`${attackerName}-fight`].data}
+          image={loader.resources[`${filterCopyChessName(attackerName)}-fight`].data}
           {...props}
         />}
       </Spring>

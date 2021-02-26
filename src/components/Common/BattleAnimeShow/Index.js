@@ -16,6 +16,11 @@ export const BattleAnimeShow = ({
   const { stageStatus, animeShow, chess, enemyChess, enemyRoundTab,
     setMoveStep, setAnimeShow, setUsualTip, setCurrentChess, setEnemyRoundTab, dispatch } = props;
   const { target, attacker } = animeShow;
+  const filterCopyChessName = (name)=>{
+    if(!!~name.indexOf('Nomanooni')){
+      return 'Nomanooni';
+    }else return name;
+  };
   // CreateContent
   const CreateContent = ()=>{
     const [ BGstatus, setBGstatus ] = useState({ 
@@ -56,7 +61,7 @@ export const BattleAnimeShow = ({
     const CreateSkillSprite = () => {
       const video = (animeShow.type==="USER") ?
         videos[`${chess[attacker.key].name}`][`skill${showSkill.type}`]:
-        videos[`${enemyChess[attacker.key].name}`][`skill${showSkill.type}`];
+        videos[`${filterCopyChessName(enemyChess[attacker.key].name)}`][`skill${showSkill.type}`];
       const videoDom = video.baseTexture.resource.source;
       videoDom.onended = function() {
         setShowSkill(prev=>{
@@ -74,7 +79,7 @@ export const BattleAnimeShow = ({
         y={-35}
         image={loader.resources[`${
           (animeShow.type==="USER") ?
-            chess[attacker.key].name : enemyChess[attacker.key].name
+            chess[attacker.key].name : filterCopyChessName(enemyChess[attacker.key].name)
         }-talk-attack`].data}
         texture={video}
       />
