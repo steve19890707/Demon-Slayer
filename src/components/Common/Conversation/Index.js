@@ -4,8 +4,10 @@ import { loader } from '../../DataLoader';
 import { stageRule } from '../../../constants/stageRule';
 import { Container, Graphics, Sprite, Text } from '@inlet/react-pixi/animated';
 import { Spring } from 'react-spring/renderprops';
+// reducers
+import { chessDone } from '../../../reducer/chess';
 export const Conversation = ({ props })=> {
-  const { stageStatus, setRoundStart, setMoveStep } = props;
+  const { stageStatus, setRoundStart, setOtherTab } = props;
   const currentConversation = stageRule.getIn([stageStatus,'story']);
   const currentRecap = stageRule.getIn([stageStatus,'recap']);
   const [ isRecap, setIsRecap ] = useState(true);
@@ -133,12 +135,103 @@ export const Conversation = ({ props })=> {
                 setCurrentStory(prev=>prev+=1);
               }else {
                 setRoundStart(true);
-                setMoveStep(true)
+                setOtherTab(true);
               };    
             }}
           />
         </>
       }
+    </Container>
+  </Graphics>
+};
+export const RoundEndConversation = ({ props })=> {
+  const { stageStatus, currentBGM, 
+    setFadeBGM, setRoundStart, setStageStatus, setRoundEnd, dispatch } = props;
+  const currentConversation = stageRule.getIn([stageStatus,'endStory']);
+  const [ currentEndStory, setCurrentEndStory ] = useState(0);
+  return <Graphics
+    x={400}
+    y={300}
+    zIndex={99}
+    draw={g=> {
+      g.clear();
+      g.beginFill(`0x011627`);
+      g.drawRoundedRect(-300,-125,600,250,5);
+      g.endFill();
+    }}
+  >
+    <Container sortableChildren={true}>
+      <Sprite
+        width={85}
+        height={85}
+        x={-250}
+        y={-20}
+        anchor={{y:0.5}}
+        image={loader.resources[`${currentConversation.getIn([currentEndStory,'character'])}`].data}
+      />
+      <Text
+        text={currentConversation.getIn([currentEndStory,'name'])}
+        anchor={{y:0.5}}
+        x={-250}
+        y={45}
+        style={new PIXI.TextStyle({ fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
+          fontSize: 16,
+          fill:['#ffffff', currentConversation.getIn([currentEndStory,'color'])],
+        })}
+      />
+      <Spring
+        from={{ x:-140, y: 5, alpha:0 }}
+        to={{ x:-140, y:-20, alpha:1 }}
+        config={{ duration: 250 }}
+        reset={true}
+      >
+        {props =>
+          <Text
+            text={currentConversation.getIn([currentEndStory,'content'])}
+            anchor={{y:0.5}}
+            style={new PIXI.TextStyle({ fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
+              fontSize: 16,
+              fill:'#ffffff',
+              breakWords: true,
+              wordWrap: true,
+              wordWrapWidth:400
+            })}
+            {...props}
+          />
+        }
+      </Spring>
+      {!(currentEndStory<(currentConversation.size-1))&&<Text
+        text={`下一話`}
+        anchor={{y:0.5}}
+        x={160}
+        y={85}
+        style={new PIXI.TextStyle({ fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
+          fontSize: 16,
+          fill:['#ffffff', '#ffffff'],
+        })}
+      />}
+      <Sprite
+        width={32}
+        height={22}
+        anchor={0.5}
+        x={245}
+        y={85}
+        interactive={true}
+        buttonMode={true}
+        image={loader.resources[`next`].data}
+        pointertap={()=>{
+          const converLength = currentConversation.size-1;
+          if(currentEndStory<converLength){
+            setCurrentEndStory(prev=>prev+=1);
+          }else {
+            setRoundEnd(false);
+            setRoundStart(false);
+            setFadeBGM(currentBGM);
+            setStageStatus('stageTwo');
+            dispatch(chessDone());
+          };    
+        }}
+      />
     </Container>
   </Graphics>
 };

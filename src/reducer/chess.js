@@ -50,7 +50,7 @@ const chess = createSlice({
       cn:'竈門 禰豆子',
       id:2,
       step:2,
-      attack:1,
+      attack:2,
       hp:2200,
       sp:200,
       dodge:80,
@@ -109,35 +109,35 @@ const chess = createSlice({
       name:'Inosuke',
       cn:'嘴平 伊之助',
       id:4,
-      step:4,
+      step:3,
       attack:3,
       hp:1800,
-      sp:80,
-      dodge:40,
+      sp:100,
+      dodge:70,
       fullValue:{
         hp:1800,
-        sp:80
+        sp:100
       },
       skill:[{ 
         name:'斬擊',
-        atk:50,
+        atk:200,
         sp:0,
         hitfix:0
       },{ 
         name:'壹之牙―穿透刺射',
-        atk:120,
-        sp:2,
-        hitfix:0
+        atk:300,
+        sp:10,
+        hitfix:10
       },{ 
         name:'貳之牙―利刃對劈',
-        atk:200,
-        sp:5,
-        hitfix:0
+        atk:400,
+        sp:15,
+        hitfix:15
       },{
         name:'叄之牙―獠牙撕扯',
-        atk:400,
-        sp:8,
-        hitfix:0
+        atk:600,
+        sp:45,
+        hitfix:25
       }],
       ...basicCommon
     },{

@@ -16,13 +16,14 @@ import { OtherTab } from "./Common/OtherTab";
 import { EnemyRoundTab } from "./Common/EnemyRoundTab/Index";
 import { Chess } from "../components/Chess/Chess";
 import { EnemyChess } from "../components/EnemyChess/EnemyChess";
-import { Conversation } from "../components/Common/Conversation/Index";
+import { Conversation, RoundEndConversation } from "../components/Common/Conversation/Index";
 // rule
 import { stageRule } from "../constants/stageRule";
 import { audioData, loader } from './DataLoader';
 export const Canvas = ()=> {
   const [ roundStart, setRoundStart ] = useState(false);
   const [ stageStart, setStageStart ] = useState(false);
+  const [ roundEnd, setRoundEnd ] = useState(false);
   const [ stageStatus, setStageStatus ] = useState('stageOne');
   const [ roundNum, setRoundNum ] = useState(1);
   const [ otherTab, setOtherTab ] = useState(false);
@@ -70,6 +71,7 @@ export const Canvas = ()=> {
       case 'Tanjirou':
       case 'Nezuko':
       case 'Zenitsu':
+      case 'Inosuke':
       case 'Rengoku':
         audioData.round.fade(0.6,0,1000);
         if(
@@ -107,6 +109,7 @@ export const Canvas = ()=> {
       case 'Tanjirou':
       case 'Nezuko':
       case 'Zenitsu':
+      case 'Inosuke':
       case 'Rengoku':
         audioData.KimetsuNoYaiba.fade(1,0,1000);
         setCurrentBGM('enemyRounds');
@@ -244,9 +247,7 @@ export const Canvas = ()=> {
           setCurrentChess,
           setFadeBGM,
           setEnemyRoundTab,
-          setRoundStart,
-          setStageStatus,
-          dispatch
+          setRoundEnd
         }}
       />}
     {battleInfo.status&&
@@ -294,9 +295,20 @@ export const Canvas = ()=> {
         props={{
           stageStatus,
           setRoundStart,
-          setMoveStep
+          setOtherTab
         }}
       />}
+    {roundEnd&&<RoundEndConversation 
+      props={{
+        stageStatus,
+        currentBGM,
+        setFadeBGM,
+        setRoundStart,
+        setStageStatus,
+        setRoundEnd,
+        dispatch
+      }}
+    />}
     {!stageStart&&
       <GameStart 
         props={{

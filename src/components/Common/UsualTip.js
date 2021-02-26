@@ -4,15 +4,13 @@ import { Graphics, Text } from '@inlet/react-pixi/animated';
 import * as PIXI from "pixi.js";
 // rule
 import { stageRule } from "../../constants/stageRule";
-// reducers
-import { chessDone } from '../../reducer/chess';
 export const UsualTip = ({
   props,
 })=> {
   const {
     stageStatus, chess, currentChess, enemyChess, currentBGM, animeShow,
     usualTip, setMoveStep, setUsualTip, setCurrentChess, setFadeBGM,
-    setEnemyRoundTab, setRoundStart, setStageStatus, dispatch
+    setEnemyRoundTab, setRoundEnd
   } = props;
     const [ textColor, setTextColor ] = useState(['#ffffff', '#ffffff']);
   return <Graphics
@@ -94,15 +92,12 @@ export const UsualTip = ({
             }
             break;
           case "CHECKWIN":
+            setRoundEnd(true);
             setTextColor(['#ffffff', '#ffffff']);
             setUsualTip({
               title:``,
               status:false,
             });
-            setRoundStart(false);
-            setFadeBGM(currentBGM);
-            setStageStatus('stageTwo');
-            dispatch(chessDone());
             break;
           case "CHECKLOSE":
             setTextColor(['#ffffff', '#ffffff']);
