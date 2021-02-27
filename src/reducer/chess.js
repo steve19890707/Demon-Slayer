@@ -148,7 +148,7 @@ const chess = createSlice({
       attack:4,
       hp:2500,
       sp:200,
-      dodge:85,
+      dodge:80,
       fullValue:{
         hp:2500,
         sp:200
@@ -162,7 +162,7 @@ const chess = createSlice({
         name:'壹之型―不知火',
         atk:400,
         sp:15,
-        hitfix:40
+        hitfix:30
       },{ 
         name:'肆之型―盛炎的蜿蜒',
         atk:500,
@@ -172,7 +172,7 @@ const chess = createSlice({
         name:'伍之型―炎虎',
         atk:800,
         sp:30,
-        hitfix:40
+        hitfix:30
       },{
         name:'玖之型―煉獄',
         atk:1500,

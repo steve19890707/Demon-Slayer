@@ -12,17 +12,32 @@ export const audioData = {
   round: new Howl({
     src: [`${hostname}audio/bgm-round.mp3`],
     preload: 'metadata',
-    loop: true
+    loop: true,
+    autoplay: false
+  }),
+  HakujiRound: new Howl({
+    src: [`${hostname}audio/bgm-Hakuji-round.mp3`],
+    preload: 'metadata',
+    loop: true,
+    autoplay: false
+  }),
+  Hakuji: new Howl({
+    src: [`${hostname}audio/bgm-Hakuji.mp3`],
+    preload: 'metadata',
+    loop: true,
+    autoplay: false
   }),
   KimetsuNoYaiba: new Howl({
     src: [`${hostname}audio/bgm-KimetsuNoYaiba.mp3`],
     preload: 'metadata',
-    loop: true
+    loop: true,
+    autoplay: false
   }),
   KimetsuNoYaibaEnemy: new Howl({
     src: [`${hostname}audio/bgm-KimetsuNoYaibaEnemy.mp3`],
     preload: 'metadata',
-    loop: true
+    loop: true,
+    autoplay: false
   }),
 };
 export const videos = {
@@ -99,6 +114,7 @@ loader
   .add('Tanjirou-talk-usual',`${hostname}imgs/Tanjirou/talk-usual.jpg`)
   .add('Tanjirou-talk-error',`${hostname}imgs/Tanjirou/talk-error.jpg`)
   .add('Tanjirou-talk-cry',`${hostname}imgs/Tanjirou/talk-cry.jpg`)
+  .add('Tanjirou-talk-afraid',`${hostname}imgs/Tanjirou/talk-afraid.jpg`)
   .add('Tanjirou-fight-typeA',`${hostname}imgs/Tanjirou/fight-typeA.png`)
   .add('Tanjirou-fight-typeB',`${hostname}imgs/Tanjirou/fight-typeB.png`)
   .add('Nezuko-head-default',`${hostname}imgs/Nezuko/head-default.png`)
@@ -160,10 +176,12 @@ loader
   .add('Hakuji-talk-dead',`${hostname}imgs/Hakuji/talk-dead.jpg`)
   .add('Hakuji-talk-usual',`${hostname}imgs/Hakuji/talk-usual.jpg`)
   .add('Hakuji-fight',`${hostname}imgs/Hakuji/fight.png`)
+  .add('Jotaro-talk-usual',`${hostname}imgs/Jotaro/talk-usual.jpg`)
+  .add('Josuke-talk-usual',`${hostname}imgs/Josuke/talk-usual.jpg`)
   .add('stageOne-BG',`${hostname}imgs/background/stage1-background.png`)
   .add('stageOne-main-BG',`${hostname}imgs/background/stage1-main-background.jpg`)
-  .add('stageFour-BG',`${hostname}imgs/background/stage2-background.png`)
-  .add('stageFour-main-BG',`${hostname}imgs/background/stage2-main-background.jpg`)
+  .add('stageThree-BG',`${hostname}imgs/background/stage2-background.png`)
+  .add('stageThree-main-BG',`${hostname}imgs/background/stage2-main-background.jpg`)
   .add('logo',`${hostname}imgs/common/logo.png`)
   .add('atkIcon',`${hostname}imgs/common/atk.png`)
   .add('defIcon',`${hostname}imgs/common/def.png`)

@@ -76,11 +76,11 @@ export const Canvas = ()=> {
   };
   // bgm
   useEffect(()=>{
-    currentBGMStatus(currentBGM);
-  },[ currentBGM ]);
+    currentBGMStatus(currentBGM, stageStatus);
+  },[ currentBGM, stageStatus ]);
   useEffect(()=>{
     fadeBGMStatus(fadeBGM,setCurrentBGM);
-  },[ fadeBGM, stageStatus ]);
+  },[ fadeBGM ]);
   // debut
   useEffect(()=>{
     if(roundStart){

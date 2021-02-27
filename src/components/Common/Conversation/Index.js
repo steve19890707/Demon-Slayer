@@ -211,7 +211,7 @@ export const RoundEndConversation = ({ props })=> {
         x={160}
         y={85}
         style={new PIXI.TextStyle({ fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-          fontSize: 16,
+          fontSize: 18,
           fill:['#ffffff', '#ffffff'],
         })}
       />}
@@ -232,9 +232,20 @@ export const RoundEndConversation = ({ props })=> {
           }else {
             setRoundEnd(false);
             setRoundStart(false);
+            setStageStatus(prev=>{
+              switch (prev){
+                case 'stageOne':
+                  return 'stageTwo'
+                case 'stageTwo':
+                  return 'stageThree'
+                case 'stageThree':
+                  return 'stageOne'
+                default:
+                  return prev;
+              }
+            });
             setFadeBGM(currentBGM);
             setRoundNum(1);
-            setStageStatus('stageTwo');
             dispatch(chessDone());
           };    
         }}

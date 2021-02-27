@@ -106,16 +106,16 @@ const enemyChess = createSlice({
       name:'Hakuji',
       cn:'猗窩座',
       id:5,
-      hp:3000,
+      hp:4000,
       sp:200,
       dodge:40,
       fullValue:{
-        hp:3000,
+        hp:4000,
         sp:200
       },
       skill:[{ 
         name:'破壞殺攻擊',
-        atk:350,
+        atk:400,
         sp:0,
         hitfix:20
       },{ 
@@ -125,7 +125,7 @@ const enemyChess = createSlice({
         hitfix:30
       },{ 
         name:'術式展開―破壞殺―羅針',
-        atk:800,
+        atk:900,
         sp:30,
         hitfix:30
       }],
