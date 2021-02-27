@@ -59,7 +59,7 @@ export const Conversation = ({ props })=> {
                 text={currentRecap}
                 anchor={{x:0.5}}
                 style={new PIXI.TextStyle({ fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-                  fontSize: 15,
+                  fontSize: 16,
                   fill:'#ffffff',
                   lineHeight:24,
                   breakWords: true,
@@ -71,8 +71,8 @@ export const Conversation = ({ props })=> {
             }
           </Spring>
           <Sprite
-            width={34}
-            height={24}
+            width={40}
+            height={30}
             anchor={0.5}
             y={90}
             interactive={true}
@@ -96,7 +96,7 @@ export const Conversation = ({ props })=> {
             x={-250}
             y={65}
             style={new PIXI.TextStyle({ fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-              fontSize: 16,
+              fontSize: 18,
               fill:['#ffffff', currentConversation.getIn([currentStory,'color'])],
             })}
           />
@@ -112,7 +112,7 @@ export const Conversation = ({ props })=> {
                 text={currentConversation.getIn([currentStory,'content'])}
                 anchor={{y:0.5}}
                 style={new PIXI.TextStyle({ fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-                  fontSize: 16,
+                  fontSize: 18,
                   fill:'#ffffff',
                   breakWords: true,
                   wordWrap: true,
@@ -123,8 +123,8 @@ export const Conversation = ({ props })=> {
             }
           </Spring>
           <Sprite
-            width={34}
-            height={24}
+            width={40}
+            height={30}
             anchor={0.5}
             x={255}
             y={90}
@@ -179,7 +179,7 @@ export const RoundEndConversation = ({ props })=> {
         x={-250}
         y={45}
         style={new PIXI.TextStyle({ fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-          fontSize: 16,
+          fontSize: 18,
           fill:['#ffffff', currentConversation.getIn([currentEndStory,'color'])],
         })}
       />
@@ -195,7 +195,7 @@ export const RoundEndConversation = ({ props })=> {
             text={currentConversation.getIn([currentEndStory,'content'])}
             anchor={{y:0.5}}
             style={new PIXI.TextStyle({ fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-              fontSize: 16,
+              fontSize: 18,
               fill:'#ffffff',
               breakWords: true,
               wordWrap: true,
@@ -216,8 +216,8 @@ export const RoundEndConversation = ({ props })=> {
         })}
       />}
       <Sprite
-        width={34}
-        height={24}
+        width={40}
+        height={30}
         anchor={0.5}
         x={255}
         y={90}

@@ -149,7 +149,7 @@ export const steps = ({
         return timeout;
       };
       return skill2atkStart();
-    case '壹之型―霹靂一閃―六連':
+    case '壹之型―霹靂一閃六連':
       setBGstatus({ type:'STANDBY', defence:false, seconds:0 });
       setPosition(prev=>{return{ ...prev, x:550,y:50,tension:100 }});
       const skill3atkStart = ()=>{

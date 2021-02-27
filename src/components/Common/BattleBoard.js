@@ -92,10 +92,10 @@ export const BattleBoard = ({ props })=>{
             interactive={skillCanUse}
             buttonMode={true}
             text={value.name}
-            x={20}
-            y={130+(key*28)}
+            x={18}
+            y={130+(key*32)}
             style={new PIXI.TextStyle({ fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-              fontSize: 20,
+              fontSize: 22,
               fill: ((atkSelectd.key===key)&&skillCanUse) ? ['#ffffff', '#00ff99'] :  
                 skillCanUse ? '#ffffff' : '#8d99ae',
               fontWeight: (atkSelectd.key===key) ? 600 : 300
@@ -290,11 +290,11 @@ export const BattleBoard = ({ props })=>{
       buttonMode={true}
       text={'攻擊'}
       anchor={0.5}
-      x={175}
+      x={165}
       y={160}
       style={new PIXI.TextStyle({
         fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-        fontSize: 24,
+        fontSize: 28,
         fill:'#ffffff',
       })}
       pointertap={()=>{
@@ -347,7 +347,7 @@ export const BattleBoard = ({ props })=>{
       y={160}
       style={new PIXI.TextStyle({
         fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-        fontSize: 24,
+        fontSize: 28,
         fill:'#ffffff',
       })}
       pointertap={()=>{

@@ -99,7 +99,7 @@ const chess = createSlice({
         sp:15,
         hitfix:15
       },{
-        name:'壹之型―霹靂一閃―六連',
+        name:'壹之型―霹靂一閃六連',
         atk:1000,
         sp:70,
         hitfix:30
