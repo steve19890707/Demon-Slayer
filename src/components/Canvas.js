@@ -102,8 +102,8 @@ export const Canvas = ()=> {
     }}>
     <Container sortableChildren={true}>
       {roundStart&&<Sprite
-        width={30}
-        height={30}
+        width={32}
+        height={32}
         anchor={0.5} 
         x={760}
         y={40}
@@ -117,8 +117,8 @@ export const Canvas = ()=> {
         }}
       />}
       <Sprite
-        width={30}
-        height={30}
+        width={32}
+        height={32}
         anchor={0.5} 
         x={40}
         y={40}

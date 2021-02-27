@@ -56,8 +56,8 @@ export const ChessStatus = ({
     <Sprite
       interactive={true}
       buttonMode={true}
-      width={25}
-      height={25}
+      width={30}
+      height={30}
       anchor={0.5}
       x={220}
       y={-120}
@@ -82,7 +82,7 @@ export const ChessStatus = ({
       text={ChessData.cn}
       style={new PIXI.TextStyle({
         fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-        fontSize: 16,
+        fontSize: 18,
         fill:'#ffffff',
       })}
     />
@@ -92,7 +92,7 @@ export const ChessStatus = ({
       text={`HP:`}
       style={new PIXI.TextStyle({
         fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-        fontSize: 16,
+        fontSize: 18,
         fill:'#ffffff',
       })}
     />
@@ -102,7 +102,7 @@ export const ChessStatus = ({
       text={`${ChessData.hp} / ${ChessData.fullValue.hp}`}
       style={new PIXI.TextStyle({
         fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-        fontSize: 16,
+        fontSize: 18,
         fill:'#ff6b6b',
       })}
     />
@@ -112,7 +112,7 @@ export const ChessStatus = ({
       text={`SP:`}
       style={new PIXI.TextStyle({
         fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-        fontSize: 16,
+        fontSize: 18,
         fill:'#ffffff',
       })}
     />
@@ -122,7 +122,7 @@ export const ChessStatus = ({
       text={`${ChessData.sp} / ${ChessData.fullValue.sp}`}
       style={new PIXI.TextStyle({
         fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-        fontSize: 16,
+        fontSize: 18,
         fill:'#0466c8',
       })}
     />

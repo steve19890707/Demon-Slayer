@@ -71,10 +71,10 @@ export const Conversation = ({ props })=> {
             }
           </Spring>
           <Sprite
-            width={32}
-            height={22}
+            width={34}
+            height={24}
             anchor={0.5}
-            y={85}
+            y={90}
             interactive={true}
             buttonMode={true}
             image={loader.resources[`next`].data}
@@ -123,11 +123,11 @@ export const Conversation = ({ props })=> {
             }
           </Spring>
           <Sprite
-            width={32}
-            height={22}
+            width={34}
+            height={24}
             anchor={0.5}
-            x={245}
-            y={85}
+            x={255}
+            y={90}
             interactive={true}
             buttonMode={true}
             image={loader.resources[`next`].data}
@@ -216,11 +216,11 @@ export const RoundEndConversation = ({ props })=> {
         })}
       />}
       <Sprite
-        width={32}
-        height={22}
+        width={34}
+        height={24}
         anchor={0.5}
-        x={245}
-        y={85}
+        x={255}
+        y={90}
         interactive={true}
         buttonMode={true}
         image={loader.resources[`next`].data}

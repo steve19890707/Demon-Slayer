@@ -17,8 +17,8 @@ export const ChessUIBoard = ({
   dispatch
 })=> {
   const specialPosition = {
-    x: 720,
-    y: 490
+    x: 740,
+    y: 475
   };
   const forMoveArray = [];
   const forAttackArray = [];
@@ -117,11 +117,11 @@ export const ChessUIBoard = ({
         interactive={fetchInteractive()}
         buttonMode={true}
         text={val.get('title')}
-        x={10}
-        y={5+(25*key)}
+        x={6}
+        y={8+(28*key)}
         style={new PIXI.TextStyle({
           fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-          fontSize: 20,
+          fontSize: 24,
           fill:fetchInteractive()?val.get('textColor').toJS():'#8d99ae',
         })}
         pointerover={()=>{
@@ -198,14 +198,14 @@ export const ChessUIBoard = ({
     }
   )};
   return <Graphics
-    x={positionX!==800?positionX:specialPosition.x}
+    x={positionX!==800&&positionX!==760?positionX:specialPosition.x}
     y={(positionY!==560&&positionY!==520)?positionY:specialPosition.y}
     zIndex={3}
     draw={g=> {
       g.clear();
       g.lineStyle(1,`0xffffff`,1);
       g.beginFill(`0x22223b`);
-      g.drawRoundedRect(0,0,60,110,8);
+      g.drawRoundedRect(0,0,60,124,8);
       g.endFill();
     }}
   ><CreateText/></Graphics>

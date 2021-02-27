@@ -38,11 +38,11 @@ export const OtherTab = ({ props })=> {
     <Sprite
       interactive={true}
       buttonMode={true}
-      width={25}
-      height={25}
+      width={30}
+      height={30}
       anchor={0.5}
-      x={175}
-      y={-125}
+      x={173}
+      y={-123}
       image={loader.resources[`closeIcon`].data}
       pointertap={()=>{
         setMoveStep(true);

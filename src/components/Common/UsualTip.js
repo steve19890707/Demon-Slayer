@@ -41,10 +41,10 @@ export const UsualTip = ({
       anchor={0.5}
       text={'確定'}
       x={0}
-      y={20}
+      y={22}
       style={new PIXI.TextStyle({
         fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-        fontSize: 20,
+        fontSize: 24,
         fill:['#ffffff', '#ffffff'],
       })}
       pointertap={()=>{

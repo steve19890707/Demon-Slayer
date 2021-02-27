@@ -93,9 +93,9 @@ export const BattleBoard = ({ props })=>{
             buttonMode={true}
             text={value.name}
             x={20}
-            y={130+(key*24)}
+            y={130+(key*28)}
             style={new PIXI.TextStyle({ fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-              fontSize: 16,
+              fontSize: 20,
               fill: ((atkSelectd.key===key)&&skillCanUse) ? ['#ffffff', '#00ff99'] :  
                 skillCanUse ? '#ffffff' : '#8d99ae',
               fontWeight: (atkSelectd.key===key) ? 600 : 300
@@ -186,9 +186,9 @@ export const BattleBoard = ({ props })=>{
         text={`${data.attacker.skill[atkSelectd.key].name}`}
         zIndex={2}
         x={80}
-        y={22}
+        y={21}
         style={new PIXI.TextStyle({ fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-          fontSize: 16,
+          fontSize: 18,
           fill:'#00ff99'
         })}
       />
@@ -206,9 +206,9 @@ export const BattleBoard = ({ props })=>{
         text={`${data.attacker.skill[atkSelectd.key].atk}`}
         zIndex={2}
         x={100}
-        y={52}
+        y={50}
         style={new PIXI.TextStyle({ fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-          fontSize: 18,
+          fontSize: 20,
           fill:'#fdc500'
         })}
       />
@@ -230,9 +230,9 @@ export const BattleBoard = ({ props })=>{
         }%`}
         zIndex={2}
         x={100}
-        y={82}
+        y={80}
         style={new PIXI.TextStyle({ fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-          fontSize: 18,
+          fontSize: 20,
           fill:'#ffffff'
         })}
       />
@@ -252,7 +252,7 @@ export const BattleBoard = ({ props })=>{
         x={80}
         y={110}
         style={new PIXI.TextStyle({ fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-          fontSize: 18,
+          fontSize: 20,
           fill:'#0466c8'
         })}
       />
@@ -290,11 +290,11 @@ export const BattleBoard = ({ props })=>{
       buttonMode={true}
       text={'攻擊'}
       anchor={0.5}
-      x={180}
+      x={175}
       y={160}
       style={new PIXI.TextStyle({
         fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-        fontSize: 20,
+        fontSize: 24,
         fill:'#ffffff',
       })}
       pointertap={()=>{
@@ -347,7 +347,7 @@ export const BattleBoard = ({ props })=>{
       y={160}
       style={new PIXI.TextStyle({
         fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-        fontSize: 20,
+        fontSize: 24,
         fill:'#ffffff',
       })}
       pointertap={()=>{

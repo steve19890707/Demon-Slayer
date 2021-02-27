@@ -48,11 +48,11 @@ export const ConfirmTip = ({
       buttonMode={true}
       anchor={0.5}
       text={'確定'}
-      x={-30}
+      x={-32}
       y={20}
       style={new PIXI.TextStyle({
         fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-        fontSize: 20,
+        fontSize: 24,
         fill:['#ffffff', '#ffffff'],
       })}
       pointertap={()=>{
@@ -102,11 +102,11 @@ export const ConfirmTip = ({
       buttonMode={true}
       anchor={0.5}
       text={'取消'}
-      x={30}
+      x={32}
       y={20}
       style={new PIXI.TextStyle({
         fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-        fontSize: 20,
+        fontSize: 24,
         fill:['#ffffff', '#ffffff'],
       })}
       pointertap={()=>{
