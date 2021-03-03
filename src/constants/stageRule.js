@@ -171,12 +171,12 @@ export const stageRule = fromJS({
     ],
     ruleText:{
       win:'擊敗所有的沼鬼。',
-      lose:'我妻善逸 / 嘴平 伊之助 戰敗。'
+      lose:'我妻 善逸 / 嘴平 伊之助 戰敗。'
     },
     recap:'前情提要：無限列車行駛的前一夜晚，炭治郎碰上了曾經打敗的手鬼，並與其交戰...同一時間的附近，則是準備與炭治郎與會的伊之助與善逸。此時的周圍也散發出了不尋常的氣息...',
     story:[{
         character:'Zenitsu-talk-usual',
-        name:'我妻善逸',
+        name:'我妻 善逸',
         color:'#00ff99',
         content:'那個..伊之助..我好像聽到甚麼奇怪的聲音..你聽見了嗎?'
       },{
@@ -186,7 +186,7 @@ export const stageRule = fromJS({
         content:'蛤? 我可是甚麼都沒看見呀!??'
       },{
         character:'Zenitsu-talk-usual',
-        name:'我妻善逸',
+        name:'我妻 善逸',
         color:'#00ff99',
         content:'我是問你聲音呀.......'
       },{
@@ -196,7 +196,7 @@ export const stageRule = fromJS({
         content:'本大爺才不管有甚麼聲音!! 話說紋治郎到了沒呀!!'
       },{
         character:'Zenitsu-talk-afraid',
-        name:'我妻善逸',
+        name:'我妻 善逸',
         color:'#00ff99',
         content:'哇啊啊啊啊!!!!! 奇怪的聲音又出現了，快點救我!!救救我呀!!伊之助~~~~~~~'
       },{
@@ -206,7 +206,7 @@ export const stageRule = fromJS({
         content:'真是吵死了!!我甚麼東西都沒有看見啊!'
       },{
         character:'Zenitsu-talk-afraid',
-        name:'我妻善逸',
+        name:'我妻 善逸',
         color:'#00ff99',
         content:'不!不!不!，是真的有惡鬼出現了....'
       },{
@@ -221,7 +221,7 @@ export const stageRule = fromJS({
         content:'看來是真的有東西要來了! 快拔刀作戰吧! 真逸!'
       },{
         character:'Zenitsu-talk-fall',
-        name:'我妻善逸',
+        name:'我妻 善逸',
         color:'#00ff99',
         content:'!@#$%!...(暈倒)'
       },{
@@ -246,7 +246,7 @@ export const stageRule = fromJS({
         content:'有意思! 就讓本大爺來陪陪你們這些螻蟻吧!!'
       },{
         character:'Zenitsu-talk-default',
-        name:'我妻善逸',
+        name:'我妻 善逸',
         color:'#00ff99',
         content:'雷之呼吸...(覺醒狀態)'
     }],
@@ -257,7 +257,7 @@ export const stageRule = fromJS({
         content:'呼呀!!.. 還挺耐打得嘛，這些傢伙。'
       },{
         character:'Zenitsu-talk-default',
-        name:'我妻善逸',
+        name:'我妻 善逸',
         color:'#00ff99',
         content:'....'
       },{
@@ -277,7 +277,7 @@ export const stageRule = fromJS({
         content:'啊~~ 你終於出現啦! 真治郎。'
       },{
         character:'Zenitsu-talk-usual',
-        name:'我妻善逸',
+        name:'我妻 善逸',
         color:'#00ff99',
         content:'疑?~~ 發生甚麼事啦?! 炭治郎!??'
       },{
@@ -292,7 +292,7 @@ export const stageRule = fromJS({
         content:'嗯嗯!!...'
       },{
         character:'Zenitsu-talk-happy',
-        name:'我妻善逸',
+        name:'我妻 善逸',
         color:'#00ff99',
         content:'哇!~~~ 禰豆子醬呀~ 哈哈哈哈哈!'
       },{
@@ -393,7 +393,7 @@ export const stageRule = fromJS({
         content:'(可惡呀!..這傢伙的實力可不是開玩笑的...本大爺竟然在發抖..。)'
       },{
         character:'Zenitsu-talk-fall',
-        name:'我妻善逸',
+        name:'我妻 善逸',
         color:'#00ff99',
         content:'炭治郎...伊之助...我們死定了吧!!!!!(暈倒)'
       },{
@@ -503,7 +503,7 @@ export const stageRule = fromJS({
         color:'#00ff99',
         content:'!!??...(是甚麼出現了!??)'
       },{
-        character:'Jotaro-talk-usual',
+        character:'Jotaro-talk-silent',
         name:'????',
         color:'#00ff99',
         content:'這些人看起來不像是替身使者呢。'
@@ -513,7 +513,7 @@ export const stageRule = fromJS({
         color:'#00ff99',
         content:'是呀!但有人受傷了，可不能見死不救對吧!?'
       },{
-        character:'Jotaro-talk-usual',
+        character:'Jotaro-talk-dodge',
         name:'????',
         color:'#00ff99',
         content:'真是夠了...'
@@ -521,7 +521,327 @@ export const stageRule = fromJS({
         character:'Tanjirou-talk-dodge',
         name:'竈門 炭治郎',
         color:'#00ff99',
-        content:'!!??...(是甚麼人??...外國人!?...)'
+        content:'!!??...(是甚麼人??...異國人!?...)'
+    }],
+    isWin: enemyList => {
+      let totalLife = 0;
+        enemyList.map(v => {
+          if(v.debut){
+            return totalLife += v.hp;
+          }return null;
+        });
+      return totalLife>0 ? false : true ;
+    },
+    isLose: chessList => {
+      let totalLife = 0;
+        chessList.map(v => {
+          if(v.debut){
+            return totalLife += v.hp;
+          }return null;
+        });
+      return totalLife>0 ? false : true ;
+    }
+  },
+  stageFour: {
+    debutChess:[
+      { 
+        name:'Jotaro',
+        x:9,
+        y:6
+      },{ 
+        name:'Josuke',
+        x:9,
+        y:8
+      },
+    ],
+    debutEnemyChess:[
+      {
+        name:'Hakuji',
+        x:11,
+        y:9
+      }
+    ],
+    ruleText:{
+      win:'擊敗猗窩座。',
+      lose:'空条承太郎 / 東方仗助 戰敗。'
+    },
+    recap:'前情提要：為了保護鬼殺隊，杏壽郎正與猗窩座進行一場殊死之戰。瀕臨死亡的杏壽郎即將使出最後的力量正面迎戰猗窩座之時，眼前出現了兩位神秘的戰士前來助陣!?..',
+    story:[{
+        character:'Hakuji-talk-attack',
+        name:'猗窩座',
+        color:'#9d4edd',
+        content:'除了鬼殺隊士，竟然還有異國人?..無所謂，很快就輪到你們了。'
+      },{
+        character:'Tanjirou-talk-worry',
+        name:'竈門 炭治郎',
+        color:'#00ff99',
+        content:'(這兩位的服裝真奇異，不像是劍士...不過散發出了很強大的氣..我可以感覺得到!!)'
+      },{
+        character:'Jotaro-talk-dodge',
+        name:'空条 承太郎',
+        color:'#00ff99',
+        content:'仗助，傷患就麻煩你了!!'
+      },{
+        character:'Josuke-talk-attack',
+        name:'東方 仗助',
+        color:'#00ff99',
+        content:'好的，承太郎先生!'
+      },{
+        character:'Hakuji-talk-def',
+        name:'猗窩座',
+        color:'#9d4edd',
+        content:'狂妄的傢伙!膽敢無視我的忠告。'
+      },{
+        character:'Rengoku-talk-dead',
+        name:'煉獄 杏壽郎',
+        color:'#00ff99',
+        content:'兩位俠客..很抱歉沒辦法成功阻止惡鬼，我的生命就快到盡頭了..請務必小心，替我保護在場所有的人，麻煩了!!'
+      },{
+        character:'Josuke-talk-dodge',
+        name:'東方 仗助',
+        color:'#00ff99',
+        content:'都傷得這麼重還擔心其他人，你真是超級Great的呀!..熱血劍俠~'
+      },{
+        character:'Josuke-talk-attack',
+        name:'東方 仗助',
+        color:'#00ff99',
+        content:'這就讓你重生!!上吧，瘋狂鑽石!!'
+      },{
+        character:'Josuke-talk-stand',
+        name:'瘋狂鑽石(替身)',
+        color:'#00ff99',
+        content:'哆啦啦啦啦啦啦啦!!!!'
+      },{
+        character:'Tanjirou-talk-worry',
+        name:'竈門 炭治郎',
+        color:'#9d4edd',
+        content:'發生了什麼事??煉獄先生!??'
+      },{
+        character:'Inosuke-talk-default',
+        name:'嘴平 伊之助',
+        color:'#00ff99',
+        content:'哦哦哦啊啊!!!很強的劍士復活了!!'
+      },{
+        character:'Rengoku-talk-spark',
+        name:'煉獄 杏壽郎',
+        color:'#00ff99',
+        content:'不可思議!!我的傷勢竟然瞬間就痊癒了..'
+      },{
+        character:'Hakuji-talk-dead',
+        name:'猗窩座',
+        color:'#9d4edd',
+        content:'可惡!!!難道這兩個就是迪奧大人所說的替身使者!??'
+      },{
+        character:'Tanjirou-talk-dodge',
+        name:'竈門 炭治郎',
+        color:'#00ff99',
+        content:'(替身使者!?和這一連串奇怪的事情有關連嗎?)'
+      },{
+        character:'Jotaro-talk-attack',
+        name:'空条 承太郎',
+        color:'#00ff99',
+        content:'你說了迪奧對吧!?最糟糕的情況看來還是發生了。'
+      },{
+        character:'Josuke-talk-dodge',
+        name:'東方 仗助',
+        color:'#00ff99',
+        content:'熱血劍士!接下的戰鬥就交給我和承太郎先生吧!，其他的稍後再說吧!'
+      },{
+        character:'Rengoku-talk-default',
+        name:'煉獄 杏壽郎',
+        color:'#00ff99',
+        content:'非常感謝兩位俠客的相助!!那就萬事拜託了!!'
+      },{
+        character:'Hakuji-talk-dead',
+        name:'猗窩座',
+        color:'#9d4edd',
+        content:'可惡的傢伙!休想阻撓我!這可是迪奧大人賜予我再次重生的機會!!!'
+      },{
+        character:'Josuke-talk-angry',
+        name:'東方 仗助',
+        color:'#00ff99',
+        content:'真是超級Great的呀!!..準備上了，承太郎先生。'
+      },{
+        character:'Jotaro-talk-def',
+        name:'空条 承太郎',
+        color:'#00ff99',
+        content:'真是夠了!!'
+    }],
+    endStory:[{
+        character:'Hakuji-talk-dead',
+        name:'猗窩座',
+        color:'#9d4edd',
+        content:'咿呀呀呀呀!!!!!!!!!!!......可惡的人類!!'
+      },{
+        character:'Jotaro-talk-dodge',
+        name:'空条 承太郎',
+        color:'#00ff99',
+        content:'快說出迪奧的下落!吸血鬼。'
+      },{
+        character:'Hakuji-talk-dead',
+        name:'猗窩座',
+        color:'#9d4edd',
+        content:'嗚...迪奧大人是無所不在的!!'
+      },{
+        character:'Hakuji-talk-def',
+        name:'猗窩座',
+        color:'#9d4edd',
+        content:'就算我死了!!只要迪奧大人還在，我就能夠再次重生!!..等著後悔吧，人類!..哈哈哈哈哈!(話說完後消失)'
+      },{
+        character:'Josuke-talk-def',
+        name:'東方 仗助',
+        color:'#00ff99',
+        content:'呿!事情果然沒這麼輕易結束。'
+      },{
+        character:'Jotaro-talk-silent',
+        name:'空条 承太郎',
+        color:'#00ff99',
+        content:'真是的....'
+      },{
+        character:'Tanjirou-talk-worry',
+        name:'竈門 炭治郎',
+        color:'#00ff99',
+        content:'那..那個!非常感謝兩位!!..不過..兩位到底是什麼人呢!!'
+      },{
+        character:'Josuke-talk-usual',
+        name:'東方 仗助',
+        color:'#00ff99',
+        content:'哦!!我是東方仗助，另一位則是空条承太郎先生，請多指教!'
+      },{
+        character:'Tanjirou-talk-worry',
+        name:'竈門 炭治郎',
+        color:'#00ff99',
+        content:'疑!?日本國的名字?兩位也是日本人嗎?'
+      },{
+        character:'Josuke-talk-usual',
+        name:'東方 仗助',
+        color:'#00ff99',
+        content:'哦~我們應該算是吧!我媽是日本人，承太郎先生的爸爸也是日本人。我的父親是一位曾經造訪過日本的英國人，同時他也是承太郎先生的外祖父。'
+      },{
+        character:'Tanjirou-talk-error',
+        name:'竈門 炭治郎',
+        color:'#00ff99',
+        content:'蛤#$@!!??...'
+      },{
+        character:'Jotaro-talk-default',
+        name:'空条 承太郎',
+        color:'#00ff99',
+        content:'總之我們是從其他的時空來的，為了找到並擊敗剛才那隻吸血鬼提到的『 迪奧 』而來的。'
+      },{
+        character:'Tanjirou-talk-error',
+        name:'竈門 炭治郎',
+        color:'#00ff99',
+        content:'穿越時空!?疑!??...'
+      },{
+        character:'Jotaro-talk-default',
+        name:'空条 承太郎',
+        color:'#00ff99',
+        content:'我想你們應該也碰到一些奇怪的事情了吧?像是遇見死去的親人、曾經擊敗過的敵人、等等..，這一切都是『 迪奧 』的力量的。'
+      },{
+        character:'Tanjirou-talk-dodge',
+        name:'竈門 炭治郎',
+        color:'#00ff99',
+        content:'原..原來如此!怪不得我會遇見曾經被我打敗過的手鬼...'
+      },{
+        character:'Jotaro-talk-default',
+        name:'空条 承太郎',
+        color:'#00ff99',
+        content:'被復活的死著，可能會是生存在不同時間線的敵人，也許存在於過去、未來...，總之我們得快點找到『 迪奧 』才行。'
+      },{
+        character:'Tanjirou-talk-error',
+        name:'竈門 炭治郎',
+        color:'#00ff99',
+        content:'想不到這世界這麼的複雜..'
+      },{
+        character:'Zenitsu-talk-usual',
+        name:'我妻 善逸',
+        color:'#00ff99',
+        content:'疑?..炭治郎?..發生什麼事了?..這兩位是誰呀??'
+      },{
+        character:'Zenitsu-talk-usual',
+        name:'我妻 善逸',
+        color:'#00ff99',
+        content:'其中一位先生的髮型....'
+      },{
+        character:'Josuke-talk-angry',
+        name:'東方 仗助',
+        color:'#00ff99',
+        content:'蛤!??你剛才說我的髮型怎麼了嗎?我可是非常在意呢!!!'
+      },{
+        character:'Zenitsu-talk-afraid',
+        name:'我妻 善逸',
+        color:'#00ff99',
+        content:'啊....不不不，我什麼都沒說!!!!請放過我!!!對不起!對不起!'
+      },{
+        character:'Rengoku-talk-default',
+        name:'煉獄 杏壽郎',
+        color:'#00ff99',
+        content:'東方仗助先生、空条承太郎先生。我想關於你們所說的『 迪奧 』，也許主公大人會知道一些什麼...需要的話我來替兩位安排與主公大人會面吧!'
+      },{
+        character:'Jotaro-talk-default',
+        name:'空条 承太郎',
+        color:'#00ff99',
+        content:'那就麻煩了!'
+      },{
+        character:'Nezuko-talk-dodge',
+        name:'竈門 禰豆子',
+        color:'#00ff99',
+        content:'嗯哼...!!'
+      },{
+        character:'Josuke-talk-def',
+        name:'東方 仗助',
+        color:'#00ff99',
+        content:'...!?'
+      },{
+        character:'Tanjirou-talk-worry',
+        name:'竈門 炭治郎',
+        color:'#00ff99',
+        content:'啊!..那個..她是我的妹妹，叫做禰豆子，他雖然也是鬼..但他不會傷害人的!!'
+      },{
+        character:'Josuke-talk-usual',
+        name:'東方 仗助',
+        color:'#00ff99',
+        content:'放心吧!我只是好奇她要說什麼而已，看起來她暫時不能說話呢!'
+      },{
+        character:'Tanjirou-talk-worry',
+        name:'竈門 炭治郎',
+        color:'#00ff99',
+        content:'啊!!..我成為殺鬼劍士就是為了讓妹妹恢復成人類的..(原來仗助先生與承太郎先生早就知道禰豆子是鬼了...)'
+      },{
+        character:'Inosuke-talk-default',
+        name:'嘴平 伊之助',
+        color:'#00ff99',
+        content:'哦哦哦啊啊!!!看來又有兩個厲害的傢伙出現了!!本大爺一定會超越你們的!!'
+      },{
+        character:'Josuke-talk-attack',
+        name:'東方 仗助',
+        color:'#00ff99',
+        content:'哈哈!!你們可真是Great的有趣呀!!熱血劍士，快替我們帶路見你們的主公吧!'
+      },{
+        character:'Rengoku-talk-default',
+        name:'煉獄 杏壽郎',
+        color:'#00ff99',
+        content:'沒問題!!'
+      },{
+        character:'Tanjirou-talk-usual',
+        name:'竈門 炭治郎',
+        color:'#00ff99',
+        content:'(太好了...多虧遇上了這兩位了不起的人，救活了杏壽郎先生，真是太好了...)'
+      },{
+        character:'Inosuke-talk-default',
+        name:'嘴平 伊之助',
+        color:'#00ff99',
+        content:'哦哦哦啊啊!!!跟我決鬥吧!!兩個變身使者!!'
+      },{
+        character:'Zenitsu-talk-afraid',
+        name:'我妻 善逸',
+        color:'#00ff99',
+        content:'快住手啊!伊之助...這樣會沒命的!!'
+      },{
+        character:'Jotaro-talk-default',
+        name:'空条 承太郎',
+        color:'#00ff99',
+        content:'(真是夠了!..)'
     }],
     isWin: enemyList => {
       let totalLife = 0;

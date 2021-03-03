@@ -204,7 +204,11 @@ export const Canvas = ()=> {
           setCurrentChess,
           setFadeBGM,
           setEnemyRoundTab,
-          setRoundEnd
+          setRoundEnd,
+          setStageStatus,
+          setRoundNum,
+          setRoundStart,
+          dispatch
         }}
       />}
     {battleInfo.status&&
