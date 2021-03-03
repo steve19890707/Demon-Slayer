@@ -180,6 +180,66 @@ const chess = createSlice({
         hitfix:50
       }],
       ...basicCommon
+    },{
+      name:'Jotaro',
+      cn:'空条 承太郎',
+      id:6,
+      step:3,
+      attack:3,
+      hp:2400,
+      sp:200,
+      dodge:65,
+      fullValue:{
+        hp:2400,
+        sp:200
+      },
+      skill:[{ 
+        name:'替身攻擊',
+        atk:400,
+        sp:0,
+        hitfix:10
+      },{ 
+        name:'白金之星',
+        atk:500,
+        sp:15,
+        hitfix:30
+      },{ 
+        name:'白金之星―時間暫停',
+        atk:1000,
+        sp:50,
+        hitfix:80
+      }],
+      ...basicCommon
+    },{
+      name:'Josuke',
+      cn:'東方 仗助',
+      id:7,
+      step:3,
+      attack:3,
+      hp:2200,
+      sp:180,
+      dodge:55,
+      fullValue:{
+        hp:2200,
+        sp:180
+      },
+      skill:[{ 
+        name:'替身攻擊',
+        atk:300,
+        sp:0,
+        hitfix:15
+      },{ 
+        name:'瘋狂鑽石',
+        atk:400,
+        sp:10,
+        hitfix:25
+      },{ 
+        name:'瘋狂鑽石―攻防交替',
+        atk:800,
+        sp:30,
+        hitfix:50
+      }],
+      ...basicCommon
   }],
   reducers:{
     stageDebut:(state, actions)=> {

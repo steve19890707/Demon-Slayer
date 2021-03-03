@@ -39,6 +39,18 @@ export const audioData = {
     loop: true,
     autoplay: false
   }),
+  Jotaro: new Howl({
+    src: [`${hostname}audio/bgm-Jotaro.mp3`],
+    preload: 'metadata',
+    loop: true,
+    autoplay: false
+  }),
+  Josuke: new Howl({
+    src: [`${hostname}audio/bgm-Josuke.mp3`],
+    preload: 'metadata',
+    loop: true,
+    autoplay: false
+  }),
 };
 export const videos = {
   Tanjirou: {
@@ -66,7 +78,15 @@ export const videos = {
   Hakuji: {
     skill2: PIXI.Texture.from(`${hostname}video/Hakuji/skill2.mp4`),
     skill3: PIXI.Texture.from(`${hostname}video/Hakuji/skill3.mp4`)
-  }
+  },
+  Jotaro: {
+    skill2: PIXI.Texture.from(`${hostname}video/Jotaro/skill2.mp4`),
+    skill3: PIXI.Texture.from(`${hostname}video/Jotaro/skill3.mp4`)
+  },
+  Josuke: {
+    skill2: PIXI.Texture.from(`${hostname}video/Josuke/skill2.mp4`),
+    skill3: PIXI.Texture.from(`${hostname}video/Josuke/skill3.mp4`)
+  },
 };
 // closeAutoPlay
 const closeAutoPlay = ()=>{
@@ -99,6 +119,16 @@ const closeAutoPlay = ()=>{
   for(let i=0; i<Hakuji.length; i++){
     videos.Hakuji[`skill${i+2}`].baseTexture.resource.autoPlay= false;
     videos.Hakuji[`skill${i+2}`].baseTexture.resource.muted= true;
+  };
+  const Jotaro = Object.keys(videos.Jotaro);
+  for(let i=0; i<Jotaro.length; i++){
+    videos.Jotaro[`skill${i+2}`].baseTexture.resource.autoPlay= false;
+    videos.Jotaro[`skill${i+2}`].baseTexture.resource.muted= true;
+  };
+  const Josuke = Object.keys(videos.Josuke);
+  for(let i=0; i<Josuke.length; i++){
+    videos.Josuke[`skill${i+2}`].baseTexture.resource.autoPlay= false;
+    videos.Josuke[`skill${i+2}`].baseTexture.resource.muted= true;
   };
 };
 closeAutoPlay();
