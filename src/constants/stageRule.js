@@ -711,12 +711,12 @@ export const stageRule = fromJS({
         character:'Tanjirou-talk-worry',
         name:'竈門 炭治郎',
         color:'#00ff99',
-        content:'疑!?日本國的名字?兩位也是日本人嗎?'
+        content:'疑!?日本國的名字?兩位也是日本國人嗎?'
       },{
         character:'Josuke-talk-usual',
         name:'東方 仗助',
         color:'#00ff99',
-        content:'哦~我們應該算是吧!我媽是日本人，承太郎先生的爸爸也是日本人。我的父親是一位曾經造訪過日本的英國人，同時他也是承太郎先生的外祖父。'
+        content:'哦~我們應該算是吧!我媽是日本人，承太郎先生的爸爸也是日本人。我的父親是一位曾經造訪過日本的美國人，同時他也是承太郎先生的外祖父。'
       },{
         character:'Tanjirou-talk-error',
         name:'竈門 炭治郎',
@@ -726,7 +726,7 @@ export const stageRule = fromJS({
         character:'Jotaro-talk-default',
         name:'空条 承太郎',
         color:'#00ff99',
-        content:'總之我們是從其他的時空來的，為了找到並擊敗剛才那隻吸血鬼提到的『 迪奧 』而來的。'
+        content:'總之我們是從其他的時空來的，為了找到並擊敗剛才那隻吸血鬼提到的『迪奧』而來的。'
       },{
         character:'Tanjirou-talk-error',
         name:'竈門 炭治郎',
@@ -736,7 +736,7 @@ export const stageRule = fromJS({
         character:'Jotaro-talk-default',
         name:'空条 承太郎',
         color:'#00ff99',
-        content:'我想你們應該也碰到一些奇怪的事情了吧?像是遇見死去的親人、曾經擊敗過的敵人、等等..，這一切都是『 迪奧 』的力量的。'
+        content:'我想你們應該也碰到一些奇怪的事情了吧?像是遇見死去的親人、曾經擊敗過的敵人、等等..，這一切都是『迪奧』的力量的。'
       },{
         character:'Tanjirou-talk-dodge',
         name:'竈門 炭治郎',
@@ -746,7 +746,7 @@ export const stageRule = fromJS({
         character:'Jotaro-talk-default',
         name:'空条 承太郎',
         color:'#00ff99',
-        content:'被復活的死著，可能會是生存在不同時間線的敵人，也許存在於過去、未來...，總之我們得快點找到『 迪奧 』才行。'
+        content:'被復活的死著，可能會是生存在不同時間線的敵人，也許存在於過去、未來...，總之我們得快點找到『迪奧』才行。'
       },{
         character:'Tanjirou-talk-error',
         name:'竈門 炭治郎',
@@ -776,7 +776,7 @@ export const stageRule = fromJS({
         character:'Rengoku-talk-default',
         name:'煉獄 杏壽郎',
         color:'#00ff99',
-        content:'東方仗助先生、空条承太郎先生。我想關於你們所說的『 迪奧 』，也許主公大人會知道一些什麼...需要的話我來替兩位安排與主公大人會面吧!'
+        content:'東方仗助先生、空条承太郎先生。我想關於你們所說的『迪奧』，也許主公大人會知道一些什麼...需要的話我來替兩位安排與主公大人會面吧!'
       },{
         character:'Jotaro-talk-default',
         name:'空条 承太郎',
