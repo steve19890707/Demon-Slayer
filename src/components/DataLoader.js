@@ -134,6 +134,11 @@ const closeAutoPlay = ()=>{
 closeAutoPlay();
 
 loader
+  .add('guide-1',`${hostname}imgs/guide/guide-1.jpg`)
+  .add('guide-2',`${hostname}imgs/guide/guide-2.jpg`)
+  .add('guide-3',`${hostname}imgs/guide/guide-3.jpg`)
+  .add('guide-4',`${hostname}imgs/guide/guide-4.jpg`)
+  .add('guide-5',`${hostname}imgs/guide/guide-5.jpg`)
   .add('Tanjirou-head-default',`${hostname}imgs/Tanjirou/head-default.png`)
   .add('Tanjirou-talk-default',`${hostname}imgs/Tanjirou/talk-default.jpg`)
   .add('Tanjirou-talk-attack',`${hostname}imgs/Tanjirou/talk-attack.jpg`)
@@ -238,6 +243,7 @@ loader
   .add('muteIcon',`${hostname}imgs/common/mute.png`)
   .add('volumeIcon',`${hostname}imgs/common/volume.png`)
   .add('startBtn',`${hostname}imgs/common/startBtn.png`)
+  .add('guideBtn',`${hostname}imgs/common/guideBtn.png`)
   .add('endBtn',`${hostname}imgs/common/end.png`)
   .add('fightOff',`${hostname}imgs/common/fightOff.png`)
   .add('fightDef',`${hostname}imgs/common/fightDef.png`)

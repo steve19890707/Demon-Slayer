@@ -2,6 +2,7 @@ import React,{ useState, useEffect } from 'react';
 import * as PIXI from "pixi.js";
 import { audioData, loader } from '../../DataLoader';
 import { Container, Text, Graphics, Sprite, useTick } from '@inlet/react-pixi/animated';
+import { Guide } from '../Guide';
 const Logo = ({
   logoWidth=200,
   startBtn,
@@ -30,6 +31,7 @@ export const GameStart = ({
   const [ logoWidth, setLogoWidth ] = useState(200);
   const [ start, setStart ] = useState(false);
   const [ startBtn, setStartBtn ] = useState(false);
+  const [ openGuide, setOpenGuide ] = useState(false);
   useEffect(()=>{
     (logoWidth>=350)&&setStartBtn(true);
   },[logoWidth]);
@@ -70,22 +72,49 @@ export const GameStart = ({
         setLogoWidth={setLogoWidth}
       />
       {startBtn&&
-        <Sprite
-          interactive={true}
-          buttonMode={true}
-          anchor={0.5}
-          x={400}
-          y={450}
-          width={120}
-          height={56}
-          image={loader.resources[`startBtn`].data}
-          pointertap={()=>{
-            audioData.open.fade(1,0,1000)
-            setStageStart(true);
-            setCurrentBGM('userRounds');
-          }}
-        />
+        <>
+          <Sprite
+            interactive={!openGuide}
+            buttonMode={true}
+            anchor={{x:1.1,y:0.5}}
+            x={400}
+            y={450}
+            width={120}
+            height={56}
+            image={loader.resources[`startBtn`].data}
+            pointertap={()=>{
+              audioData.open.fade(1,0,1000)
+              setStageStart(true);
+              setCurrentBGM('userRounds');
+            }}
+          />
+          <Sprite
+            interactive={!openGuide}
+            buttonMode={true}
+            anchor={{x:-0.1,y:0.5}}
+            x={400}
+            y={450}
+            width={120}
+            height={56}
+            image={loader.resources[`guideBtn`].data}
+            pointertap={()=>{
+              setOpenGuide(true);
+            }}
+          />
+          <Text
+            text={`2021 Steve © Present`}
+            zIndex={2}
+            anchor={0.5}
+            x={400}
+            y={520}
+            style={new PIXI.TextStyle({ fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
+              fontSize: 16,
+              fill:'#ffffff',
+            })}
+          />
+        </>
       }
+      {openGuide&&<Guide props={{ setOpenGuide }}/>}
     </>
   }
   </Container>

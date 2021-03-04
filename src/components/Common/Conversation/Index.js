@@ -284,15 +284,28 @@ export const StageClear = ({ props })=> {
     }}
   >
     <Container sortableChildren={true}>
+      <Text
+        text={`恭喜您完成挑戰!!`}
+        anchor={0.5}
+        y={-70}
+        style={new PIXI.TextStyle({ fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
+          fontSize: 22,
+          fill:['#ffffff', '#00bcd4'],
+          lineHeight:24,
+          breakWords: true,
+          wordWrap: true,
+          wordWrapWidth:500
+        })}
+      />
       <Spring
-        from={{ x:0, y:0, alpha:0 }}
-        to={{ x:0, y:-50, alpha:1 }}
+        from={{ x:0, y:25, alpha:0 }}
+        to={{ x:0, y:0, alpha:1 }}
         config={{ duration: 1000 }}
       >
         {props =>
           <Text
-            text={`恭喜您完成挑戰!! 本篇創作暫時完結，待未來不定時持續創作，感謝您的遊玩!(本創作僅應用技術交流，無商業行為)`}
-            anchor={{x:0.5}}
+            text={`本篇創作已完結，未來將可能持續創作更新遊戲新篇章，敬請期待。 感謝您的遊玩!!`}
+            anchor={0.5}
             style={new PIXI.TextStyle({ fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
               fontSize: 16,
               fill:'#ffffff',
@@ -305,6 +318,16 @@ export const StageClear = ({ props })=> {
           />
         }
       </Spring>
+      <Text
+        text={`2021 Steve © Present`}
+        anchor={0.5}
+        x={0}
+        y={85}
+        style={new PIXI.TextStyle({ fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
+          fontSize: 16,
+          fill:['#ffffff', '#ffffff'],
+        })}
+      />
       <Text
         text={`重新開始`}
         anchor={{y:0.5}}

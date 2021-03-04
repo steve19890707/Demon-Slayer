@@ -600,7 +600,7 @@ export const stageRule = fromJS({
         character:'Josuke-talk-dodge',
         name:'東方 仗助',
         color:'#00ff99',
-        content:'都傷得這麼重還擔心其他人，你真是超級Great的呀!..熱血劍俠~'
+        content:'都傷得這麼重還擔心其他人，你真是超級Great的呀!..熱血劍士~'
       },{
         character:'Josuke-talk-attack',
         name:'東方 仗助',
@@ -736,12 +736,22 @@ export const stageRule = fromJS({
         character:'Jotaro-talk-default',
         name:'空条 承太郎',
         color:'#00ff99',
-        content:'我想你們應該也碰到一些奇怪的事情了吧?像是遇見死去的親人、曾經擊敗過的敵人、等等..，這一切都是『迪奧』的力量的。'
+        content:'我想你們應該也碰到一些奇怪的事情了吧?像是遇見死去的人、擊敗過的敵人..，這一切都是受到『迪奧』的力量所造成的。'
+      },{
+        character:'Josuke-talk-dodge',
+        name:'東方 仗助',
+        color:'#00ff99',
+        content:'或像是承太郎先生一樣，身體突然就回到了17歲!'
+      },{
+        character:'Jotaro-talk-silent',
+        name:'空条 承太郎',
+        color:'#00ff99',
+        content:'真是的..'
       },{
         character:'Tanjirou-talk-dodge',
         name:'竈門 炭治郎',
         color:'#00ff99',
-        content:'原..原來如此!怪不得我會遇見曾經被我打敗過的手鬼...'
+        content:'原..原來如此!怪不得我會遇見曾經被我打敗過的手鬼...，以及對於我們相當熟悉的陌生敵人!!'
       },{
         character:'Jotaro-talk-default',
         name:'空条 承太郎',
@@ -761,12 +771,12 @@ export const stageRule = fromJS({
         character:'Zenitsu-talk-usual',
         name:'我妻 善逸',
         color:'#00ff99',
-        content:'其中一位先生的髮型....'
+        content:'咦!!?.....(是留著奇怪髮型的人，看起來好遜!)'
       },{
         character:'Josuke-talk-angry',
         name:'東方 仗助',
         color:'#00ff99',
-        content:'蛤!??你剛才說我的髮型怎麼了嗎?我可是非常在意呢!!!'
+        content:'喂!你一直盯著我的髮型看，是不是有甚麼意見呀?我可是非常在意呢!!!'
       },{
         character:'Zenitsu-talk-afraid',
         name:'我妻 善逸',
@@ -776,12 +786,12 @@ export const stageRule = fromJS({
         character:'Rengoku-talk-default',
         name:'煉獄 杏壽郎',
         color:'#00ff99',
-        content:'東方仗助先生、空条承太郎先生。我想關於你們所說的『迪奧』，也許主公大人會知道一些什麼...需要的話我來替兩位安排與主公大人會面吧!'
+        content:'東方仗助先生、空条承太郎先生。關於你們所說的『迪奧』，主公大人也許會知道些什麼...需要的話，讓我替兩位帶路見見主公大人吧!'
       },{
         character:'Jotaro-talk-default',
         name:'空条 承太郎',
         color:'#00ff99',
-        content:'那就麻煩了!'
+        content:'那就麻煩你帶路了。'
       },{
         character:'Nezuko-talk-dodge',
         name:'竈門 禰豆子',
@@ -796,12 +806,12 @@ export const stageRule = fromJS({
         character:'Tanjirou-talk-worry',
         name:'竈門 炭治郎',
         color:'#00ff99',
-        content:'啊!..那個..她是我的妹妹，叫做禰豆子，他雖然也是鬼..但他不會傷害人的!!'
+        content:'啊!..那個..她是我的妹妹，叫做禰豆子，雖然她也是鬼..但她不會傷害人的!!'
       },{
         character:'Josuke-talk-usual',
         name:'東方 仗助',
         color:'#00ff99',
-        content:'放心吧!我只是好奇她要說什麼而已，看起來她暫時不能說話呢!'
+        content:'放心吧!我只是好奇她要說什麼而已，看來她暫時不能說話呢!'
       },{
         character:'Tanjirou-talk-worry',
         name:'竈門 炭治郎',
@@ -816,7 +826,7 @@ export const stageRule = fromJS({
         character:'Josuke-talk-attack',
         name:'東方 仗助',
         color:'#00ff99',
-        content:'哈哈!!你們可真是Great的有趣呀!!熱血劍士，快替我們帶路見你們的主公吧!'
+        content:'哈哈!!你們可真是Great的有趣呀!!熱血劍士，快替我們帶路見見主公吧!'
       },{
         character:'Rengoku-talk-default',
         name:'煉獄 杏壽郎',
@@ -826,7 +836,7 @@ export const stageRule = fromJS({
         character:'Tanjirou-talk-usual',
         name:'竈門 炭治郎',
         color:'#00ff99',
-        content:'(太好了...多虧遇上了這兩位了不起的人，救活了杏壽郎先生，真是太好了...)'
+        content:'(太好了...多虧遇上了這兩位了不起的人，拯救了我們，還有煉獄先生，真是太好了...)'
       },{
         character:'Inosuke-talk-default',
         name:'嘴平 伊之助',

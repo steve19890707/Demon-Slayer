@@ -16,11 +16,11 @@ const chess = createSlice({
       id:1,
       step:3,
       attack:2,
-      hp:1500,
+      hp:1600,
       sp:125,
       dodge:80,
       fullValue:{
-        hp:1500,
+        hp:1600,
         sp:125
       },
       skill:[{ 
