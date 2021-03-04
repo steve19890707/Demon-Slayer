@@ -14,9 +14,9 @@ export const ChessStatus = ({
     return ChessData.skill.map((value,key)=>{
         return <React.Fragment key={key}>
         <Text
-          x={-40}
+          x={-50}
           y={-70+(key*22)}
-          text={`${value.name}`}
+          text={`${value.name}(${value.cd})`}
           style={new PIXI.TextStyle({
             fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
             fontSize: 16,
@@ -24,9 +24,9 @@ export const ChessStatus = ({
           })}
         />
         <Text
-          x={-35+(value.name.length * 16)}
+          x={-42+((value.name.length+1) * 16)}
           y={-70+(key*22)}
-          text={`ATK:${value.atk}(${value.sp}SP)`}
+          text={`ATK:${value.atk}(${value.sp}sp)`}
           style={new PIXI.TextStyle({
             fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
             fontSize: 14,
@@ -97,7 +97,7 @@ export const ChessStatus = ({
       })}
     />
     <Text
-      x={-170}
+      x={-168}
       y={35}
       text={`${ChessData.hp} / ${ChessData.fullValue.hp}`}
       style={new PIXI.TextStyle({
@@ -117,7 +117,7 @@ export const ChessStatus = ({
       })}
     />
     <Text
-      x={-170}
+      x={-168}
       y={60}
       text={`${ChessData.sp} / ${ChessData.fullValue.sp}`}
       style={new PIXI.TextStyle({
@@ -127,7 +127,7 @@ export const ChessStatus = ({
       })}
     />
     <Text
-      x={-50}
+      x={-60}
       y={-95}
       text={'招式'}
       style={new PIXI.TextStyle({

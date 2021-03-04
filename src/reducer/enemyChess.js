@@ -25,12 +25,14 @@ const enemyChess = createSlice({
         name:'胡亂毆打',
         atk:200,
         sp:0,
-        hitfix:10
+        hitfix:10,
+        cd:0
       },{ 
         name:'你是第十四個',
         atk:500,
         sp:25,
-        hitfix:20
+        hitfix:20,
+        cd:0
       }],
       ...basicCommon
     },{
@@ -48,12 +50,14 @@ const enemyChess = createSlice({
         name:'爪擊',
         atk:150,
         sp:0,
-        hitfix:15
+        hitfix:15,
+        cd:0
       },{ 
         name:'分身攻擊',
         atk:300,
         sp:20,
-        hitfix:30
+        hitfix:30,
+        cd:0
       }],
       ...basicCommon
     },{
@@ -71,12 +75,14 @@ const enemyChess = createSlice({
         name:'爪擊',
         atk:150,
         sp:0,
-        hitfix:15
+        hitfix:15,
+        cd:0
       },{ 
         name:'分身攻擊',
         atk:300,
         sp:20,
-        hitfix:30
+        hitfix:30,
+        cd:0
       }],
       ...basicCommon
     },{
@@ -94,12 +100,14 @@ const enemyChess = createSlice({
         name:'爪擊',
         atk:150,
         sp:0,
-        hitfix:15
+        hitfix:15,
+        cd:0
       },{ 
         name:'分身攻擊',
         atk:300,
         sp:20,
-        hitfix:30
+        hitfix:30,
+        cd:0
       }],
       ...basicCommon
     },{
@@ -117,17 +125,20 @@ const enemyChess = createSlice({
         name:'破壞殺攻擊',
         atk:400,
         sp:0,
-        hitfix:20
+        hitfix:20,
+        cd:0
       },{ 
         name:'破壞殺―亂式',
         atk:600,
         sp:15,
-        hitfix:30
+        hitfix:30,
+        cd:0
       },{ 
         name:'術式展開―破壞殺―羅針',
         atk:900,
         sp:30,
-        hitfix:30
+        hitfix:30,
+        cd:0
       }],
       ...basicCommon
   }],

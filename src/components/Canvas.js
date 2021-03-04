@@ -16,7 +16,7 @@ import { OtherTab } from "./Common/OtherTab";
 import { EnemyRoundTab } from "./Common/EnemyRoundTab/Index";
 import { Chess } from "../components/Chess/Chess";
 import { EnemyChess } from "../components/EnemyChess/EnemyChess";
-import { Conversation, RoundEndConversation } from "../components/Common/Conversation/Index";
+import { Conversation, RoundEndConversation, StageClear } from "../components/Common/Conversation/Index";
 // rule
 import { stageRule } from "../constants/stageRule";
 import { loader } from './DataLoader';
@@ -26,6 +26,7 @@ export const Canvas = ()=> {
   const [ stageStart, setStageStart ] = useState(false);
   const [ roundEnd, setRoundEnd ] = useState(false);
   const [ stageStatus, setStageStatus ] = useState('stageOne');
+  const [ stageClear, setStageClear ] = useState(false);
   const [ roundNum, setRoundNum ] = useState(1);
   const [ otherTab, setOtherTab ] = useState(false);
   const [ volume, setVolume ] = useState(true);
@@ -69,6 +70,7 @@ export const Canvas = ()=> {
   const filterBackgroundImg = (stageStatus)=>{
     switch (stageStatus){
       case 'stageTwo':
+      case 'stageFour':
         return 'stageOne';
       default:
         return stageStatus;
@@ -215,6 +217,7 @@ export const Canvas = ()=> {
       <BattleBoard
         props={{
           battleInfo,
+          roundNum,
           setMoveStep,
           setBattleInfo,
           setAnimeShow,
@@ -268,9 +271,21 @@ export const Canvas = ()=> {
         setStageStatus,
         setRoundEnd,
         setRoundNum,
+        setStageClear,
+        setCurrentBGM,
         dispatch
       }}
     />}
+    {stageClear&&
+      <StageClear
+        props={{
+          setStageStatus,
+          setStageClear,
+          setStageStart,
+          setRoundStart,
+          setCurrentBGM
+        }}
+      />}
     {!stageStart&&
       <GameStart 
         props={{

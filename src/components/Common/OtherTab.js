@@ -20,6 +20,8 @@ export const OtherTab = ({ props })=> {
         return 2;
       case 'stageThree':
         return 3;
+      case 'stageFour':
+        return 4;
       default:
         return 1;
     };

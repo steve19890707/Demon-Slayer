@@ -79,7 +79,7 @@ export const EnemyChessUIBoard = ({
       g.clear();
       g.lineStyle(1,`0xffffff`,1);
       g.beginFill(`0x22223b`);
-      g.drawRoundedRect(0,0,80,82,8);
+      g.drawRoundedRect(0,0,80,85,8);
       g.endFill();
     }}
   ><CreateText/></Graphics>

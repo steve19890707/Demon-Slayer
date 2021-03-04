@@ -546,19 +546,19 @@ export const stageRule = fromJS({
     debutChess:[
       { 
         name:'Jotaro',
-        x:9,
+        x:7,
         y:6
       },{ 
         name:'Josuke',
-        x:9,
+        x:7,
         y:8
       },
     ],
     debutEnemyChess:[
       {
         name:'Hakuji',
-        x:11,
-        y:9
+        x:13,
+        y:7
       }
     ],
     ruleText:{
@@ -853,13 +853,9 @@ export const stageRule = fromJS({
       return totalLife>0 ? false : true ;
     },
     isLose: chessList => {
-      let totalLife = 0;
-        chessList.map(v => {
-          if(v.debut){
-            return totalLife += v.hp;
-          }return null;
-        });
-      return totalLife>0 ? false : true ;
+      const Jotaro = chessList.filter(v=>v.name==="Jotaro")[0].debut;
+      const Josuke = chessList.filter(v=>v.name==="Josuke")[0].debut;
+      return (Jotaro===false||Josuke===false) ? true : false;
     }
   }
 });

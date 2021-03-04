@@ -25,24 +25,28 @@ const chess = createSlice({
       },
       skill:[{ 
         name:'斬擊',
-        atk:200,
+        atk:250,
         sp:0,
-        hitfix:0
+        hitfix:0,
+        cd:0
       },{ 
         name:'叄之型―流流舞',
         atk:350,
         sp:15,
-        hitfix:10
+        hitfix:10,
+        cd:2
       },{ 
         name:'捌之型―滝壺',
         atk:500,
         sp:25,
-        hitfix:5
+        hitfix:5,
+        cd:2
       },{
         name:'拾之型―生生流轉',
         atk:850,
         sp:50,
-        hitfix:20
+        hitfix:20,
+        cd:5
       }],
       ...basicCommon
     },{
@@ -60,19 +64,22 @@ const chess = createSlice({
       },
       skill:[{ 
         name:'爪擊',
-        atk:150,
+        atk:200,
         sp:0,
-        hitfix:0
+        hitfix:0,
+        cd:0
       },{ 
         name:'踢擊',
-        atk:250,
+        atk:300,
         sp:10,
-        hitfix:15
+        hitfix:15,
+        cd:0
       },{ 
         name:'血鬼術',
         atk:1000,
         sp:80,
-        hitfix:35
+        hitfix:35,
+        cd:4
       }],
       ...basicCommon
     },{
@@ -90,19 +97,22 @@ const chess = createSlice({
       },
       skill:[{ 
         name:'斬擊',
-        atk:200,
+        atk:250,
         sp:0,
-        hitfix:0
+        hitfix:0,
+        cd:0
       },{ 
         name:'壹之型―霹靂一閃',
         atk:400,
         sp:15,
-        hitfix:15
+        hitfix:15,
+        cd:0
       },{
         name:'壹之型―霹靂一閃六連',
         atk:1000,
         sp:70,
-        hitfix:30
+        hitfix:30,
+        cd:3
       }],
       ...basicCommon
     },{
@@ -120,24 +130,28 @@ const chess = createSlice({
       },
       skill:[{ 
         name:'斬擊',
-        atk:200,
+        atk:250,
         sp:0,
-        hitfix:0
+        hitfix:0,
+        cd:0
       },{ 
         name:'壹之牙―穿透刺射',
-        atk:300,
+        atk:350,
         sp:10,
-        hitfix:10
+        hitfix:10,
+        cd:0
       },{ 
         name:'貳之牙―利刃對劈',
         atk:400,
         sp:15,
-        hitfix:15
+        hitfix:15,
+        cd:2
       },{
         name:'叄之牙―獠牙撕扯',
         atk:600,
         sp:45,
-        hitfix:25
+        hitfix:25,
+        cd:3
       }],
       ...basicCommon
     },{
@@ -157,27 +171,32 @@ const chess = createSlice({
         name:'斬擊',
         atk:300,
         sp:0,
-        hitfix:10
+        hitfix:10,
+        cd:0
       },{ 
         name:'壹之型―不知火',
         atk:400,
         sp:15,
-        hitfix:30
+        hitfix:30,
+        cd:0
       },{ 
         name:'肆之型―盛炎的蜿蜒',
         atk:500,
         sp:15,
-        hitfix:25
+        hitfix:25,
+        cd:2
       },{
         name:'伍之型―炎虎',
         atk:800,
         sp:30,
-        hitfix:30
+        hitfix:30,
+        cd:4
       },{
         name:'玖之型―煉獄',
         atk:1500,
         sp:100,
-        hitfix:50
+        hitfix:50,
+        cd:6
       }],
       ...basicCommon
     },{
@@ -197,17 +216,20 @@ const chess = createSlice({
         name:'替身攻擊',
         atk:400,
         sp:0,
-        hitfix:10
+        hitfix:10,
+        cd:0
       },{ 
         name:'白金之星',
         atk:500,
         sp:15,
-        hitfix:30
+        hitfix:30,
+        cd:0
       },{ 
         name:'白金之星―時間暫停',
         atk:1000,
         sp:50,
-        hitfix:80
+        hitfix:80,
+        cd:5
       }],
       ...basicCommon
     },{
@@ -227,17 +249,20 @@ const chess = createSlice({
         name:'替身攻擊',
         atk:300,
         sp:0,
-        hitfix:15
+        hitfix:15,
+        cd:0
       },{ 
         name:'瘋狂鑽石',
         atk:400,
         sp:10,
-        hitfix:25
+        hitfix:25,
+        cd:0
       },{ 
         name:'瘋狂鑽石―攻防交替',
         atk:800,
         sp:30,
-        hitfix:50
+        hitfix:50,
+        cd:4
       }],
       ...basicCommon
   }],

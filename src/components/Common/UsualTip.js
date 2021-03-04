@@ -119,6 +119,10 @@ export const UsualTip = ({
             setFadeBGM(currentBGM);
             setRoundNum(1);
             dispatch(chessDone());
+            setUsualTip({
+              title:``,
+              status:false,
+            });
             break;
           case "ENDROUND":
             setEnemyRoundTab({

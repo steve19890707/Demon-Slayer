@@ -8,7 +8,7 @@ import { enemyChessDefense } from "../../reducer/enemyChess";
 
 export const BattleBoard = ({ props })=>{
   const { 
-    battleInfo, setMoveStep, setBattleInfo, setAnimeShow, setCurrentBGM, dispatch
+    battleInfo, roundNum, setMoveStep, setBattleInfo, setAnimeShow, setCurrentBGM, dispatch
   } = props;
   const [ atkSelectd, setAtkSelectd ] = useState({
     key:0,
@@ -85,7 +85,8 @@ export const BattleBoard = ({ props })=>{
         }}
       />
       {data.skill.map((value,key)=>{
-        const skillCanUse = data.sp - value.sp >= 0;
+        const isCD = roundNum >= value.cd;
+        const skillCanUse = (data.sp - value.sp >= 0) && isCD;
         return <React.Fragment key={key}>
           <Text
             zIndex={2}

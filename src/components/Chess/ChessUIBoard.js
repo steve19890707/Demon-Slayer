@@ -205,7 +205,7 @@ export const ChessUIBoard = ({
       g.clear();
       g.lineStyle(1,`0xffffff`,1);
       g.beginFill(`0x22223b`);
-      g.drawRoundedRect(0,0,80,150,8);
+      g.drawRoundedRect(0,0,80,155,8);
       g.endFill();
     }}
   ><CreateText/></Graphics>

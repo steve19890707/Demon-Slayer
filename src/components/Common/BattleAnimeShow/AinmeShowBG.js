@@ -11,6 +11,7 @@ export const AnimeShowBG = ({
   const filterBackgroundImg = (stageStatus)=>{
     switch (stageStatus){
       case 'stageTwo':
+      case 'stageFour':
         return 'stageOne';
       default:
         return stageStatus;

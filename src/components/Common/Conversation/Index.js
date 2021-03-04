@@ -4,6 +4,7 @@ import { loader } from '../../DataLoader';
 import { stageRule } from '../../../constants/stageRule';
 import { Container, Graphics, Sprite, Text } from '@inlet/react-pixi/animated';
 import { Spring } from 'react-spring/renderprops';
+import { audioData } from "../../DataLoader";
 // reducers
 import { chessDone } from '../../../reducer/chess';
 export const Conversation = ({ props })=> {
@@ -21,6 +22,8 @@ export const Conversation = ({ props })=> {
         return 2;
       case 'stageThree':
         return 3;
+      case 'stageFour':
+        return 4;
       default:
         return 1;
     };
@@ -149,7 +152,8 @@ export const Conversation = ({ props })=> {
 };
 export const RoundEndConversation = ({ props })=> {
   const { stageStatus, currentBGM, 
-    setFadeBGM, setRoundStart, setStageStatus, setRoundEnd, setRoundNum, dispatch } = props;
+    setFadeBGM, setRoundStart, setStageStatus, setRoundEnd, 
+    setRoundNum, setStageClear, setCurrentBGM, dispatch } = props;
   const currentConversation = stageRule.getIn([stageStatus,'endStory']);
   const [ textRest, setTextRest ] = useState(false);
   const [ currentEndStory, setCurrentEndStory ] = useState(0);
@@ -206,7 +210,7 @@ export const RoundEndConversation = ({ props })=> {
         }
       </Spring>
       {!(currentEndStory<(currentConversation.size-1))&&<Text
-        text={`下一話`}
+        text={'下一話'}
         anchor={{y:0.5}}
         x={160}
         y={85}
@@ -231,6 +235,19 @@ export const RoundEndConversation = ({ props })=> {
             setTextRest(true);
           }else {
             setRoundEnd(false);
+            // stage clear
+            if(stageStatus==='stageFour'){
+              audioData[currentBGM].fade(0.6,0,1000);
+              audioData.open.stop();
+              audioData.open.volume(1);
+              audioData.open.play();
+              setRoundNum(1);
+              dispatch(chessDone());
+              setStageClear(true);
+              setFadeBGM('');
+              setCurrentBGM('');
+              return;
+            };
             setRoundStart(false);
             setStageStatus(prev=>{
               switch (prev){
@@ -239,7 +256,7 @@ export const RoundEndConversation = ({ props })=> {
                 case 'stageTwo':
                   return 'stageThree'
                 case 'stageThree':
-                  return 'stageOne'
+                  return 'stageFour'
                 default:
                   return prev;
               }
@@ -248,6 +265,72 @@ export const RoundEndConversation = ({ props })=> {
             setRoundNum(1);
             dispatch(chessDone());
           };    
+        }}
+      />
+    </Container>
+  </Graphics>
+};
+export const StageClear = ({ props })=> {
+  const { setStageStatus, setStageStart, setStageClear, setRoundStart, setCurrentBGM } = props;
+  return <Graphics
+    x={400}
+    y={300}
+    zIndex={99}
+    draw={g=> {
+      g.clear();
+      g.beginFill(`0x011627`);
+      g.drawRoundedRect(-300,-125,600,250,5);
+      g.endFill();
+    }}
+  >
+    <Container sortableChildren={true}>
+      <Spring
+        from={{ x:0, y:0, alpha:0 }}
+        to={{ x:0, y:-50, alpha:1 }}
+        config={{ duration: 1000 }}
+      >
+        {props =>
+          <Text
+            text={`恭喜您完成挑戰!! 本篇創作暫時完結，待未來不定時持續創作，感謝您的遊玩!(本創作僅應用技術交流，無商業行為)`}
+            anchor={{x:0.5}}
+            style={new PIXI.TextStyle({ fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
+              fontSize: 16,
+              fill:'#ffffff',
+              lineHeight:24,
+              breakWords: true,
+              wordWrap: true,
+              wordWrapWidth:500
+            })}
+            {...props}
+          />
+        }
+      </Spring>
+      <Text
+        text={`重新開始`}
+        anchor={{y:0.5}}
+        x={150}
+        y={85}
+        style={new PIXI.TextStyle({ fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
+          fontSize: 18,
+          fill:['#ffffff', '#ffffff'],
+        })}
+      />
+      <Sprite
+        width={40}
+        height={30}
+        anchor={0.5}
+        x={255}
+        y={90}
+        interactive={true}
+        buttonMode={true}
+        image={loader.resources[`next`].data}
+        pointertap={()=>{
+          audioData.open.fade(0.6,0,1000);
+          setStageClear(false);
+          setStageStart(true);
+          setRoundStart(false);
+          setStageStatus('stageOne');
+          setCurrentBGM('userRounds');
         }}
       />
     </Container>
